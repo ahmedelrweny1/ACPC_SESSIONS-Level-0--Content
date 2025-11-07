@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACPC Strings Learning Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="../index.html" class="back-home">← Home</a>
+            <div class="header-brand">
+                <h1>🧵 Strings Learning Hub</h1>
+                <p>Kafr Elsheikh Club - Interactive String Programming Guide</p>
+            </div>
+            <!-- Navbar Navigation -->
+            <nav class="sidebar">
+                <ul class="nav-list">
+                <li><a href="#section1" class="nav-link active" data-section="1">
+                    <span class="section-number">1</span>
+                    Introduction to Strings
+                </a></li>
+                <li><a href="#section2" class="nav-link" data-section="2">
+                    <span class="section-number">2</span>
+                    Basic Operations
+                </a></li>
+                <li><a href="#section3" class="nav-link" data-section="3">
+                    <span class="section-number">3</span>
+                    String Traversal
+                </a></li>
+                <li><a href="#section4" class="nav-link" data-section="4">
+                    <span class="section-number">4</span>
+                    Common Manipulations
+                </a></li>
+                <li><a href="#section5" class="nav-link" data-section="5">
+                    <span class="section-number">5</span>
+                    String Conversion
+                </a></li>
+                <li><a href="#section6" class="nav-link" data-section="6">
+                    <span class="section-number">6</span>
+                    Substrings & Patterns
+                </a></li>
+                <li><a href="#section7" class="nav-link" data-section="7">
+                    <span class="section-number">7</span>
+                    Advanced STL Functions
+                </a></li>
+                <li><a href="#section8" class="nav-link" data-section="8">
+                    <span class="section-number">8</span>
+                    Problem Solving
+                </a></li>
+            </ul>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Content Area -->
+        <main class="content">
+            <!-- Section 1: Introduction to Strings -->
+            <section id="section1" class="content-section active">
+                <h2>1. Introduction to Strings</h2>
+                
+                <div class="lesson-block">
+                    <h3>📚 What is a String?</h3>
+                    <p>A <strong>string</strong> is a sequence of characters stored in memory. Think of it as text data - everything from names, sentences, to entire paragraphs!</p>
+                    
+                    <div class="info-box">
+                        <h4>String vs Character</h4>
+                        <ul>
+                            <li><code>char</code> - Single character: <code>'A'</code> (uses single quotes)</li>
+                            <li><code>string</code> - Multiple characters: <code>"Hello"</code> (uses double quotes)</li>
+                            <li>A string can be empty: <code>""</code></li>
+                            <li>A string can contain spaces: <code>"Hello World"</code></li>
+                            <li>A string can contain numbers: <code>"Age: 25"</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><code>// Examples of strings in C++
+string name = "Ahmed";           // Name (5 characters)
+string greeting = "Hello World"; // Sentence with space (11 characters)
+string empty = "";               // Empty string (0 characters)
+string number = "12345";         // Numbers as text (5 characters)
+string special = "C++ is @wesome!"; // With special characters
+
+// Single character vs string
+char letter = 'A';               // Single character
+string word = "A";               // String with one character
+
+cout << name << endl;            // Output: Ahmed</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>💡 Key Points:</h4>
+                        <ul>
+                            <li>Strings can contain letters, numbers, spaces, and special characters</li>
+                            <li>Each character in a string has a position (starting from 0)</li>
+                            <li>Strings are mutable in C++ (you can change them)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>💾 Memory Representation</h3>
+                    <p>Strings are stored as a sequence of characters in consecutive memory locations. Understanding this helps you manipulate strings efficiently!</p>
+                    
+                    <div class="visual-demo">
+                        <div class="memory-visual" id="memoryDemo1">
+                            <div class="string-label">string s = "ACPC";</div>
+                            <div class="memory-cells">
+                                <div class="memory-cell">
+                                    <div class="cell-value">A</div>
+                                    <div class="cell-index">0</div>
+                                </div>
+                                <div class="memory-cell">
+                                    <div class="cell-value">C</div>
+                                    <div class="cell-index">1</div>
+                                </div>
+                                <div class="memory-cell">
+                                    <div class="cell-value">P</div>
+                                    <div class="cell-index">2</div>
+                                </div>
+                                <div class="memory-cell">
+                                    <div class="cell-value">C</div>
+                                    <div class="cell-index">3</div>
+                                </div>
+                                <div class="memory-cell null-terminator">
+                                    <div class="cell-value">\0</div>
+                                    <div class="cell-index">4</div>
+                                </div>
+                            </div>
+                            <p class="caption">Each character has an index (position), starting from 0. The \0 is the null terminator (for C-style strings)</p>
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><code>// Indexing examples
+string s = "HELLO";
+
+// Index:  0   1   2   3   4
+// Value: 'H' 'E' 'L' 'L' 'O'
+
+// Accessing characters by index
+cout << s[0];  // Output: H (first character)
+cout << s[4];  // Output: O (last character)
+cout << s[2];  // Output: L (middle character)
+
+// String length and last index
+int length = s.length();    // length = 5
+int lastIndex = length - 1; // lastIndex = 4
+
+// Important: Valid indices are 0 to (length - 1)
+// s[5] would be out of bounds! (causes error)</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>🎯 Understanding Indices:</h4>
+                        <ul>
+                            <li><strong>First character:</strong> Always at index 0</li>
+                            <li><strong>Last character:</strong> At index (length - 1)</li>
+                            <li><strong>Count:</strong> If length is 5, valid indices are 0, 1, 2, 3, 4</li>
+                            <li><strong>Common mistake:</strong> Accessing index equal to length causes error!</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔤 String Declaration in C++</h3>
+                    <div class="code-comparison">
+                        <div class="code-option">
+                            <h4>✅ Recommended: std::string</h4>
+                            <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+string name = "Ahmed";
+string course = "ACPC";</code></pre>
+                            <p class="note">Easier to use, safer, has built-in functions</p>
+                        </div>
+                        <div class="code-option">
+                            <h4>⚠️ C-style: char array</h4>
+                            <pre><code>char name[10] = "Ahmed";
+char course[] = "ACPC";</code></pre>
+                            <p class="note">Manual memory management, must handle null terminator</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>📥 Reading String Input</h3>
+                    <p>Choosing the right input method is crucial! Using the wrong one is a common source of bugs.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>// Method 1: cin (stops at whitespace)
+string firstName;
+cin >> firstName;  
+// Input: "Ahmed Ali" → stores only "Ahmed"
+// The "Ali" remains in the input buffer
+
+// Method 2: getline (reads entire line)
+string fullName;
+getline(cin, fullName);  
+// Input: "Ahmed Ali" → stores "Ahmed Ali"
+// Reads until Enter key is pressed
+
+// Example program
+int main() {
+    string word;
+    string sentence;
+    
+    cout << "Enter a word: ";
+    cin >> word;                    // Reads one word
+    
+    cin.ignore();                   // Clear buffer (important!)
+    
+    cout << "Enter a sentence: ";
+    getline(cin, sentence);         // Reads full line
+    
+    cout << "Word: " << word << endl;
+    cout << "Sentence: " << sentence << endl;
+    
+    return 0;
+}</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>⚠️ Important: cin.ignore() Between Methods!</h4>
+                        <ul>
+                            <li>After using <code>cin</code>, a newline character stays in buffer</li>
+                            <li>This causes <code>getline()</code> to read an empty line</li>
+                            <li>Always use <code>cin.ignore()</code> to clear the buffer</li>
+                            <li>Or: Use <code>getline()</code> consistently throughout your program</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><code>// When to use each method:
+
+// Use cin when:
+cin >> age;              // Reading a single word/number
+cin >> username;         // Reading username (no spaces)
+cin >> command;          // Reading single commands
+
+// Use getline when:
+getline(cin, fullName);  // Reading names with spaces
+getline(cin, address);   // Reading addresses
+getline(cin, sentence);  // Reading complete sentences
+getline(cin, line);      // Reading any text with spaces</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Try It: Input Methods</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="inputDemo1" placeholder="Type: Hello World" />
+                            <button onclick="testCinInput()">Test with cin</button>
+                            <button onclick="testGetlineInput()">Test with getline</button>
+                        </div>
+                        <div class="demo-output" id="inputDemoOutput"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-block">
+                    <h3>✅ Quick Check</h3>
+                    <div class="quiz-question">
+                        <p><strong>Q: What will be stored if we use <code>cin >> s;</code> with input "Hello World"?</strong></p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" onclick="checkAnswer(this, false)">A) "Hello World"</button>
+                            <button class="quiz-option" onclick="checkAnswer(this, true)">B) "Hello"</button>
+                            <button class="quiz-option" onclick="checkAnswer(this, false)">C) "World"</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+
+                <button class="next-section-btn" onclick="goToSection(2)">Next: Basic Operations →</button>
+            </section>
+
+            <!-- Section 2: Basic Operations -->
+            <section id="section2" class="content-section">
+                <h2>2. Basic Operations & Access</h2>
+
+                <div class="lesson-block">
+                    <h3>🎯 Accessing Characters by Index</h3>
+                    <p>You can access and modify individual characters using the square bracket notation <code>[]</code>. This is one of the most fundamental string operations!</p>
+                    
+                    <div class="code-block">
+                        <pre><code>string s = "ACPC";
+
+// Reading characters
+cout << s[0];  // Output: A (first character)
+cout << s[1];  // Output: C (second character)
+cout << s[2];  // Output: P (third character)
+cout << s[3];  // Output: C (fourth character)
+
+// Modifying characters
+s[0] = 'B';    // s becomes "BCPC"
+s[3] = 'D';    // s becomes "BCPD"
+
+// Accessing last character
+int lastIndex = s.length() - 1;
+cout << s[lastIndex];  // Output: D
+
+// Loop through all characters
+for(int i = 0; i < s.length(); i++) {
+    cout << "Character at index " << i << ": " << s[i] << endl;
+}
+
+// Common mistakes to avoid:
+// s[4]  ❌ Out of bounds! (length is 4, so max index is 3)
+// s[-1] ❌ Negative index not allowed!</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>📝 Character Access Rules:</h4>
+                        <ul>
+                            <li><strong>Index range:</strong> 0 to (length - 1)</li>
+                            <li><strong>Read:</strong> <code>char c = s[i];</code></li>
+                            <li><strong>Write:</strong> <code>s[i] = 'X';</code></li>
+                            <li><strong>Safety:</strong> Always check if index is valid before accessing</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><code>// Safe character access example
+string text = "Programming";
+
+// Check bounds before accessing
+int index = 5;
+if(index >= 0 && index < text.length()) {
+    cout << "Character at " << index << ": " << text[index];  // Output: a
+} else {
+    cout << "Invalid index!";
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Interactive: Character Access</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="stringInput" value="ACPC" maxlength="20"/>
+                            <label>Index: </label>
+                            <input type="number" id="indexInput" value="0" min="0" />
+                            <button onclick="accessCharacter()">Access Character</button>
+                        </div>
+                        <div id="charAccessVisual" class="memory-cells"></div>
+                        <div class="demo-output" id="charAccessOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>📏 String Length</h3>
+                    <p>The length (or size) of a string tells you how many characters it contains. This is essential for loops and bounds checking!</p>
+                    
+                    <div class="code-block">
+                        <pre><code>string s = "Hello";
+
+// Two ways to get length (both are identical):
+cout << s.length();  // Output: 5
+cout << s.size();    // Output: 5 (same as length)
+
+// Length includes all characters (even spaces):
+string sentence = "Hello World";
+cout << sentence.length();  // Output: 11 (includes the space!)
+
+// Empty string has length 0:
+string empty = "";
+cout << empty.length();  // Output: 0
+
+// Check if string is empty:
+if(s.empty()) {
+    cout << "String is empty";
+} else {
+    cout << "String has " << s.length() << " characters";
+}
+
+// Using length in loops:
+string text = "ACPC";
+for(int i = 0; i < text.length(); i++) {
+    cout << text[i] << " ";  // Output: A C P C
+}
+
+// Last character using length:
+char lastChar = text[text.length() - 1];  // Gets 'C'</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>💡 Length vs Size:</h4>
+                        <ul>
+                            <li><strong>.length()</strong> and <strong>.size()</strong> are exactly the same</li>
+                            <li>Both return the number of characters</li>
+                            <li>Use whichever you prefer (length is more common for strings)</li>
+                            <li>Remember: Last valid index = length - 1</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><code>// Practical examples:
+
+// 1. Validate password length
+string password;
+getline(cin, password);
+
+if(password.length() < 8) {
+    cout << "Password too short! Must be at least 8 characters.";
+}
+
+// 2. Count characters in user input
+string message;
+getline(cin, message);
+cout << "Your message has " << message.length() << " characters.";
+
+// 3. Access last character safely
+string word = "Programming";
+if(!word.empty()) {
+    cout << "Last character: " << word[word.length() - 1];  // g
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Try It: Calculate Length</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="lengthInput" placeholder="Type any text" />
+                            <button onclick="calculateLength()">Get Length</button>
+                        </div>
+                        <div class="demo-output" id="lengthOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔗 String Concatenation</h3>
+                    <p>Concatenation means joining strings together. C++ provides multiple ways to combine strings!</p>
+                    
+                    <div class="code-block">
+                        <pre><code>string first = "Hello";
+string second = "World";
+
+// Method 1: Using + operator
+string result = first + " " + second;  // "Hello World"
+
+// Method 2: Using += operator (append)
+first += " World";  // first becomes "Hello World"
+first += "!";       // first becomes "Hello World!"
+
+// Method 3: Using .append()
+string greeting = "Hello";
+greeting.append(" ");
+greeting.append("World");  // greeting = "Hello World"
+
+// Concatenating multiple strings
+string part1 = "I";
+string part2 = "love";
+string part3 = "programming";
+string sentence = part1 + " " + part2 + " " + part3 + "!";
+// Result: "I love programming!"
+
+// Concatenating with numbers (convert first!)
+string name = "Ahmed";
+int age = 25;
+string info = name + " is " + to_string(age) + " years old";
+// Result: "Ahmed is 25 years old"</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>📌 Concatenation Methods:</h4>
+                        <ul>
+                            <li><strong>+</strong> Creates a new string (doesn't modify originals)</li>
+                            <li><strong>+=</strong> Appends to existing string (modifies it)</li>
+                            <li><strong>.append()</strong> Same as +=, but clearer intent</li>
+                            <li>⚠️ Cannot concatenate strings with numbers directly (use to_string())</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><code>// Building strings piece by piece
+string message = "";  // Start with empty string
+
+message += "Hello, ";
+message += "my name is ";
+message += "Ahmed";
+message += ".";
+
+cout << message;  // Output: Hello, my name is Ahmed.
+
+// Building formatted output
+string firstName = "Ahmed";
+string lastName = "Ali";
+int score = 95;
+
+string report = "Student: " + firstName + " " + lastName + 
+                "\nScore: " + to_string(score) + "%";
+                
+// Output:
+// Student: Ahmed Ali
+// Score: 95%
+
+// Common mistake to avoid:
+// string result = "Age: " + 25;  ❌ Error! Can't add string and number
+// string result = "Age: " + to_string(25);  ✅ Correct!</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Build a String</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="concat1" value="Hello" />
+                            <span style="font-size: 24px;">+</span>
+                            <input type="text" id="concat2" value="World" />
+                            <button onclick="concatenateStrings()">Concatenate</button>
+                        </div>
+                        <div class="demo-output" id="concatOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>⚖️ Comparing Strings</h3>
+                    <p>Strings can be compared using relational operators. Comparison is done lexicographically (dictionary order) based on ASCII values.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>string a = "apple";
+string b = "banana";
+string c = "apple";
+
+// Equality comparison
+if(a == b)  // false (different strings)
+if(a == c)  // true (same content)
+if(a != b)  // true (not equal)
+
+// Lexicographic (alphabetical) comparison
+if(a < b)   // true ("apple" comes before "banana")
+if(b > a)   // true ("banana" comes after "apple")
+
+// How lexicographic comparison works:
+// Compares character by character from left to right
+// Uses ASCII values: 'A' < 'B' < 'C' ... < 'Z' < 'a' < 'b' ... < 'z'
+
+string str1 = "abc";
+string str2 = "abd";
+// str1 < str2 because 'c' < 'd' at position 2
+
+string str3 = "app";
+string str4 = "apple";
+// str3 < str4 because "app" is shorter and is a prefix</code></pre>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>📊 Comparison Rules:</h4>
+                        <ul>
+                            <li><strong>==</strong> Equal (exact match, case-sensitive)</li>
+                            <li><strong>!=</strong> Not equal</li>
+                            <li><strong>&lt;</strong> Less than (comes before alphabetically)</li>
+                            <li><strong>&gt;</strong> Greater than (comes after alphabetically)</li>
+                            <li><strong>&lt;=</strong> Less than or equal</li>
+                            <li><strong>&gt;=</strong> Greater than or equal</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-block">
+                        <pre><code>// Practical examples:
+
+// 1. Username validation
+string username;
+cin >> username;
+
+if(username == "admin") {
+    cout << "Welcome, administrator!";
+}
+
+// 2. Password check
+string password;
+getline(cin, password);
+
+if(password == "secret123") {
+    cout << "Access granted";
+} else {
+    cout << "Access denied";
+}
+
+// 3. Alphabetical sorting
+string name1 = "Zara";
+string name2 = "Ahmed";
+
+if(name1 < name2) {
+    cout << name1 << " comes first";
+} else {
+    cout << name2 << " comes first";
+}
+// Output: Ahmed comes first
+
+// 4. Case sensitivity
+string s1 = "Hello";
+string s2 = "hello";
+if(s1 == s2) {
+    cout << "Same";
+} else {
+    cout << "Different";  // This prints (case matters!)
+}
+
+// Important notes:
+// "A" < "a"  → true (uppercase comes before lowercase in ASCII)
+// "Apple" < "apple" → true
+// "10" < "2" → true (lexicographic, not numeric!)</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Compare Strings</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="compare1" value="apple" />
+                            <select id="compareOp">
+                                <option value="==">==</option>
+                                <option value="!=">!=</option>
+                                <option value="<">&lt;</option>
+                                <option value=">">&gt;</option>
+                            </select>
+                            <input type="text" id="compare2" value="banana" />
+                            <button onclick="compareStrings()">Compare</button>
+                        </div>
+                        <div class="demo-output" id="compareOutput"></div>
+                    </div>
+                </div>
+
+                <div class="practice-block">
+                    <h3>💪 Practice Exercise</h3>
+                    <div class="exercise">
+                        <p><strong>Task:</strong> Write code to check if a string is empty or not.</p>
+                        <div class="hint-box">
+                            <button class="hint-btn" onclick="toggleHint('hint1')">💡 Show Hint</button>
+                            <div id="hint1" class="hint-content">
+                                Use <code>s.length() == 0</code> or <code>s.empty()</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="next-section-btn" onclick="goToSection(3)">Next: String Traversal →</button>
+            </section>
+
+            <!-- Section 3: String Traversal -->
+            <section id="section3" class="content-section">
+                <h2>3. String Traversal</h2>
+
+                <div class="lesson-block">
+                    <h3>🔄 Looping Through Strings</h3>
+                    <div class="code-block">
+                        <pre><code>string s = "ACPC";
+
+// Method 1: Index-based loop
+for(int i = 0; i < s.length(); i++) {
+    cout << s[i] << " ";
+}
+
+// Method 2: Range-based for loop (C++11)
+for(char c : s) {
+    cout << c << " ";
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Visualize Traversal</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="traversalInput" value="HELLO" />
+                            <button onclick="animateTraversal()">Start Animation</button>
+                            <button onclick="stopTraversal()">Stop</button>
+                        </div>
+                        <div id="traversalVisual" class="traversal-visual"></div>
+                        <div class="demo-output" id="traversalOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔢 Counting Characters</h3>
+                    <div class="code-block">
+                        <pre><code>// Count vowels in a string
+string s = "Programming";
+int vowelCount = 0;
+
+for(int i = 0; i < s.length(); i++) {
+    char c = tolower(s[i]);
+    if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+        vowelCount++;
+    }
+}
+cout << "Vowels: " << vowelCount;</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Count Characters</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="countInput" value="Programming" />
+                            <button onclick="countVowels()">Count Vowels</button>
+                            <button onclick="countDigits()">Count Digits</button>
+                            <button onclick="countUppercase()">Count Uppercase</button>
+                        </div>
+                        <div class="demo-output" id="countOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔍 Finding Characters</h3>
+                    <div class="code-block">
+                        <pre><code>// Find first occurrence of a character
+string s = "Hello World";
+char target = 'o';
+int position = -1;
+
+for(int i = 0; i < s.length(); i++) {
+    if(s[i] == target) {
+        position = i;
+        break;  // Stop at first occurrence
+    }
+}
+
+if(position != -1)
+    cout << "Found at index: " << position;
+else
+    cout << "Not found";</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Find Character</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="findStringInput" value="Hello World" />
+                            <input type="text" id="findCharInput" value="o" maxlength="1" />
+                            <button onclick="findCharacter()">Find Character</button>
+                        </div>
+                        <div id="findVisual" class="memory-cells"></div>
+                        <div class="demo-output" id="findOutput"></div>
+                    </div>
+                </div>
+
+                <div class="practice-block">
+                    <h3>💪 Challenge</h3>
+                    <div class="exercise">
+                        <p><strong>Task:</strong> Count how many times the letter 'a' appears in "banana"</p>
+                        <div class="demo-controls">
+                            <button onclick="runChallenge1()">Show Solution</button>
+                        </div>
+                        <div class="demo-output" id="challenge1Output"></div>
+                    </div>
+                </div>
+
+                <button class="next-section-btn" onclick="goToSection(4)">Next: Common Manipulations →</button>
+            </section>
+
+            <!-- Section 4: Common Manipulations -->
+            <section id="section4" class="content-section">
+                <h2>4. Common Manipulations</h2>
+
+                <div class="lesson-block">
+                    <h3>🔠 Uppercase / Lowercase Conversion</h3>
+                    <div class="code-block">
+                        <pre><code>#include &lt;algorithm&gt;
+
+string s = "Hello World";
+
+// Convert to uppercase
+transform(s.begin(), s.end(), s.begin(), ::toupper);
+// s = "HELLO WORLD"
+
+// Convert to lowercase
+transform(s.begin(), s.end(), s.begin(), ::tolower);
+// s = "hello world"
+
+// Manual approach:
+for(int i = 0; i < s.length(); i++) {
+    s[i] = toupper(s[i]);  // or tolower(s[i])
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Case Conversion</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="caseInput" value="Hello World" />
+                            <button onclick="toUpperCase()">UPPERCASE</button>
+                            <button onclick="toLowerCase()">lowercase</button>
+                        </div>
+                        <div class="demo-output" id="caseOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔄 Reversing a String</h3>
+                    <div class="code-block">
+                        <pre><code>// Method 1: Using reverse function
+string s = "ACPC";
+reverse(s.begin(), s.end());
+// s = "CPCA"
+
+// Method 2: Manual (two pointers)
+int left = 0, right = s.length() - 1;
+while(left < right) {
+    swap(s[left], s[right]);
+    left++;
+    right--;
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Reverse String</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="reverseInput" value="ACPC" />
+                            <button onclick="reverseString()">Reverse</button>
+                        </div>
+                        <div id="reverseVisual" class="reverse-visual"></div>
+                        <div class="demo-output" id="reverseOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔁 Palindrome Check</h3>
+                    <div class="code-block">
+                        <pre><code>bool isPalindrome(string s) {
+    int left = 0, right = s.length() - 1;
+    
+    while(left < right) {
+        if(s[left] != s[right])
+            return false;
+        left++;
+        right--;
+    }
+    return true;
+}
+
+// Examples:
+// "racecar" → true
+// "hello" → false</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Palindrome Checker</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="palindromeInput" value="racecar" />
+                            <button onclick="checkPalindrome()">Check Palindrome</button>
+                        </div>
+                        <div id="palindromeVisual" class="palindrome-visual"></div>
+                        <div class="demo-output" id="palindromeOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🗑️ Removing Characters</h3>
+                    <div class="code-block">
+                        <pre><code>// Remove all spaces from string
+string s = "Hello World";
+string result = "";
+
+for(int i = 0; i < s.length(); i++) {
+    if(s[i] != ' ') {
+        result += s[i];
+    }
+}
+// result = "HelloWorld"</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Remove Characters</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="removeInput" value="Hello World" />
+                            <button onclick="removeSpaces()">Remove Spaces</button>
+                            <button onclick="removeVowels()">Remove Vowels</button>
+                        </div>
+                        <div class="demo-output" id="removeOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>📊 Character Frequency</h3>
+                    <div class="code-block">
+                        <pre><code>// Count frequency of each character
+string s = "hello";
+int freq[256] = {0};  // ASCII has 256 characters
+
+for(int i = 0; i < s.length(); i++) {
+    freq[s[i]]++;
+}
+
+// Check frequency
+cout << "Frequency of 'l': " << freq['l'];  // Output: 2</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Character Frequency Counter</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="freqInput" value="programming" />
+                            <button onclick="calculateFrequency()">Calculate Frequency</button>
+                        </div>
+                        <div class="demo-output" id="freqOutput"></div>
+                    </div>
+                </div>
+
+                <button class="next-section-btn" onclick="goToSection(5)">Next: String Conversion →</button>
+            </section>
+
+            <!-- Section 5: String Conversion -->
+            <section id="section5" class="content-section">
+                <h2>5. String Conversion</h2>
+
+                <div class="lesson-block">
+                    <h3>🔢 Number to String</h3>
+                    <div class="code-block">
+                        <pre><code>#include &lt;string&gt;
+
+int num = 42;
+string str = to_string(num);
+// str = "42"
+
+double pi = 3.14159;
+string piStr = to_string(pi);
+// piStr = "3.14159"</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Number to String</h4>
+                        <div class="demo-controls">
+                            <input type="number" id="numToStrInput" value="42" />
+                            <button onclick="convertNumToString()">Convert to String</button>
+                        </div>
+                        <div class="demo-output" id="numToStrOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔤 String to Number</h3>
+                    <div class="code-block">
+                        <pre><code>string str = "123";
+int num = stoi(str);  // String to Integer
+// num = 123
+
+string floatStr = "3.14";
+double pi = stod(floatStr);  // String to Double
+// pi = 3.14
+
+// Functions available:
+// stoi() - string to int
+// stol() - string to long
+// stof() - string to float
+// stod() - string to double</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 String to Number</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="strToNumInput" value="123" />
+                            <button onclick="convertStrToNum()">Convert to Number</button>
+                        </div>
+                        <div class="demo-output" id="strToNumOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔡 Character ↔ ASCII</h3>
+                    <div class="code-block">
+                        <pre><code>// Character to ASCII
+char c = 'A';
+int ascii = (int)c;  // ascii = 65
+
+// ASCII to Character
+int ascii = 65;
+char c = (char)ascii;  // c = 'A'
+
+// Common ASCII values:
+// 'A' = 65, 'Z' = 90
+// 'a' = 97, 'z' = 122
+// '0' = 48, '9' = 57</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 ASCII Converter</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="asciiCharInput" value="A" maxlength="1" />
+                            <button onclick="charToAscii()">Char → ASCII</button>
+                            <br><br>
+                            <input type="number" id="asciiNumInput" value="65" min="0" max="127" />
+                            <button onclick="asciiToChar()">ASCII → Char</button>
+                        </div>
+                        <div class="demo-output" id="asciiOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔐 Simple Encoding/Decoding</h3>
+                    <div class="code-block">
+                        <pre><code>// Caesar Cipher - shift each letter by 3
+string encode(string s) {
+    string result = "";
+    for(char c : s) {
+        if(isalpha(c)) {
+            char base = isupper(c) ? 'A' : 'a';
+            result += (char)((c - base + 3) % 26 + base);
+        } else {
+            result += c;
+        }
+    }
+    return result;
+}
+
+// "ABC" → "DEF"</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Caesar Cipher</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="encodeInput" value="HELLO" />
+                            <input type="number" id="shiftInput" value="3" min="1" max="25" />
+                            <button onclick="encodeString()">Encode</button>
+                            <button onclick="decodeString()">Decode</button>
+                        </div>
+                        <div class="demo-output" id="encodeOutput"></div>
+                    </div>
+                </div>
+
+                <button class="next-section-btn" onclick="goToSection(6)">Next: Substrings & Patterns →</button>
+            </section>
+
+            <!-- Section 6: Substrings & Patterns -->
+            <section id="section6" class="content-section">
+                <h2>6. Substrings & Patterns</h2>
+
+                <div class="lesson-block">
+                    <h3>✂️ What is a Substring?</h3>
+                    <div class="info-box">
+                        <p>A <strong>substring</strong> is a contiguous sequence of characters within a string.</p>
+                        <p>Example: "Hello" has substrings: "H", "He", "Hel", "Hell", "Hello", "e", "el", "ell", "ello", etc.</p>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>✂️ Extracting Substrings</h3>
+                    <div class="code-block">
+                        <pre><code>string s = "Programming";
+
+// Using substr(start, length)
+string sub1 = s.substr(0, 4);   // "Prog"
+string sub2 = s.substr(3, 4);   // "gram"
+string sub3 = s.substr(7);      // "ming" (from 7 to end)
+
+// Manual extraction:
+string manual = "";
+for(int i = 0; i < 4; i++) {
+    manual += s[i];
+}
+// manual = "Prog"</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Substring Extractor</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="substrInput" value="Programming" />
+                            <label>Start: </label>
+                            <input type="number" id="substrStart" value="0" min="0" />
+                            <label>Length: </label>
+                            <input type="number" id="substrLength" value="4" min="1" />
+                            <button onclick="extractSubstring()">Extract</button>
+                        </div>
+                        <div id="substrVisual" class="memory-cells"></div>
+                        <div class="demo-output" id="substrOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔍 Searching for Substrings</h3>
+                    <div class="code-block">
+                        <pre><code>string s = "Hello World";
+string pattern = "World";
+
+// Using find()
+size_t pos = s.find(pattern);
+if(pos != string::npos) {
+    cout << "Found at position: " << pos;  // Output: 6
+} else {
+    cout << "Not found";
+}
+
+// Manual search:
+bool found = false;
+for(int i = 0; i <= s.length() - pattern.length(); i++) {
+    if(s.substr(i, pattern.length()) == pattern) {
+        found = true;
+        cout << "Found at: " << i;
+        break;
+    }
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Substring Search</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="searchTextInput" value="Hello World Programming" />
+                            <input type="text" id="searchPatternInput" value="World" />
+                            <button onclick="searchSubstring()">Search</button>
+                        </div>
+                        <div id="searchVisual"></div>
+                        <div class="demo-output" id="searchOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🎯 Prefix & Suffix Check</h3>
+                    <div class="code-block">
+                        <pre><code>string s = "programming";
+
+// Check prefix (starts with)
+bool hasPrefix = (s.substr(0, 4) == "prog");  // true
+
+// Check suffix (ends with)
+bool hasSuffix = (s.substr(s.length() - 3) == "ing");  // true
+
+// Or manually:
+bool startsWithProg = true;
+string prefix = "prog";
+for(int i = 0; i < prefix.length(); i++) {
+    if(s[i] != prefix[i]) {
+        startsWithProg = false;
+        break;
+    }
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Prefix/Suffix Checker</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="prefixString" value="programming" />
+                            <input type="text" id="prefixPattern" value="prog" />
+                            <button onclick="checkPrefix()">Check Prefix</button>
+                            <button onclick="checkSuffix()">Check Suffix</button>
+                        </div>
+                        <div class="demo-output" id="prefixOutput"></div>
+                    </div>
+                </div>
+
+                <button class="next-section-btn" onclick="goToSection(7)">Next: Advanced STL →</button>
+            </section>
+
+            <!-- Section 7: Advanced STL Functions -->
+            <section id="section7" class="content-section">
+                <h2>7. Advanced STL Functions</h2>
+
+                <div class="lesson-block">
+                    <h3>🗑️ Erase Function</h3>
+                    <div class="code-block">
+                        <pre><code>string s = "Hello World";
+
+// Erase by position and length
+s.erase(5, 6);  // Remove " World"
+// s = "Hello"
+
+// Erase single character
+s.erase(4);  // Remove from index 4 to end
+// s = "Hell"</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Erase Demo</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="eraseInput" value="Hello World" />
+                            <label>Position: </label>
+                            <input type="number" id="erasePos" value="5" min="0" />
+                            <label>Count: </label>
+                            <input type="number" id="eraseCount" value="6" min="1" />
+                            <button onclick="eraseDemo()">Erase</button>
+                        </div>
+                        <div class="demo-output" id="eraseOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>➕ Insert Function</h3>
+                    <div class="code-block">
+                        <pre><code>string s = "Hello World";
+
+// Insert at position
+s.insert(5, " Beautiful");
+// s = "Hello Beautiful World"
+
+// Insert character
+s.insert(0, ">> ");
+// s = ">> Hello Beautiful World"</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Insert Demo</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="insertInput" value="Hello World" />
+                            <label>Position: </label>
+                            <input type="number" id="insertPos" value="5" min="0" />
+                            <label>Text: </label>
+                            <input type="text" id="insertText" value=" Beautiful" />
+                            <button onclick="insertDemo()">Insert</button>
+                        </div>
+                        <div class="demo-output" id="insertOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔄 Replace Function</h3>
+                    <div class="code-block">
+                        <pre><code>string s = "Hello World";
+
+// Replace(position, length, new_string)
+s.replace(6, 5, "C++");
+// s = "Hello C++"
+
+// Replace all occurrences manually:
+string original = "abc abc abc";
+string target = "abc";
+string replacement = "xyz";
+size_t pos = 0;
+while((pos = original.find(target, pos)) != string::npos) {
+    original.replace(pos, target.length(), replacement);
+    pos += replacement.length();
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Replace Demo</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="replaceInput" value="Hello World" />
+                            <input type="text" id="replaceFrom" value="World" />
+                            <input type="text" id="replaceTo" value="C++" />
+                            <button onclick="replaceDemo()">Replace</button>
+                        </div>
+                        <div class="demo-output" id="replaceOutput"></div>
+                    </div>
+                </div>
+
+                <div class="lesson-block">
+                    <h3>🔁 Using Algorithm Functions</h3>
+                    <div class="code-block">
+                        <pre><code>#include &lt;algorithm&gt;
+
+string s = "dcba";
+
+// Sort string
+sort(s.begin(), s.end());
+// s = "abcd"
+
+// Reverse string
+reverse(s.begin(), s.end());
+// s = "dcba"
+
+// Count occurrences
+int cnt = count(s.begin(), s.end(), 'a');
+// cnt = 1</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Algorithm Functions</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="algoInput" value="programming" />
+                            <button onclick="sortString()">Sort</button>
+                            <button onclick="reverseStringAlgo()">Reverse</button>
+                            <button onclick="uniqueChars()">Unique Chars</button>
+                        </div>
+                        <div class="demo-output" id="algoOutput"></div>
+                    </div>
+                </div>
+
+                <button class="next-section-btn" onclick="goToSection(8)">Next: Problem Solving →</button>
+            </section>
+
+            <!-- Section 8: Problem Solving -->
+            <section id="section8" class="content-section">
+                <h2>8. Problem Solving Patterns</h2>
+
+                <div class="lesson-block">
+                    <h3>🎯 Common Problem Types</h3>
+                    <div class="info-box">
+                        <ul>
+                            <li>✅ Character Frequency Problems</li>
+                            <li>✅ Palindrome Checks</li>
+                            <li>✅ Anagram Detection</li>
+                            <li>✅ String Transformations</li>
+                            <li>✅ Pattern Matching</li>
+                            <li>✅ Word-Level Operations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 1: Anagram Detection</h3>
+                    <p><strong>Task:</strong> Check if two strings are anagrams (same letters, different order)</p>
+                    <p><em>Example:</em> "listen" and "silent" are anagrams</p>
+                    
+                    <div class="code-block">
+                        <pre><code>bool areAnagrams(string s1, string s2) {
+    // Different lengths → can't be anagrams
+    if(s1.length() != s2.length())
+        return false;
+    
+    // Count frequency of each character
+    int freq[256] = {0};
+    
+    for(char c : s1)
+        freq[c]++;
+    
+    for(char c : s2)
+        freq[c]--;
+    
+    // Check if all frequencies are zero
+    for(int i = 0; i < 256; i++)
+        if(freq[i] != 0)
+            return false;
+    
+    return true;
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Test It</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="anagram1" value="listen" />
+                            <input type="text" id="anagram2" value="silent" />
+                            <button onclick="checkAnagram()">Check Anagram</button>
+                        </div>
+                        <div class="demo-output" id="anagramOutput"></div>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 2: Remove Duplicates</h3>
+                    <p><strong>Task:</strong> Remove duplicate characters from string</p>
+                    <p><em>Example:</em> "programming" → "progamin"</p>
+                    
+                    <div class="code-block">
+                        <pre><code>string removeDuplicates(string s) {
+    bool seen[256] = {false};
+    string result = "";
+    
+    for(char c : s) {
+        if(!seen[c]) {
+            seen[c] = true;
+            result += c;
+        }
+    }
+    
+    return result;
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Test It</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="dupInput" value="programming" />
+                            <button onclick="removeDuplicates()">Remove Duplicates</button>
+                        </div>
+                        <div class="demo-output" id="dupOutput"></div>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 3: Longest Word</h3>
+                    <p><strong>Task:</strong> Find the longest word in a sentence</p>
+                    <p><em>Example:</em> "I love programming" → "programming"</p>
+                    
+                    <div class="code-block">
+                        <pre><code>string longestWord(string sentence) {
+    string longest = "";
+    string current = "";
+    
+    for(int i = 0; i <= sentence.length(); i++) {
+        if(i == sentence.length() || sentence[i] == ' ') {
+            if(current.length() > longest.length())
+                longest = current;
+            current = "";
+        } else {
+            current += sentence[i];
+        }
+    }
+    
+    return longest;
+}</code></pre>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🎮 Test It</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="wordInput" value="I love programming" />
+                            <button onclick="findLongestWord()">Find Longest</button>
+                        </div>
+                        <div class="demo-output" id="wordOutput"></div>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <h3>Problem 4: Reverse Words</h3>
+                    <p><strong>Task:</strong> Reverse each word in a sentence</p>
+                    <p><em>Example:</em> "Hello World" → "olleH dlroW"</p>
+                    
+                    <div class="interactive-demo">
+                        <h4>🎮 Test It</h4>
+                        <div class="demo-controls">
+                            <input type="text" id="revWordInput" value="Hello World" />
+                            <button onclick="reverseWords()">Reverse Words</button>
+                        </div>
+                        <div class="demo-output" id="revWordOutput"></div>
+                    </div>
+                </div>
+
+                <div class="practice-block">
+                    <h3>💪 Practice Challenges</h3>
+                    <div class="challenge-list">
+                        <div class="challenge-item">
+                            <h4>Challenge 1: Count Words</h4>
+                            <p>Write a function to count the number of words in a sentence</p>
+                        </div>
+                        <div class="challenge-item">
+                            <h4>Challenge 2: Valid Parentheses</h4>
+                            <p>Check if parentheses are balanced: "(())" → valid, "(()" → invalid</p>
+                        </div>
+                        <div class="challenge-item">
+                            <h4>Challenge 3: First Non-Repeating Character</h4>
+                            <p>Find the first character that appears only once</p>
+                        </div>
+                        <div class="challenge-item">
+                            <h4>Challenge 4: Compress String</h4>
+                            <p>"aaabbcc" → "a3b2c2"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="completion-block">
+                    <h2>🎉 Congratulations!</h2>
+                    <p>You've completed the Strings Learning Hub!</p>
+                    <button class="completion-btn" onclick="resetProgress()">Start Over</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Kafr Elsheikh Club © 2025 | Programming Excellence</p>
+    </footer>
+
+    <script>
+        // ==========================================
+        // CONFIGURATION - Home page URL
+        // ==========================================
+        const HOME_PAGE_URL = '../index.html';  // Relative path for single deployment
+        
+        // Update navigation links dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update the home link in header
+            const homeLink = document.querySelector('.back-home');
+            if (homeLink) {
+                homeLink.href = HOME_PAGE_URL;
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+

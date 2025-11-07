@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Arrays - Interactive Learning Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #334155; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px;">
+        <a href="../index.html" style="color: #818cf8; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 8px; background: rgba(129, 140, 248, 0.1);">
+            <span>←</span> Home
+        </a>
+        <div style="text-align: center; flex: 1;">
+            <h1 style="font-size: 1.5rem; margin: 0; background: linear-gradient(90deg, #818cf8, #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">📊 Arrays Learning Hub</h1>
+            <p style="font-size: 0.875rem; color: #94a3b8; margin: 0;">Kafr Elsheikh Club - Interactive Array Programming Guide</p>
+        </div>
+        <div style="width: 120px;"></div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar" style="margin-top: 70px;">
+        <div class="nav-container">
+            <div class="nav-brand" style="display: none;">
+                <span class="brand-icon">📚</span>
+                <span class="brand-text">C++ Arrays Masterclass</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#introduction" class="nav-link">Introduction</a></li>
+                <li><a href="#why-arrays" class="nav-link">Why Arrays?</a></li>
+                <li><a href="#memory" class="nav-link">Memory</a></li>
+                <li><a href="#declaration" class="nav-link">Declaration</a></li>
+                <li><a href="#indexing" class="nav-link">Indexing</a></li>
+                <li><a href="#looping" class="nav-link">Looping</a></li>
+                <li><a href="#operations" class="nav-link">Operations</a></li>
+                <li><a href="#builtin" class="nav-link">Built-in Functions</a></li>
+                <li><a href="#2d-arrays" class="nav-link">2D Arrays</a></li>
+                <li><a href="#frequency" class="nav-link">Frequency Arrays</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="margin-top: 70px;">
+        <div class="hero-content">
+            <h1 class="hero-title">Master C++ Arrays</h1>
+            <p class="hero-subtitle">An Interactive Journey Through Data Structures</p>
+            <a href="#introduction" class="cta-button">Start Learning →</a>
+        </div>
+        <div class="hero-animation">
+            <div class="array-visual" id="heroArray"></div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Introduction Section -->
+        <section id="introduction" class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>What is an Array?</h2>
+            </div>
+            <div class="content-grid">
+                <div class="text-content">
+                    <p class="lead">An <strong>array</strong> is a collection of elements of the same data type stored in contiguous memory locations. It's one of the most fundamental data structures in programming.</p>
+                    
+                    <div class="info-box">
+                        <h3>Key Characteristics</h3>
+                        <ul>
+                            <li><strong>Fixed Size:</strong> Size is determined at compile-time or runtime</li>
+                            <li><strong>Homogeneous:</strong> All elements are of the same type</li>
+                            <li><strong>Indexed:</strong> Elements are accessed using indices (0-based)</li>
+                            <li><strong>Contiguous:</strong> Elements are stored sequentially in memory</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Simple array declaration
+    int numbers[5] = {10, 20, 30, 40, 50};
+    
+    // Display array elements
+    cout &lt;&lt; "Array elements: ";
+    for(int i = 0; i &lt; 5; i++) {
+        cout &lt;&lt; numbers[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    return 0;
+}
+
+// Output: Array elements: 10 20 30 40 50</code></pre>
+                </div>
+            </div>
+            <div class="visualization">
+                <h3>Visual Representation</h3>
+                <div class="array-demo" id="arrayDemo1"></div>
+            </div>
+        </section>
+
+        <!-- Why We Need Arrays -->
+        <section id="why-arrays" class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Why Do We Need Arrays?</h2>
+            </div>
+            <div class="content-grid">
+                <div class="comparison-container">
+                    <div class="comparison-box bad">
+                        <h3>❌ Without Arrays</h3>
+                        <pre><code class="language-cpp">int student1 = 85;
+int student2 = 90;
+int student3 = 78;
+int student4 = 92;
+int student5 = 88;
+// What if we have 100 students?
+
+// Calculating average
+double avg = (student1 + student2 + 
+              student3 + student4 + 
+              student5) / 5.0;</code></pre>
+                    </div>
+                    <div class="comparison-box good">
+                        <h3>✅ With Arrays</h3>
+                        <pre><code class="language-cpp">int students[5] = {85, 90, 78, 92, 88};
+// Easy to scale to 100 or 1000!
+
+// Calculating average
+int sum = 0;
+for(int i = 0; i < 5; i++) {
+    sum += students[i];
+}
+double avg = sum / 5.0;</code></pre>
+                    </div>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🎯</div>
+                        <h4>Organized Data</h4>
+                        <p>Group related data under one name</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h4>Efficient Access</h4>
+                        <p>O(1) random access using indices</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔄</div>
+                        <h4>Easy Iteration</h4>
+                        <p>Process multiple values with loops</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💾</div>
+                        <h4>Memory Efficient</h4>
+                        <p>Contiguous storage reduces overhead</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Runtime vs Compile Time -->
+        <section id="memory" class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Memory Representation & Runtime vs Compile Time</h2>
+            </div>
+            <div class="content-grid">
+                <div class="text-content">
+                    <div class="concept-box">
+                        <h3>🕐 Compile Time</h3>
+                        <p>When the compiler processes your code and determines array size before the program runs.</p>
+                        <pre><code class="language-cpp">int arr[5];  // Size known at compile time
+const int SIZE = 10;
+int data[SIZE];  // Also compile time</code></pre>
+                    </div>
+                    
+                    <div class="concept-box runtime">
+                        <h3>⚙️ Runtime</h3>
+                        <p>When the program is executing and array size can be determined dynamically.</p>
+                        <pre><code class="language-cpp">int n;
+cin >> n;
+int arr[n];  // Size determined at runtime
+             // (VLA - not standard C++)</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <strong>⚠️ Note:</strong> Variable Length Arrays (VLA) are not part of standard C++, though some compilers support them as an extension. For truly dynamic arrays, use <code>std::vector</code> or dynamic memory allocation.
+                    </div>
+                </div>
+                <div class="memory-visual">
+                    <h3>Memory Layout</h3>
+                    <div class="memory-diagram" id="memoryDiagram"></div>
+                    <div class="code-content">
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    
+    cout &lt;&lt; "Array addresses:" &lt;&lt; endl;
+    for(int i = 0; i < 5; i++) {
+        cout &lt;&lt; "arr[" &lt;&lt; i &lt;&lt; "] = " 
+             &lt;&lt; arr[i] &lt;&lt; " at address: " 
+             &lt;&lt; &arr[i] &lt;&lt; endl;
+    }
+    
+    return 0;
+}
+
+/* Output (example):
+arr[0] = 10 at address: 0x7ffd5c
+arr[1] = 20 at address: 0x7ffd60
+arr[2] = 30 at address: 0x7ffd64
+arr[3] = 40 at address: 0x7ffd68
+arr[4] = 50 at address: 0x7ffd6c
+Notice: addresses differ by 4 bytes (int size)
+*/</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Declaration and Initialization -->
+        <section id="declaration" class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Declaration & Initialization</h2>
+            </div>
+            
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3>Declaration vs Initialization</h3>
+                    <p><strong>Declaration:</strong> Reserves memory space for the array</p>
+                    <p><strong>Initialization:</strong> Assigns values to array elements</p>
+                </div>
+            </div>
+
+            <div class="methods-container">
+                <h3>Initialization Methods</h3>
+                
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">1</span>
+                        <h4>Declaration Only (with default values)</h4>
+                    </div>
+                    <pre><code class="language-cpp">int arr[5];  // Uninitialized - contains garbage values
+int arr2[5] = {};  // All elements initialized to 0
+int arr3[5] = {0};  // All elements initialized to 0</code></pre>
+                    <div class="warning-box">
+                        <strong>⚠️ Warning:</strong> Uninitialized arrays hold garbage values - unpredictable data from previous memory usage!
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">2</span>
+                        <h4>Initialize Immediately</h4>
+                    </div>
+                    <pre><code class="language-cpp">int arr[5] = {10, 20, 30, 40, 50};  // Full initialization
+int arr2[5] = {1, 2};  // Partial: {1, 2, 0, 0, 0}
+double grades[4] = {95.5, 87.3, 92.1, 88.8};</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">3</span>
+                        <h4>Without Specifying Size</h4>
+                    </div>
+                    <pre><code class="language-cpp">int arr[] = {1, 2, 3, 4, 5};  // Size automatically = 5
+char vowels[] = {'a', 'e', 'i', 'o', 'u'};  // Size = 5
+// Compiler determines size from initializer list</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">4</span>
+                        <h4>Using External Size (Runtime)</h4>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;  // Better alternative
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter size: ";
+    cin >> n;
+    
+    // Using vector (recommended)
+    vector&lt;int&gt; arr(n);
+    
+    // Or dynamic allocation
+    int* dynamicArr = new int[n];
+    // ... use array ...
+    delete[] dynamicArr;  // Don't forget!
+    
+    return 0;
+}</code></pre>
+                    <div class="warning-box">
+                        <strong>⚠️ Segmentation Fault:</strong> Accessing beyond array bounds causes undefined behavior and crashes!
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🎮 Interactive Demo: Initialization Types</h3>
+                <div id="initDemo" class="demo-container"></div>
+            </div>
+        </section>
+
+        <!-- Array Indexing -->
+        <section id="indexing" class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Array Indexing</h2>
+            </div>
+            <div class="content-grid">
+                <div class="text-content">
+                    <div class="info-box">
+                        <h3>Understanding Indices</h3>
+                        <ul>
+                            <li>Arrays use <strong>0-based indexing</strong></li>
+                            <li>First element is at index 0</li>
+                            <li>Last element is at index (size - 1)</li>
+                            <li>Valid range: [0, size-1]</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="formula-box">
+                        <h4>Memory Address Formula</h4>
+                        <p><code>Address of arr[i] = base_address + (i × element_size)</code></p>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int numbers[5] = {100, 200, 300, 400, 500};
+    
+    // Accessing elements
+    cout &lt;&lt; "First element: " &lt;&lt; numbers[0] &lt;&lt; endl;
+    cout &lt;&lt; "Third element: " &lt;&lt; numbers[2] &lt;&lt; endl;
+    cout &lt;&lt; "Last element: " &lt;&lt; numbers[4] &lt;&lt; endl;
+    
+    // Modifying elements
+    numbers[1] = 250;
+    cout &lt;&lt; "Modified second: " &lt;&lt; numbers[1] &lt;&lt; endl;
+    
+    // Using indices in expressions
+    int sum = numbers[0] + numbers[4];
+    cout &lt;&lt; "Sum of first and last: " &lt;&lt; sum &lt;&lt; endl;
+    
+    return 0;
+}
+
+/* Output:
+First element: 100
+Third element: 300
+Last element: 500
+Modified second: 250
+Sum of first and last: 600
+*/</code></pre>
+                </div>
+            </div>
+            <div class="interactive-demo">
+                <h3>🎮 Interactive Indexing</h3>
+                <div id="indexDemo" class="index-demo"></div>
+            </div>
+        </section>
+
+        <!-- Looping Over Arrays -->
+        <section id="looping" class="section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Looping Over Arrays</h2>
+            </div>
+            
+            <div class="loop-methods">
+                <div class="method-card">
+                    <h3>Traditional For Loop</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    
+    cout &lt;&lt; "Elements: ";
+    for(int i = 0; i < 5; i++) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <h3>Range-Based For Loop (C++11)</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    
+    cout &lt;&lt; "Elements: ";
+    for(int element : arr) {
+        cout &lt;&lt; element &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>📝 Example: Read and Print Numbers</h3>
+                <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int numbers[5];
+    
+    // Reading input
+    cout &lt;&lt; "Enter 5 numbers: ";
+    for(int i = 0; i < 5; i++) {
+        cin >> numbers[i];
+    }
+    
+    // Printing output
+    cout &lt;&lt; "You entered: ";
+    for(int i = 0; i < 5; i++) {
+        cout &lt;&lt; numbers[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+            </div>
+
+            <div class="challenge-box">
+                <h3>🏆 Challenge: Reverse Order</h3>
+                <p>Read n numbers and print them in reverse order.</p>
+                <details>
+                    <summary>Click to see solution</summary>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter number of elements: ";
+    cin >> n;
+    
+    int arr[n];  // Or use vector&lt;int&gt; arr(n);
+    
+    // Reading input
+    cout &lt;&lt; "Enter " &lt;&lt; n &lt;&lt; " numbers: ";
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    
+    // Printing in reverse
+    cout &lt;&lt; "Reverse order: ";
+    for(int i = n - 1; i >= 0; i--) {
+        cout &lt;&lt; arr[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    
+    return 0;
+}
+
+/* Example Run:
+Enter number of elements: 5
+Enter 5 numbers: 10 20 30 40 50
+Reverse order: 50 40 30 20 10
+*/</code></pre>
+                </details>
+            </div>
+        </section>
+
+        <!-- Common Operations -->
+        <section id="operations" class="section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>Common Array Operations</h2>
+            </div>
+
+            <div class="operations-grid">
+                <div class="operation-card">
+                    <h3>1️⃣ Find Sum of Elements</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int size = 5;
+    int sum = 0;
+    
+    for(int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    
+    cout &lt;&lt; "Sum: " &lt;&lt; sum &lt;&lt; endl;  // Output: 150
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>2️⃣ Find Maximum and Minimum</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;climits&gt;  // For INT_MAX, INT_MIN
+using namespace std;
+
+int main() {
+    int arr[] = {45, 12, 78, 23, 67};
+    int size = 5;
+    
+    int maxVal = INT_MIN;
+    int minVal = INT_MAX;
+    
+    for(int i = 0; i < size; i++) {
+        if(arr[i] > maxVal) maxVal = arr[i];
+        if(arr[i] < minVal) minVal = arr[i];
+    }
+    
+    cout &lt;&lt; "Maximum: " &lt;&lt; maxVal &lt;&lt; endl;  // 78
+    cout &lt;&lt; "Minimum: " &lt;&lt; minVal &lt;&lt; endl;  // 12
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>3️⃣ Compute Average</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;  // For setprecision
+using namespace std;
+
+int main() {
+    double grades[] = {85.5, 92.0, 78.5, 88.0, 95.5};
+    int size = 5;
+    double sum = 0;
+    
+    for(int i = 0; i < size; i++) {
+        sum += grades[i];
+    }
+    
+    double average = sum / size;
+    
+    cout &lt;&lt; fixed &lt;&lt; setprecision(2);
+    cout &lt;&lt; "Average: " &lt;&lt; average &lt;&lt; endl;
+    // Output: Average: 87.90
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>🔍 Search for Element</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {10, 25, 30, 45, 60};
+    int size = 5;
+    int target = 30;
+    int index = -1;
+    
+    for(int i = 0; i < size; i++) {
+        if(arr[i] == target) {
+            index = i;
+            break;
+        }
+    }
+    
+    if(index != -1) {
+        cout &lt;&lt; target &lt;&lt; " found at index " 
+             &lt;&lt; index &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; target &lt;&lt; " not found" &lt;&lt; endl;
+    }
+    
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🎮 Live Operations Demo</h3>
+                <div id="operationsDemo" class="operations-visual"></div>
+            </div>
+        </section>
+
+        <!-- Built-in Functions -->
+        <section id="builtin" class="section">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>Built-in Array Functions</h2>
+            </div>
+
+            <div class="text-content">
+                <p class="lead">C++ provides powerful STL algorithms to work with arrays efficiently. Include <code>&lt;algorithm&gt;</code> and <code>&lt;numeric&gt;</code> headers.</p>
+            </div>
+
+            <div class="function-grid">
+                <div class="function-card">
+                    <h3>🔀 sort()</h3>
+                    <p>Sorts array elements in ascending or descending order</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {45, 12, 78, 23, 67};
+    int n = 5;
+    
+    // Ascending sort using begin/end
+    sort(begin(arr), end(arr));
+    
+    cout &lt;&lt; "Ascending: ";
+    for(int x : arr) cout &lt;&lt; x &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    // Output: 12 23 45 67 78
+    
+    // Descending sort using greater<>
+    sort(arr, arr + n, greater&lt;int&gt;());
+    
+    cout &lt;&lt; "Descending: ";
+    for(int x : arr) cout &lt;&lt; x &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    // Output: 78 67 45 23 12
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="function-card">
+                    <h3>🔄 reverse()</h3>
+                    <p>Reverses the order of elements</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    
+    reverse(begin(arr), end(arr));
+    
+    cout &lt;&lt; "Reversed: ";
+    for(int x : arr) cout &lt;&lt; x &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    // Output: 5 4 3 2 1
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="function-card">
+                    <h3>📊 max_element() & min_element()</h3>
+                    <p>Find maximum and minimum elements</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {45, 12, 78, 23, 67};
+    
+    // Using iterators
+    int maxVal = *max_element(begin(arr), end(arr));
+    int minVal = *min_element(begin(arr), end(arr));
+    
+    cout &lt;&lt; "Max: " &lt;&lt; maxVal &lt;&lt; endl;  // 78
+    cout &lt;&lt; "Min: " &lt;&lt; minVal &lt;&lt; endl;  // 12
+    
+    // Alternative: Using pointers
+    int* maxPtr = max_element(arr, arr + 5);
+    cout &lt;&lt; "Max at index: " 
+         &lt;&lt; (maxPtr - arr) &lt;&lt; endl;  // 2
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="function-card">
+                    <h3>➕ accumulate()</h3>
+                    <p>Calculate sum of all elements</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;numeric&gt;  // For accumulate
+using namespace std;
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    
+    // accumulate(start, end, initial_value)
+    int sum = accumulate(begin(arr), end(arr), 0);
+    
+    cout &lt;&lt; "Sum: " &lt;&lt; sum &lt;&lt; endl;  // 150
+    
+    // Can also compute product
+    int product = accumulate(begin(arr), end(arr), 
+                            1, multiplies&lt;int&gt;());
+    cout &lt;&lt; "Product: " &lt;&lt; product &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="function-card">
+                    <h3>🔢 count()</h3>
+                    <p>Count occurrences of a value</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {1, 2, 3, 2, 4, 2, 5};
+    
+    int countOf2 = count(begin(arr), end(arr), 2);
+    
+    cout &lt;&lt; "2 appears " &lt;&lt; countOf2 
+         &lt;&lt; " times" &lt;&lt; endl;
+    // Output: 2 appears 3 times
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="function-card">
+                    <h3>🔍 find()</h3>
+                    <p>Search for an element</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    
+    auto it = find(begin(arr), end(arr), 30);
+    
+    if(it != end(arr)) {
+        cout &lt;&lt; "Found at index: " 
+             &lt;&lt; (it - begin(arr)) &lt;&lt; endl;  // 2
+    } else {
+        cout &lt;&lt; "Not found" &lt;&lt; endl;
+    }
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="function-card">
+                    <h3>🎨 fill()</h3>
+                    <p>Fill array with a specific value</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main() {
+    int arr[5];
+    
+    // Fill entire array with 0
+    fill(begin(arr), end(arr), 0);
+    
+    cout &lt;&lt; "After fill: ";
+    for(int x : arr) cout &lt;&lt; x &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    // Output: 0 0 0 0 0
+    
+    // Fill with another value
+    fill(arr, arr + 3, 99);  // First 3 elements
+    
+    cout &lt;&lt; "Partial fill: ";
+    for(int x : arr) cout &lt;&lt; x &lt;&lt; " ";
+    cout &lt;&lt; endl;
+    // Output: 99 99 99 0 0
+    
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2D Arrays -->
+        <section id="2d-arrays" class="section">
+            <div class="section-header">
+                <span class="section-number">09</span>
+                <h2>2D Arrays (Matrices)</h2>
+            </div>
+
+            <div class="text-content">
+                <p class="lead">A 2D array is an array of arrays - think of it as a table with rows and columns.</p>
+                
+                <div class="info-box">
+                    <h3>Syntax</h3>
+                    <code>datatype arrayName[rows][columns];</code>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="code-content">
+                    <h3>Initialization</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Method 1: Full initialization
+    int matrix1[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+    
+    // Method 2: Linear initialization
+    int matrix2[2][3] = {1, 2, 3, 4, 5, 6};
+    
+    // Method 3: Partial initialization
+    int matrix3[3][3] = {
+        {1, 2},     // Rest are 0: {1, 2, 0}
+        {3},        // {3, 0, 0}
+                    // {0, 0, 0}
+    };
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="code-content">
+                    <h3>Accessing Elements</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int matrix[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+    
+    // Access individual element
+    cout &lt;&lt; "Element at [1][2]: " 
+         &lt;&lt; matrix[1][2] &lt;&lt; endl;  // 6
+    
+    // Modify element
+    matrix[0][0] = 10;
+    
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>Input & Output</h3>
+                <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows = 3, cols = 3;
+    int matrix[3][3];
+    
+    // Input
+    cout &lt;&lt; "Enter 3x3 matrix:" &lt;&lt; endl;
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+    
+    // Output
+    cout &lt;&lt; "\nMatrix:" &lt;&lt; endl;
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            cout &lt;&lt; matrix[i][j] &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+    
+    return 0;
+}</code></pre>
+            </div>
+
+            <div class="challenge-box">
+                <h3>🏆 Challenge: Sum of All Elements in 2D Array</h3>
+                <details>
+                    <summary>Click to see solution</summary>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int matrix[3][4] = {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 11, 12}
+    };
+    
+    int sum = 0;
+    int rows = 3, cols = 4;
+    
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            sum += matrix[i][j];
+        }
+    }
+    
+    cout &lt;&lt; "Sum of all elements: " &lt;&lt; sum &lt;&lt; endl;
+    // Output: Sum of all elements: 78
+    
+    return 0;
+}</code></pre>
+                </details>
+            </div>
+
+            <div class="visualization">
+                <h3>2D Array Visualization</h3>
+                <div id="matrix2dDemo" class="matrix-demo"></div>
+            </div>
+        </section>
+
+        <!-- Frequency Arrays -->
+        <section id="frequency" class="section">
+            <div class="section-header">
+                <span class="section-number">10</span>
+                <h2>Frequency Arrays</h2>
+            </div>
+
+            <div class="text-content">
+                <div class="concept-box">
+                    <h3>What is a Frequency Array?</h3>
+                    <p>A frequency array is a special technique where:</p>
+                    <ul>
+                        <li><strong>Index = Value</strong> from the original array</li>
+                        <li><strong>Value = Count</strong> (how many times it appears)</li>
+                    </ul>
+                    <p>It's perfect for counting occurrences of integers within a known range!</p>
+                </div>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h4>✅ Use Cases</h4>
+                    <ul>
+                        <li>Count occurrences of elements</li>
+                        <li>Find mode (most frequent value)</li>
+                        <li>Check if number appeared before</li>
+                        <li>Sort integers in linear time</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <h4>⚡ Time Complexity</h4>
+                    <p><strong>O(n)</strong> - Linear time</p>
+                    <p>Much faster than nested loops O(n²)</p>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>Basic Example</h3>
+                <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {1, 3, 2, 1, 4, 3, 1, 2};
+    int n = 8;
+    
+    // Frequency array (assuming values 0-100)
+    int freq[101] = {0};  // Initialize all to 0
+    
+    // Count frequencies
+    for(int i = 0; i < n; i++) {
+        freq[arr[i]]++;
+    }
+    
+    // Display frequencies
+    cout &lt;&lt; "Frequencies:" &lt;&lt; endl;
+    for(int i = 0; i <= 10; i++) {
+        if(freq[i] > 0) {
+            cout &lt;&lt; i &lt;&lt; " appears " 
+                 &lt;&lt; freq[i] &lt;&lt; " times" &lt;&lt; endl;
+        }
+    }
+    
+    return 0;
+}
+
+/* Output:
+Frequencies:
+1 appears 3 times
+2 appears 2 times
+3 appears 2 times
+4 appears 1 times
+*/</code></pre>
+            </div>
+
+            <div class="operations-grid">
+                <div class="operation-card">
+                    <h3>Find Mode (Most Frequent)</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {1, 3, 2, 1, 4, 3, 1, 2};
+    int n = 8;
+    int freq[101] = {0};
+    
+    // Count frequencies
+    for(int i = 0; i < n; i++) {
+        freq[arr[i]]++;
+    }
+    
+    // Find mode
+    int mode = 0, maxFreq = 0;
+    for(int i = 0; i <= 100; i++) {
+        if(freq[i] > maxFreq) {
+            maxFreq = freq[i];
+            mode = i;
+        }
+    }
+    
+    cout &lt;&lt; "Mode: " &lt;&lt; mode 
+         &lt;&lt; " (appears " &lt;&lt; maxFreq 
+         &lt;&lt; " times)" &lt;&lt; endl;
+    // Output: Mode: 1 (appears 3 times)
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>Check if Number Appeared</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {5, 10, 15, 20, 25};
+    int n = 5;
+    int freq[101] = {0};
+    
+    // Mark appearances
+    for(int i = 0; i < n; i++) {
+        freq[arr[i]] = 1;  // Just mark as seen
+    }
+    
+    // Check queries
+    int query = 15;
+    if(freq[query]) {
+        cout &lt;&lt; query &lt;&lt; " is present" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; query &lt;&lt; " is not present" &lt;&lt; endl;
+    }
+    
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>Sort Using Frequency (Counting Sort)</h3>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int arr[] = {4, 2, 2, 8, 3, 3, 1};
+    int n = 7;
+    int freq[101] = {0};
+    
+    // Count frequencies
+    for(int i = 0; i < n; i++) {
+        freq[arr[i]]++;
+    }
+    
+    // Print sorted array
+    cout &lt;&lt; "Sorted array: ";
+    for(int i = 0; i <= 100; i++) {
+        for(int j = 0; j < freq[i]; j++) {
+            cout &lt;&lt; i &lt;&lt; " ";
+        }
+    }
+    cout &lt;&lt; endl;
+    // Output: Sorted array: 1 2 2 3 3 4 8
+    
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🎮 Frequency Array Visualizer</h3>
+                <div id="freqDemo" class="freq-visual"></div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Important Note:</strong> Frequency arrays work best when:
+                <ul>
+                    <li>Values are integers within a small, known range</li>
+                    <li>You have enough memory for the frequency array</li>
+                    <li>For large ranges or negative numbers, consider using <code>map&lt;int, int&gt;</code> instead</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Practice Section -->
+        <section id="practice" class="section practice-section">
+            <div class="section-header">
+                <span class="section-number">🎯</span>
+                <h2>Practice Problems</h2>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty easy">Easy</span>
+                        <h4>1. Second Largest Element</h4>
+                    </div>
+                    <p>Find the second largest element in an array.</p>
+                    <details>
+                        <summary>Hint</summary>
+                        <p>Keep track of both largest and second largest while iterating.</p>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty easy">Easy</span>
+                        <h4>2. Palindrome Array</h4>
+                    </div>
+                    <p>Check if an array is a palindrome (same forwards and backwards).</p>
+                    <details>
+                        <summary>Hint</summary>
+                        <p>Compare elements from both ends moving towards the center.</p>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty medium">Medium</span>
+                        <h4>3. Rotate Array</h4>
+                    </div>
+                    <p>Rotate an array k positions to the right.</p>
+                    <details>
+                        <summary>Hint</summary>
+                        <p>Use reverse operations or create a temporary array.</p>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty medium">Medium</span>
+                        <h4>4. Merge Two Sorted Arrays</h4>
+                    </div>
+                    <p>Merge two sorted arrays into one sorted array.</p>
+                    <details>
+                        <summary>Hint</summary>
+                        <p>Use two pointers approach.</p>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty hard">Hard</span>
+                        <h4>5. Longest Consecutive Sequence</h4>
+                    </div>
+                    <p>Find the length of the longest consecutive elements sequence.</p>
+                    <details>
+                        <summary>Hint</summary>
+                        <p>Use frequency array or set for O(n) solution.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>C++ Arrays Masterclass</h3>
+                <p>Master the fundamentals of arrays in C++ with interactive examples and visualizations.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#builtin">Built-in Functions</a></li>
+                    <li><a href="#2d-arrays">2D Arrays</a></li>
+                    <li><a href="#practice">Practice</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://cplusplus.com/doc/tutorial/arrays/" target="_blank">C++ Reference</a></li>
+                    <li><a href="https://en.cppreference.com/w/" target="_blank">CPP Reference</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kafr Elsheikh Club. Built with ❤️ for learners.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script>
+        // ==========================================
+        // CONFIGURATION - Home page URL
+        // ==========================================
+        const HOME_PAGE_URL = '../index.html';  // Relative path for single deployment
+        
+        // Update navigation links dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update the home link in header
+            const homeLink = document.querySelector('header a[href*="index.html"]');
+            if (homeLink) {
+                homeLink.href = HOME_PAGE_URL;
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

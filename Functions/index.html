@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Functions - Interactive Learning Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #334155; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px;">
+        <a href="../index.html" style="color: #818cf8; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 8px; background: rgba(129, 140, 248, 0.1);">
+            <span>←</span> Home
+        </a>
+        <div style="text-align: center; flex: 1;">
+            <h1 style="font-size: 1.5rem; margin: 0; background: linear-gradient(90deg, #818cf8, #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">⚙️ Functions Learning Hub</h1>
+            <p style="font-size: 0.875rem; color: #94a3b8; margin: 0;">Kafr Elsheikh Club - Interactive Functions Programming Guide</p>
+        </div>
+        <div style="width: 120px;"></div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar" style="margin-top: 70px;">
+        <div class="nav-container">
+            <div class="nav-brand" style="display: none;">
+                <span class="brand-icon">⚙️</span>
+                <span class="brand-text">C++ Functions Masterclass</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#introduction" class="nav-link">What is Function?</a></li>
+                <li><a href="#example" class="nav-link">Quick Example</a></li>
+                <li><a href="#structure" class="nav-link">Structure</a></li>
+                <li><a href="#execution" class="nav-link">Execution Model</a></li>
+                <li><a href="#parameters" class="nav-link">Parameters</a></li>
+                <li><a href="#passing" class="nav-link">Pass by Value/Ref</a></li>
+                <li><a href="#scope" class="nav-link">Scope</a></li>
+                <li><a href="#practice" class="nav-link">Practice</a></li>
+                <li><a href="#advanced" class="nav-link">Advanced</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="margin-top: 70px;">
+        <div class="hero-content">
+            <h1 class="hero-title">Master C++ Functions</h1>
+            <p class="hero-subtitle">Organize, Reuse, and Simplify Your Code</p>
+            <a href="#introduction" class="cta-button">Start Learning →</a>
+        </div>
+        <div class="hero-animation">
+            <div class="array-visual" id="heroFunction"></div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Introduction Section -->
+        <section id="introduction" class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>What is a Function?</h2>
+            </div>
+            <div class="content-grid">
+                <div class="text-content">
+                    <p class="lead">A <strong>function</strong> is a reusable block of code that performs a specific task. It's like a mini-program within your program!</p>
+                    
+                    <div class="info-box">
+                        <h3>Why Use Functions?</h3>
+                        <ul>
+                            <li><strong>🎯 Organize:</strong> Break complex problems into smaller, manageable pieces</li>
+                            <li><strong>♻️ Reuse:</strong> Write code once, use it many times</li>
+                            <li><strong>🧹 Simplify:</strong> Make your code cleaner and easier to understand</li>
+                            <li><strong>🐛 Debug:</strong> Easier to find and fix bugs in isolated functions</li>
+                            <li><strong>🤝 Collaborate:</strong> Team members can work on different functions</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h3>Real-World Analogy</h3>
+                        <p>Think of a function like a <strong>vending machine</strong>:</p>
+                        <ul>
+                            <li><strong>Input:</strong> You insert money and press a button</li>
+                            <li><strong>Process:</strong> Machine does its work internally</li>
+                            <li><strong>Output:</strong> You get your snack!</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Simple function example
+void greet() {
+    cout &lt;&lt; "Hello from a function!" &lt;&lt; endl;
+}
+
+int main() {
+    // Calling the function
+    greet();
+    greet();  // Can call multiple times!
+    
+    return 0;
+}
+
+/* Output:
+Hello from a function!
+Hello from a function!
+*/</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Example Section -->
+        <section id="example" class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Quick Example in Action</h2>
+            </div>
+            
+            <div class="content-grid">
+                <div class="comparison-container">
+                    <div class="comparison-box bad">
+                        <h3>❌ Without Functions</h3>
+                        <pre><code class="language-cpp">int main() {
+    // Calculate sum 1
+    int a = 5, b = 10;
+    int result1 = a + b;
+    cout &lt;&lt; result1 &lt;&lt; endl;
+    
+    // Calculate sum 2
+    int c = 15, d = 20;
+    int result2 = c + d;
+    cout &lt;&lt; result2 &lt;&lt; endl;
+    
+    // Calculate sum 3
+    int e = 25, f = 30;
+    int result3 = e + f;
+    cout &lt;&lt; result3 &lt;&lt; endl;
+    
+    // Repetitive and messy!
+}</code></pre>
+                    </div>
+                    <div class="comparison-box good">
+                        <h3>✅ With Functions</h3>
+                        <pre><code class="language-cpp">int sum(int x, int y) {
+    return x + y;
+}
+
+int main() {
+    cout &lt;&lt; sum(5, 10) &lt;&lt; endl;   // 15
+    cout &lt;&lt; sum(15, 20) &lt;&lt; endl;  // 35
+    cout &lt;&lt; sum(25, 30) &lt;&lt; endl;  // 55
+    
+    // Clean, reusable, simple!
+    return 0;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>📝 Input → Process → Output Pattern</h3>
+                <div class="visualization">
+                    <div id="functionFlowDemo" class="demo-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Function Structure -->
+        <section id="structure" class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Function Structure</h2>
+            </div>
+
+            <div class="text-content">
+                <div class="info-box">
+                    <h3>Anatomy of a Function</h3>
+                    <pre style="background: #0f172a; padding: 1rem; border-radius: 8px; color: #cbd5e1;"><code>return_type function_name(parameters) {
+    // Function body
+    // statements
+    return value;  // if not void
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="methods-container">
+                <h3>Key Components</h3>
+                
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">1</span>
+                        <h4>Return Type</h4>
+                    </div>
+                    <p>Specifies what type of value the function returns.</p>
+                    <pre><code class="language-cpp">int getValue()       // Returns an integer
+double getPrice()    // Returns a double
+void display()       // Returns nothing (void)
+bool isValid()       // Returns true/false</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">2</span>
+                        <h4>Function Name</h4>
+                    </div>
+                    <p>Identifies the function. Use descriptive names!</p>
+                    <pre><code class="language-cpp">// Good names
+calculateAverage()
+findMaximum()
+printResult()
+
+// Bad names
+func1()
+doStuff()
+xyz()</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">3</span>
+                        <h4>Parameters (Input)</h4>
+                    </div>
+                    <p>Values passed to the function for processing.</p>
+                    <pre><code class="language-cpp">void greet(string name)              // One parameter
+int add(int a, int b)                // Two parameters
+void display()                        // No parameters
+double calculate(int x, double y)    // Mixed types</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">4</span>
+                        <h4>Function Body</h4>
+                    </div>
+                    <p>The code that gets executed when function is called.</p>
+                    <pre><code class="language-cpp">int multiply(int a, int b) {
+    int result = a * b;      // Processing
+    return result;           // Return statement
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>🎯 Complete Example</h3>
+                <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Function to calculate area of rectangle
+int calculateArea(int length, int width) {
+    int area = length * width;
+    return area;
+}
+
+int main() {
+    int l = 5, w = 10;
+    int result = calculateArea(l, w);
+    
+    cout &lt;&lt; "Area: " &lt;&lt; result &lt;&lt; endl;  // Output: Area: 50
+    
+    return 0;
+}</code></pre>
+            </div>
+
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3>Void Functions</h3>
+                    <p>Don't return a value - just perform an action</p>
+                    <pre><code class="language-cpp">void printWelcome() {
+    cout &lt;&lt; "Welcome!" &lt;&lt; endl;
+    // No return statement needed
+}</code></pre>
+                </div>
+                <div class="concept-card">
+                    <h3>Value-Returning Functions</h3>
+                    <p>Return a value that can be used</p>
+                    <pre><code class="language-cpp">int getSquare(int n) {
+    return n * n;  // Must return
+}
+
+// Usage: int x = getSquare(5);</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Execution Model -->
+        <section id="execution" class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Execution Model: How Functions Work</h2>
+            </div>
+
+            <div class="text-content">
+                <p class="lead">Understanding how a function call works is crucial for mastering programming!</p>
+            </div>
+
+            <div class="visualization">
+                <h3>🎬 Function Call Flow</h3>
+                <div id="executionDemo" class="demo-container"></div>
+            </div>
+
+            <div class="example-section">
+                <h3>Step-by-Step Execution</h3>
+                <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int double_value(int num) {
+    cout &lt;&lt; "  → Inside function, num = " &lt;&lt; num &lt;&lt; endl;
+    int result = num * 2;
+    cout &lt;&lt; "  → Calculated result = " &lt;&lt; result &lt;&lt; endl;
+    return result;
+}
+
+int main() {
+    cout &lt;&lt; "Step 1: Start main()" &lt;&lt; endl;
+    
+    int x = 5;
+    cout &lt;&lt; "Step 2: x = " &lt;&lt; x &lt;&lt; endl;
+    
+    cout &lt;&lt; "Step 3: Calling double_value(x)" &lt;&lt; endl;
+    int y = double_value(x);  // Control jumps to function
+    
+    cout &lt;&lt; "Step 4: Back in main, y = " &lt;&lt; y &lt;&lt; endl;
+    cout &lt;&lt; "Step 5: End main()" &lt;&lt; endl;
+    
+    return 0;
+}
+
+/* Output:
+Step 1: Start main()
+Step 2: x = 5
+Step 3: Calling double_value(x)
+  → Inside function, num = 5
+  → Calculated result = 10
+Step 4: Back in main, y = 10
+Step 5: End main()
+*/</code></pre>
+            </div>
+
+            <div class="info-box">
+                <h3>Key Points</h3>
+                <ul>
+                    <li><strong>Call:</strong> Program jumps from caller to function</li>
+                    <li><strong>Execute:</strong> Function body runs with provided arguments</li>
+                    <li><strong>Return:</strong> Control returns to caller with result (if any)</li>
+                    <li><strong>Continue:</strong> Program continues from where it left off</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Parameters & Arguments -->
+        <section id="parameters" class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Parameters & Arguments</h2>
+            </div>
+
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <h3>Parameters</h3>
+                    <p>Variables listed in the function definition</p>
+                    <pre><code class="language-cpp">void greet(string name) {
+    //         ↑ parameter
+    cout &lt;&lt; "Hello " &lt;&lt; name;
+}</code></pre>
+                </div>
+                <div class="concept-card">
+                    <h3>Arguments</h3>
+                    <p>Actual values passed when calling function</p>
+                    <pre><code class="language-cpp">greet("Alice");
+//     ↑ argument
+
+string person = "Bob";
+greet(person);  // argument</code></pre>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>📝 Multiple Parameters</h3>
+                <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Function with multiple parameters
+void displayInfo(string name, int age, double gpa) {
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "GPA: " &lt;&lt; gpa &lt;&lt; endl;
+}
+
+int main() {
+    displayInfo("Alice", 20, 3.8);
+    displayInfo("Bob", 22, 3.5);
+    
+    return 0;
+}
+
+/* Output:
+Name: Alice
+Age: 20
+GPA: 3.8
+Name: Bob
+Age: 22
+GPA: 3.5
+*/</code></pre>
+            </div>
+
+            <div class="operations-grid">
+                <div class="operation-card">
+                    <h3>No Parameters</h3>
+                    <pre><code class="language-cpp">int getRandomNumber() {
+    return 42;
+}
+
+// Call: int x = getRandomNumber();</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>One Parameter</h3>
+                    <pre><code class="language-cpp">int square(int n) {
+    return n * n;
+}
+
+// Call: int x = square(5);</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>Multiple Parameters</h3>
+                    <pre><code class="language-cpp">int add(int a, int b, int c) {
+    return a + b + c;
+}
+
+// Call: int sum = add(1, 2, 3);</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>Mixed Types</h3>
+                    <pre><code class="language-cpp">void print(string msg, int times) {
+    for(int i = 0; i &lt; times; i++) {
+        cout &lt;&lt; msg &lt;&lt; endl;
+    }
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pass by Value vs Reference -->
+        <section id="passing" class="section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Pass by Value vs Pass by Reference</h2>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-box">
+                    <h3>📋 Pass by Value (Copy)</h3>
+                    <p>A <strong>copy</strong> of the variable is passed. Original unchanged.</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+void modifyValue(int x) {
+    x = 100;  // Only modifies the copy
+    cout &lt;&lt; "Inside: " &lt;&lt; x &lt;&lt; endl;
+}
+
+int main() {
+    int num = 5;
+    cout &lt;&lt; "Before: " &lt;&lt; num &lt;&lt; endl;
+    
+    modifyValue(num);
+    
+    cout &lt;&lt; "After: " &lt;&lt; num &lt;&lt; endl;
+    
+    return 0;
+}
+
+/* Output:
+Before: 5
+Inside: 100
+After: 5    ← Original unchanged!
+*/</code></pre>
+                </div>
+
+                <div class="comparison-box good">
+                    <h3>🔗 Pass by Reference</h3>
+                    <p>The <strong>actual variable</strong> is passed. Changes affect original.</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+void modifyReference(int &x) {  // Note the &
+    x = 100;  // Modifies the original!
+    cout &lt;&lt; "Inside: " &lt;&lt; x &lt;&lt; endl;
+}
+
+int main() {
+    int num = 5;
+    cout &lt;&lt; "Before: " &lt;&lt; num &lt;&lt; endl;
+    
+    modifyReference(num);
+    
+    cout &lt;&lt; "After: " &lt;&lt; num &lt;&lt; endl;
+    
+    return 0;
+}
+
+/* Output:
+Before: 5
+Inside: 100
+After: 100   ← Original changed!
+*/</code></pre>
+                </div>
+            </div>
+
+            <div class="visualization">
+                <h3>🎮 Interactive Demo: Pass by Value vs Reference</h3>
+                <div id="passingDemo" class="demo-container"></div>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📋</div>
+                    <h4>Use Pass by Value When:</h4>
+                    <ul>
+                        <li>You don't want to modify the original</li>
+                        <li>Working with small data (int, char, bool)</li>
+                        <li>Need to keep original safe</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔗</div>
+                    <h4>Use Pass by Reference When:</h4>
+                    <ul>
+                        <li>You want to modify the original</li>
+                        <li>Working with large data (avoid copying)</li>
+                        <li>Returning multiple values</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>💡 Practical Example: Swap Function</h3>
+                <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Pass by reference to swap values
+void swap(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 10, y = 20;
+    
+    cout &lt;&lt; "Before swap: x = " &lt;&lt; x &lt;&lt; ", y = " &lt;&lt; y &lt;&lt; endl;
+    
+    swap(x, y);  // Pass by reference
+    
+    cout &lt;&lt; "After swap: x = " &lt;&lt; x &lt;&lt; ", y = " &lt;&lt; y &lt;&lt; endl;
+    
+    return 0;
+}
+
+/* Output:
+Before swap: x = 10, y = 20
+After swap: x = 20, y = 10
+*/</code></pre>
+            </div>
+        </section>
+
+        <!-- Scope -->
+        <section id="scope" class="section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>Variable Scope</h2>
+            </div>
+
+            <div class="text-content">
+                <p class="lead"><strong>Scope</strong> determines where a variable can be accessed in your program.</p>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-box">
+                    <h3>🏠 Local Scope</h3>
+                    <p>Variables declared inside a function</p>
+                    <pre><code class="language-cpp">void myFunction() {
+    int localVar = 10;  // Local to myFunction
+    cout &lt;&lt; localVar;
+}
+
+int main() {
+    // cout &lt;&lt; localVar;  ❌ ERROR!
+    // localVar doesn't exist here
+    
+    myFunction();  // localVar exists here
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="comparison-box">
+                    <h3>🌍 Global Scope</h3>
+                    <p>Variables declared outside all functions</p>
+                    <pre><code class="language-cpp">int globalVar = 100;  // Global variable
+
+void myFunction() {
+    cout &lt;&lt; globalVar;  // ✅ Can access
+}
+
+int main() {
+    cout &lt;&lt; globalVar;  // ✅ Can access
+    myFunction();
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>📝 Complete Scope Example</h3>
+                <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int globalCounter = 0;  // Global - accessible everywhere
+
+void incrementCounter() {
+    int localStep = 1;  // Local to this function
+    globalCounter += localStep;
+    cout &lt;&lt; "Counter inside function: " &lt;&lt; globalCounter &lt;&lt; endl;
+}
+
+int main() {
+    cout &lt;&lt; "Initial counter: " &lt;&lt; globalCounter &lt;&lt; endl;
+    
+    incrementCounter();
+    incrementCounter();
+    
+    cout &lt;&lt; "Final counter: " &lt;&lt; globalCounter &lt;&lt; endl;
+    
+    // cout &lt;&lt; localStep;  ❌ ERROR! localStep is not accessible here
+    
+    return 0;
+}
+
+/* Output:
+Initial counter: 0
+Counter inside function: 1
+Counter inside function: 2
+Final counter: 2
+*/</code></pre>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Global Variables - Use with Caution!</strong>
+                <ul>
+                    <li><strong>Risk:</strong> Can be modified from anywhere (hard to track bugs)</li>
+                    <li><strong>Risk:</strong> Name conflicts with local variables</li>
+                    <li><strong>Risk:</strong> Makes code harder to understand and maintain</li>
+                    <li><strong>Best Practice:</strong> Prefer passing parameters instead of globals</li>
+                </ul>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">✅</div>
+                    <h4>Local Variables Are Better</h4>
+                    <ul>
+                        <li>Contained within function</li>
+                        <li>No side effects</li>
+                        <li>Easier to debug</li>
+                        <li>Memory auto-managed</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚠️</div>
+                    <h4>Global Variables Should Be</h4>
+                    <ul>
+                        <li>Used sparingly</li>
+                        <li>For truly global data</li>
+                        <li>Constants (const keyword)</li>
+                        <li>Well documented</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Checkpoint -->
+        <section id="practice" class="section practice-section">
+            <div class="section-header">
+                <span class="section-number">⚡</span>
+                <h2>Practice Checkpoint</h2>
+            </div>
+
+            <div class="text-content">
+                <p class="lead">Let's practice what we've learned so far! Try writing these functions:</p>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty easy">Easy</span>
+                        <h4>1. Is Even</h4>
+                    </div>
+                    <p>Write a function <code>isEven(int n)</code> that returns <code>true</code> if n is even, <code>false</code> otherwise.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">bool isEven(int n) {
+    return n % 2 == 0;
+}
+
+// Usage:
+// cout &lt;&lt; isEven(4);  // true
+// cout &lt;&lt; isEven(7);  // false</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty easy">Easy</span>
+                        <h4>2. Find Maximum</h4>
+                    </div>
+                    <p>Write a function <code>findMax(int a, int b)</code> that returns the larger of two numbers.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">int findMax(int a, int b) {
+    if(a > b)
+        return a;
+    else
+        return b;
+    
+    // Or simply: return (a > b) ? a : b;
+}
+
+// Usage:
+// cout &lt;&lt; findMax(10, 20);  // 20</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty medium">Medium</span>
+                        <h4>3. Calculate Power</h4>
+                    </div>
+                    <p>Write a function <code>power(int base, int exp)</code> that calculates base^exp.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">int power(int base, int exp) {
+    int result = 1;
+    for(int i = 0; i &lt; exp; i++) {
+        result *= base;
+    }
+    return result;
+}
+
+// Usage:
+// cout &lt;&lt; power(2, 3);   // 8
+// cout &lt;&lt; power(5, 2);   // 25</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty medium">Medium</span>
+                        <h4>4. Count Digits</h4>
+                    </div>
+                    <p>Write a function <code>countDigits(int n)</code> that returns the number of digits in n.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">int countDigits(int n) {
+    if(n == 0) return 1;
+    
+    int count = 0;
+    while(n != 0) {
+        n /= 10;
+        count++;
+    }
+    return count;
+}
+
+// Usage:
+// cout &lt;&lt; countDigits(1234);  // 4
+// cout &lt;&lt; countDigits(56);    // 2</code></pre>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Features -->
+        <section id="advanced" class="section">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>Advanced Function Features</h2>
+            </div>
+
+            <div class="methods-container">
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">1</span>
+                        <h4>Function Overloading</h4>
+                    </div>
+                    <p>Multiple functions with the same name but different parameters.</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Same function name, different parameters
+int add(int a, int b) {
+    return a + b;
+}
+
+double add(double a, double b) {
+    return a + b;
+}
+
+int add(int a, int b, int c) {
+    return a + b + c;
+}
+
+int main() {
+    cout &lt;&lt; add(5, 10) &lt;&lt; endl;        // Calls int version → 15
+    cout &lt;&lt; add(5.5, 10.3) &lt;&lt; endl;    // Calls double version → 15.8
+    cout &lt;&lt; add(1, 2, 3) &lt;&lt; endl;      // Calls 3-param version → 6
+    
+    return 0;
+}</code></pre>
+                    <div class="info-box">
+                        <h4>Overloading Rules:</h4>
+                        <ul>
+                            <li>Different number of parameters</li>
+                            <li>Different types of parameters</li>
+                            <li>Return type alone is NOT enough</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">2</span>
+                        <h4>Default Parameters</h4>
+                    </div>
+                    <p>Provide default values for parameters if not specified.</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Default parameters (must be rightmost)
+void greet(string name, string message = "Hello") {
+    cout &lt;&lt; message &lt;&lt; ", " &lt;&lt; name &lt;&lt; "!" &lt;&lt; endl;
+}
+
+void printNumber(int n, int times = 1) {
+    for(int i = 0; i &lt; times; i++) {
+        cout &lt;&lt; n &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+}
+
+int main() {
+    greet("Alice");              // Uses default: "Hello, Alice!"
+    greet("Bob", "Hi");          // Custom: "Hi, Bob!"
+    
+    printNumber(5);              // Prints: 5
+    printNumber(5, 3);           // Prints: 5 5 5
+    
+    return 0;
+}</code></pre>
+                    <div class="warning-box">
+                        <strong>⚠️ Default Parameter Rules:</strong>
+                        <ul>
+                            <li>Must be rightmost parameters</li>
+                            <li>Can't skip middle parameters when calling</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">3</span>
+                        <h4>Function Prototypes (Forward Declaration)</h4>
+                    </div>
+                    <p>Declare function before definition to use it anywhere.</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Function prototypes (declarations)
+int add(int a, int b);
+void printResult(int result);
+
+int main() {
+    int sum = add(5, 10);     // Can use before definition
+    printResult(sum);
+    
+    return 0;
+}
+
+// Function definitions (can be after main)
+int add(int a, int b) {
+    return a + b;
+}
+
+void printResult(int result) {
+    cout &lt;&lt; "Result: " &lt;&lt; result &lt;&lt; endl;
+}</code></pre>
+                    <div class="info-box">
+                        <h4>Why Use Prototypes?</h4>
+                        <ul>
+                            <li>Call functions before they're defined</li>
+                            <li>Organize code better (main first)</li>
+                            <li>Required for mutual recursion</li>
+                            <li>Separate declaration from implementation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">4</span>
+                        <h4>Inline Functions</h4>
+                    </div>
+                    <p>Hint to compiler to insert function code directly (for small, frequently called functions).</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Inline function
+inline int square(int x) {
+    return x * x;
+}
+
+inline int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+int main() {
+    cout &lt;&lt; square(5) &lt;&lt; endl;     // 25
+    cout &lt;&lt; max(10, 20) &lt;&lt; endl;   // 20
+    
+    return 0;
+}
+
+// Inline reduces function call overhead for small functions</code></pre>
+                    <div class="info-box">
+                        <h4>When to Use Inline:</h4>
+                        <ul>
+                            <li>Very small functions (1-3 lines)</li>
+                            <li>Frequently called functions</li>
+                            <li>Performance-critical code</li>
+                            <li>Note: Just a hint, compiler decides</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Practice Problems -->
+        <section id="final-practice" class="section practice-section">
+            <div class="section-header">
+                <span class="section-number">🎯</span>
+                <h2>Final Challenge Problems</h2>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty easy">Easy</span>
+                        <h4>1. Temperature Converter</h4>
+                    </div>
+                    <p>Write a function to convert Celsius to Fahrenheit: F = C × 9/5 + 32</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">double celsiusToFahrenheit(double celsius) {
+    return celsius * 9.0 / 5.0 + 32;
+}
+
+// Usage:
+// cout &lt;&lt; celsiusToFahrenheit(0);    // 32
+// cout &lt;&lt; celsiusToFahrenheit(100);  // 212</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty medium">Medium</span>
+                        <h4>2. Prime Number Checker</h4>
+                    </div>
+                    <p>Write a function to check if a number is prime.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">bool isPrime(int n) {
+    if(n <= 1) return false;
+    if(n <= 3) return true;
+    if(n % 2 == 0 || n % 3 == 0) return false;
+    
+    for(int i = 5; i * i <= n; i += 6) {
+        if(n % i == 0 || n % (i + 2) == 0)
+            return false;
+    }
+    return true;
+}
+
+// Usage:
+// cout &lt;&lt; isPrime(7);   // true
+// cout &lt;&lt; isPrime(10);  // false</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty medium">Medium</span>
+                        <h4>3. Factorial Calculator</h4>
+                    </div>
+                    <p>Write a function to calculate factorial (n!).</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">long long factorial(int n) {
+    if(n <= 1) return 1;
+    
+    long long result = 1;
+    for(int i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+// Usage:
+// cout &lt;&lt; factorial(5);  // 120
+// cout &lt;&lt; factorial(7);  // 5040</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty hard">Hard</span>
+                        <h4>4. Array Operations</h4>
+                    </div>
+                    <p>Write functions to find sum and average of an array using pass by reference.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">void arrayStats(int arr[], int size, 
+                int &sum, double &avg) {
+    sum = 0;
+    for(int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    avg = (double)sum / size;
+}
+
+// Usage:
+int main() {
+    int numbers[] = {10, 20, 30, 40, 50};
+    int total;
+    double average;
+    
+    arrayStats(numbers, 5, total, average);
+    
+    cout &lt;&lt; "Sum: " &lt;&lt; total &lt;&lt; endl;      // 150
+    cout &lt;&lt; "Average: " &lt;&lt; average &lt;&lt; endl; // 30
+    
+    return 0;
+}</code></pre>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>C++ Functions Masterclass</h3>
+                <p>Master the art of writing clean, reusable, and efficient functions in C++.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#structure">Structure</a></li>
+                    <li><a href="#passing">Pass by Value/Ref</a></li>
+                    <li><a href="#advanced">Advanced</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://cplusplus.com/doc/tutorial/functions/" target="_blank">C++ Reference</a></li>
+                    <li><a href="https://en.cppreference.com/w/" target="_blank">CPP Reference</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kafr Elsheikh Club. Built with ❤️ for learners.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script>
+        // Update navigation links dynamically
+        const HOME_PAGE_URL = '../index.html';
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeLink = document.querySelector('header a[href*="index.html"]');
+            if (homeLink) {
+                homeLink.href = HOME_PAGE_URL;
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+
