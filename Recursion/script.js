@@ -125,15 +125,17 @@ function initHeroRecursion() {
         width: 320px;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         flex-shrink: 0;
+        overflow: visible;
     `;
 
     // Create properly nested boxes using DOM elements
     const colors = ['#818cf8', '#f472b6', '#fbbf24', '#34d399']; // blue, pink, yellow, green
     const labels = ['solve(5)', 'solve(4)', 'solve(3)', 'solve(2)'];
-    const sizes = [280, 220, 160, 100];
-    const heights = [140, 110, 80, 50];
+    // Sizes need to account for borders (3px each side = 6px total) and ensure proper nesting
+    const sizes = [260, 200, 140, 80];
+    const heights = [130, 100, 70, 40];
     
     // Build from inside out using actual DOM elements
     let currentBox = null;
@@ -155,12 +157,14 @@ function initHeroRecursion() {
             justify-content: center;
             background: rgba(${i === 0 ? '129, 140, 248' : i === 1 ? '244, 114, 182' : i === 2 ? '251, 191, 36' : '52, 211, 153'}, 0.2);
             font-weight: 700;
-            font-size: ${1.1 - i * 0.12}rem;
+            font-size: ${1.0 - i * 0.1}rem;
             color: ${colors[i]};
             animation: scaleIn 0.5s ease-out ${(3 - i) * 0.2}s both;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             z-index: ${4 - i};
             pointer-events: none;
+            overflow: hidden;
+            box-sizing: border-box;
         `;
         box.textContent = labels[i];
         
