@@ -113,61 +113,76 @@ function initHeroRecursion() {
         animation: fadeInUp 0.8s ease-out;
     `;
 
-    // Create properly nested boxes - build from inside out
+    // Create header
+    const header = document.createElement('div');
+    header.style.cssText = 'text-align: center; color: white; margin-bottom: 1.5rem;';
+    header.innerHTML = `
+        <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">
+            🔄 Recursive Nesting
+        </div>
+        <div style="font-size: 0.875rem; opacity: 0.8;">
+            Each call contains a smaller version
+        </div>
+    `;
+    recursionBox.appendChild(header);
+
+    // Create container for nested boxes
+    const nestContainer = document.createElement('div');
+    nestContainer.style.cssText = `
+        position: relative;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        width: 320px;
+    `;
+
+    // Create properly nested boxes using DOM elements
     const colors = ['#818cf8', '#f472b6', '#fbbf24', '#34d399'];
     const labels = ['solve(5)', 'solve(4)', 'solve(3)', 'solve(2)'];
     const sizes = [300, 240, 180, 120];
     const heights = [120, 100, 80, 60];
     
-    // Build nested structure from innermost to outermost
-    function createNestedBox(level, innerContent = '') {
-        const isOuter = (level === 0);
-        return `
-            <div style="
-                position: ${isOuter ? 'relative' : 'absolute'};
-                top: ${isOuter ? '0' : '50%'};
-                left: ${isOuter ? '0' : '50%'};
-                transform: ${isOuter ? 'none' : 'translate(-50%, -50%)'};
-                width: ${sizes[level]}px;
-                height: ${heights[level]}px;
-                border: 3px solid ${colors[level]};
-                border-radius: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: rgba(${level === 0 ? '129, 140, 248' : level === 1 ? '244, 114, 182' : level === 2 ? '251, 191, 36' : '52, 211, 153'}, 0.15);
-                font-weight: 700;
-                font-size: ${1.2 - level * 0.15}rem;
-                color: ${colors[level]};
-                animation: scaleIn 0.5s ease-out ${(3 - level) * 0.2}s both;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-                z-index: ${4 - level};
-            ">
-                ${labels[level]}
-                ${innerContent}
-            </div>
+    // Build from inside out using actual DOM elements
+    let currentBox = null;
+    for (let i = 3; i >= 0; i--) {
+        const box = document.createElement('div');
+        const isOuter = (i === 0);
+        
+        box.style.cssText = `
+            position: ${isOuter ? 'relative' : 'absolute'};
+            top: ${isOuter ? '0' : '50%'};
+            left: ${isOuter ? '0' : '50%'};
+            transform: ${isOuter ? 'none' : 'translate(-50%, -50%)'};
+            width: ${sizes[i]}px;
+            height: ${heights[i]}px;
+            border: 3px solid ${colors[i]};
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(${i === 0 ? '129, 140, 248' : i === 1 ? '244, 114, 182' : i === 2 ? '251, 191, 36' : '52, 211, 153'}, 0.15);
+            font-weight: 700;
+            font-size: ${1.2 - i * 0.15}rem;
+            color: ${colors[i]};
+            animation: scaleIn 0.5s ease-out ${(3 - i) * 0.2}s both;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: ${4 - i};
         `;
+        box.textContent = labels[i];
+        
+        // If there's a previous box, nest it inside this one
+        if (currentBox) {
+            box.appendChild(currentBox);
+        }
+        
+        currentBox = box;
     }
     
-    // Build from inside out
-    let nestedHTML = createNestedBox(3, ''); // Innermost
-    nestedHTML = createNestedBox(2, nestedHTML);
-    nestedHTML = createNestedBox(1, nestedHTML);
-    nestedHTML = createNestedBox(0, nestedHTML); // Outermost
-
-    recursionBox.innerHTML = `
-        <div style="text-align: center; color: white; margin-bottom: 1.5rem;">
-            <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">
-                🔄 Recursive Nesting
-            </div>
-            <div style="font-size: 0.875rem; opacity: 0.8;">
-                Each call contains a smaller version
-            </div>
-        </div>
-        <div style="position: relative; height: 200px; display: flex; align-items: center; justify-content: center; margin: 0 auto; width: 320px;">
-            ${nestedHTML}
-        </div>
-    `;
+    // Add the outermost box to container
+    nestContainer.appendChild(currentBox);
+    recursionBox.appendChild(nestContainer);
 
     // Add CSS for animations
     if (!document.getElementById('heroRecursionStyle')) {

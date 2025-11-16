@@ -1118,31 +1118,7 @@ cout << power(3, 4);  // Output: 81</code></pre>
                 <div class="problem-card">
                     <div class="problem-header">
                         <span class="difficulty medium">Medium</span>
-                        <h4>4. Reverse Number</h4>
-                    </div>
-                    <p>Reverse the digits of a number using recursion.</p>
-                    <details>
-                        <summary>Show Solution</summary>
-                        <pre><code class="language-cpp">int reverseHelper(int n, int result = 0) {
-    if (n == 0) return result;  // Base case: no more digits
-    
-    return reverseHelper(n / 10, result * 10 + n % 10);
-}
-
-int reverse(int n) {
-    return reverseHelper(n);
-}
-
-// Usage:
-cout << reverse(1234);  // Output: 4321
-cout << reverse(567);   // Output: 765</code></pre>
-                    </details>
-                </div>
-
-                <div class="problem-card">
-                    <div class="problem-header">
-                        <span class="difficulty medium">Medium</span>
-                        <h4>5. Palindrome Check</h4>
+                        <h4>4. Palindrome Check</h4>
                     </div>
                     <p>Check if a string is a palindrome using recursion.</p>
                     <details>
@@ -1167,7 +1143,7 @@ cout << isPalindrome("hello");   // Output: 0 (false)</code></pre>
                 <div class="problem-card">
                     <div class="problem-header">
                         <span class="difficulty hard">Hard</span>
-                        <h4>6. Find Maximum in Array</h4>
+                        <h4>5. Find Maximum in Array</h4>
                     </div>
                     <p>Find the maximum element in an array using recursion.</p>
                     <details>
