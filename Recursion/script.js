@@ -266,12 +266,12 @@ function initRecursiveFlowDemo() {
     ];
 
     let recursiveData = [
-        { text: 'sum(5) called', color: '#f472b6', indent: 0 },
-        { text: '5 + sum(4) called', color: '#f472b6', indent: 1 },
-        { text: '4 + sum(3) called', color: '#f472b6', indent: 2 },
-        { text: '3 + sum(2) called', color: '#f472b6', indent: 3 },
-        { text: '2 + sum(1) called', color: '#f472b6', indent: 4 },
-        { text: 'sum(1) returns 1', color: '#34d399', indent: 4 },
+        { text: 'sum(5) recursive call', color: '#f472b6', indent: 0 },
+        { text: '5 + sum(4) recursive call', color: '#f472b6', indent: 1 },
+        { text: '4 + sum(3) recursive call', color: '#f472b6', indent: 2 },
+        { text: '3 + sum(2) recursive call', color: '#f472b6', indent: 3 },
+        { text: '2 + sum(1) recursive call', color: '#f472b6', indent: 4 },
+        { text: 'sum(1) returns 1 (base case)', color: '#34d399', indent: 4 },
         { text: '2 + 1 = 3 returned', color: '#34d399', indent: 3 },
         { text: '3 + 3 = 6 returned', color: '#34d399', indent: 2 },
         { text: '4 + 6 = 10 returned', color: '#34d399', indent: 1 },
