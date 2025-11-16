@@ -840,12 +840,11 @@ int factorial(int n) {
     return n * factorial(n-1);
 }
 
-// Tree traversal - naturally recursive
-void printTree(TreeNode* node) {
-    if (!node) return;
-    cout << node->data << " ";
-    printTree(node->left);
-    printTree(node->right);
+// Print array recursively - simple and clear
+void printArray(int arr[], int size, int index = 0) {
+    if (index >= size) return;  // Base case
+    cout << arr[index] << " ";
+    printArray(arr, size, index + 1);  // Recursive call
 }</code></pre>
                     </div>
 
