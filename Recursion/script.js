@@ -111,41 +111,52 @@ function initHeroRecursion() {
         padding: 2rem;
         min-width: 400px;
         animation: fadeInUp 0.8s ease-out;
-        position: relative;
     `;
 
-    // Create nested boxes to represent recursion
-    let nestingHTML = '';
+    // Create properly nested boxes - build from inside out
     const colors = ['#818cf8', '#f472b6', '#fbbf24', '#34d399'];
-    const sizes = ['300px', '240px', '180px', '120px'];
+    const labels = ['solve(5)', 'solve(4)', 'solve(3)', 'solve(2)'];
+    const sizes = [300, 240, 180, 120];
+    const heights = [120, 100, 80, 60];
     
-    for (let i = 0; i < 4; i++) {
-        const delay = i * 0.3;
-        nestingHTML += `
+    // Build nested structure from innermost to outermost
+    function createNestedBox(level, innerContent = '') {
+        const isOuter = (level === 0);
+        return `
             <div style="
-                position: ${i === 0 ? 'relative' : 'absolute'};
-                top: ${i === 0 ? '0' : '50%'};
-                left: ${i === 0 ? '0' : '50%'};
-                transform: ${i === 0 ? 'none' : 'translate(-50%, -50%)'};
-                width: ${sizes[i]};
-                height: 150px;
-                border: 3px solid ${colors[i]};
-                border-radius: 15px;
+                position: ${isOuter ? 'relative' : 'absolute'};
+                top: ${isOuter ? '0' : '50%'};
+                left: ${isOuter ? '0' : '50%'};
+                transform: ${isOuter ? 'none' : 'translate(-50%, -50%)'};
+                width: ${sizes[level]}px;
+                height: ${heights[level]}px;
+                border: 3px solid ${colors[level]};
+                border-radius: 12px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: rgba(${i === 0 ? '129, 140, 248' : i === 1 ? '244, 114, 182' : i === 2 ? '251, 191, 36' : '52, 211, 153'}, 0.2);
+                background: rgba(${level === 0 ? '129, 140, 248' : level === 1 ? '244, 114, 182' : level === 2 ? '251, 191, 36' : '52, 211, 153'}, 0.15);
                 font-weight: 700;
-                color: ${colors[i]};
-                animation: scaleIn 0.6s ease-out ${delay}s both;
+                font-size: ${1.2 - level * 0.15}rem;
+                color: ${colors[level]};
+                animation: scaleIn 0.5s ease-out ${(3 - level) * 0.2}s both;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                z-index: ${4 - level};
             ">
-                ${i === 0 ? 'solve(5)' : i === 1 ? 'solve(4)' : i === 2 ? 'solve(3)' : '...'}
+                ${labels[level]}
+                ${innerContent}
             </div>
         `;
     }
+    
+    // Build from inside out
+    let nestedHTML = createNestedBox(3, ''); // Innermost
+    nestedHTML = createNestedBox(2, nestedHTML);
+    nestedHTML = createNestedBox(1, nestedHTML);
+    nestedHTML = createNestedBox(0, nestedHTML); // Outermost
 
     recursionBox.innerHTML = `
-        <div style="text-align: center; color: white; margin-bottom: 1rem;">
+        <div style="text-align: center; color: white; margin-bottom: 1.5rem;">
             <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">
                 🔄 Recursive Nesting
             </div>
@@ -153,26 +164,29 @@ function initHeroRecursion() {
                 Each call contains a smaller version
             </div>
         </div>
-        <div style="position: relative; height: 200px; display: flex; align-items: center; justify-content: center;">
-            ${nestingHTML}
+        <div style="position: relative; height: 200px; display: flex; align-items: center; justify-content: center; margin: 0 auto; width: 320px;">
+            ${nestedHTML}
         </div>
     `;
 
     // Add CSS for animations
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes scaleIn {
-            from {
-                transform: translate(-50%, -50%) scale(0);
-                opacity: 0;
+    if (!document.getElementById('heroRecursionStyle')) {
+        const style = document.createElement('style');
+        style.id = 'heroRecursionStyle';
+        style.textContent = `
+            @keyframes scaleIn {
+                from {
+                    transform: translate(-50%, -50%) scale(0.3);
+                    opacity: 0;
+                }
+                to {
+                    transform: translate(-50%, -50%) scale(1);
+                    opacity: 1;
+                }
             }
-            to {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
-        }
-    `;
-    document.head.appendChild(style);
+        `;
+        document.head.appendChild(style);
+    }
 
     container.appendChild(recursionBox);
 }
