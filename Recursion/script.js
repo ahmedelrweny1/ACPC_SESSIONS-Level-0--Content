@@ -121,27 +121,32 @@ function initHeroRecursion() {
     const nestContainer = document.createElement('div');
     nestContainer.style.cssText = `
         position: relative;
-        height: 220px;
-        width: 320px;
+        height: 140px;
+        width: 260px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        overflow: visible;
+        overflow: hidden;
     `;
 
     // Create properly nested boxes using DOM elements
     const colors = ['#818cf8', '#f472b6', '#fbbf24', '#34d399']; // blue, pink, yellow, green
     const labels = ['solve(5)', 'solve(4)', 'solve(3)', 'solve(2)'];
-    // Sizes need to account for borders (3px each side = 6px total) and ensure proper nesting
-    const sizes = [260, 200, 140, 80];
-    const heights = [130, 100, 70, 40];
+    // Sizes with proper margins to ensure boxes stay within borders
+    // Each box needs to be smaller than parent by at least 40px (20px margin each side) + 6px (borders)
+    const sizes = [240, 180, 120, 60];
+    const heights = [120, 90, 60, 30];
     
     // Build from inside out using actual DOM elements
     let currentBox = null;
     for (let i = 3; i >= 0; i--) {
         const box = document.createElement('div');
         const isOuter = (i === 0);
+        
+        // Calculate if this box will fit in its parent
+        // For nested boxes, ensure they're at least 50px smaller than parent
+        const margin = 30; // margin on each side
         
         box.style.cssText = `
             position: ${isOuter ? 'relative' : 'absolute'};
@@ -157,7 +162,7 @@ function initHeroRecursion() {
             justify-content: center;
             background: rgba(${i === 0 ? '129, 140, 248' : i === 1 ? '244, 114, 182' : i === 2 ? '251, 191, 36' : '52, 211, 153'}, 0.2);
             font-weight: 700;
-            font-size: ${1.0 - i * 0.1}rem;
+            font-size: ${0.95 - i * 0.08}rem;
             color: ${colors[i]};
             animation: scaleIn 0.5s ease-out ${(3 - i) * 0.2}s both;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -165,6 +170,8 @@ function initHeroRecursion() {
             pointer-events: none;
             overflow: hidden;
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         `;
         box.textContent = labels[i];
         
