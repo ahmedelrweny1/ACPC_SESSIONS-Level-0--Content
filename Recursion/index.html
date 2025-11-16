@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Recursion - Interactive Learning Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #334155; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px;">
+        <a href="../index.html" style="color: #818cf8; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 8px; background: rgba(129, 140, 248, 0.1);">
+            <span>←</span> Home
+        </a>
+        <div style="text-align: center; flex: 1;">
+            <h1 style="font-size: 1.5rem; margin: 0; background: linear-gradient(90deg, #818cf8, #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🔄 Recursion Learning Hub</h1>
+            <p style="font-size: 0.875rem; color: #94a3b8; margin: 0;">Kafr Elsheikh Club - Master Recursive Problem Solving</p>
+        </div>
+        <div style="width: 120px;"></div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar" style="margin-top: 70px;">
+        <div class="nav-container">
+            <div class="nav-brand" style="display: none;">
+                <span class="brand-icon">🔄</span>
+                <span class="brand-text">C++ Recursion Masterclass</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#introduction" class="nav-link">What is Recursion?</a></li>
+                <li><a href="#why-recursion" class="nav-link">Why Recursion?</a></li>
+                <li><a href="#example" class="nav-link">Quick Example</a></li>
+                <li><a href="#pillars" class="nav-link">Two Pillars</a></li>
+                <li><a href="#call-stack" class="nav-link">Call Stack</a></li>
+                <li><a href="#demo-problems" class="nav-link">Demo Problems</a></li>
+                <li><a href="#patterns" class="nav-link">Patterns</a></li>
+                <li><a href="#when-to-use" class="nav-link">When to Use</a></li>
+                <li><a href="#mistakes" class="nav-link">Common Mistakes</a></li>
+                <li><a href="#practice" class="nav-link">Practice</a></li>
+                <li><a href="#takeaways" class="nav-link">Key Takeaways</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="margin-top: 70px;">
+        <div class="hero-content">
+            <h1 class="hero-title">Master C++ Recursion</h1>
+            <p class="hero-subtitle">Think Recursively, Solve Elegantly</p>
+            <a href="#introduction" class="cta-button">Start Learning →</a>
+        </div>
+        <div class="hero-animation">
+            <div class="array-visual" id="heroRecursion"></div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Introduction Section -->
+        <section id="introduction" class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>What is Recursion?</h2>
+            </div>
+            <div class="content-grid">
+                <div class="text-content">
+                    <p class="lead">**Recursion** is a problem-solving technique where a function calls itself to solve a smaller version of the same problem.</p>
+                    
+                    <div class="info-box">
+                        <h3>🎯 Key Concept</h3>
+                        <p>Instead of solving the entire problem at once, we:</p>
+                        <ul>
+                            <li><strong>Break it down:</strong> Divide into smaller identical problems</li>
+                            <li><strong>Solve one step:</strong> Handle the current case</li>
+                            <li><strong>Trust recursion:</strong> Let the function solve the rest</li>
+                            <li><strong>Combine results:</strong> Put pieces together</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-box">
+                        <h3>🪆 Real-World Analogy: Russian Dolls</h3>
+                        <p>Imagine opening Russian nesting dolls:</p>
+                        <ul>
+                            <li><strong>Open current doll</strong> (do something)</li>
+                            <li><strong>If there's a smaller doll inside</strong> → repeat the process</li>
+                            <li><strong>If no more dolls</strong> → stop</li>
+                        </ul>
+                        <p>Each step is identical, just with a smaller doll!</p>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Simple recursion example
+void countdown(int n) {
+    cout &lt;&lt; n &lt;&lt; " ";        // Do something with current n
+    
+    if (n > 1) {            // If there's more work...
+        countdown(n - 1);   // Let recursion handle smaller problem
+    }
+}
+
+int main() {
+    countdown(5);  // Output: 5 4 3 2 1
+    return 0;
+}
+
+/*
+How it works:
+countdown(5) → prints 5, calls countdown(4)
+countdown(4) → prints 4, calls countdown(3)  
+countdown(3) → prints 3, calls countdown(2)
+countdown(2) → prints 2, calls countdown(1)
+countdown(1) → prints 1, stops (n = 1)
+*/</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Recursion Exists -->
+        <section id="why-recursion" class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Why Does Recursion Exist?</h2>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧩</div>
+                    <h4>Natural Problem Structure</h4>
+                    <p>Some problems are naturally recursive:</p>
+                    <ul>
+                        <li>Fractals and trees</li>
+                        <li>Mathematical definitions</li>
+                        <li>Nested structures</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h4>Elegant Solutions</h4>
+                    <p>Complex problems become simple:</p>
+                    <ul>
+                        <li>Less code to write</li>
+                        <li>Easier to understand</li>
+                        <li>Matches mathematical definitions</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔄</div>
+                    <h4>Self-Similarity</h4>
+                    <p>When subproblems are identical:</p>
+                    <ul>
+                        <li>Same operation on smaller data</li>
+                        <li>Divide and conquer approach</li>
+                        <li>Reduce problem size systematically</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Problem-Solving Tool</h4>
+                    <p>Different way of thinking:</p>
+                    <ul>
+                        <li>Focus on one step at a time</li>
+                        <li>Trust the process</li>
+                        <li>Clear base and recursive cases</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>🌟 Where Recursion Shines</h3>
+                <div class="operations-grid">
+                    <div class="operation-card">
+                        <h3>📊 Mathematical Definitions</h3>
+                        <p><strong>Factorial:</strong> n! = n × (n-1)!</p>
+                        <p><strong>Fibonacci:</strong> fib(n) = fib(n-1) + fib(n-2)</p>
+                    </div>
+                    <div class="operation-card">
+                        <h3>🌳 Tree-like Structures</h3>
+                        <p><strong>File systems:</strong> folders contain folders</p>
+                        <p><strong>Organizational charts:</strong> manager → employees</p>
+                    </div>
+                    <div class="operation-card">
+                        <h3>🔍 Search Problems</h3>
+                        <p><strong>Binary search:</strong> search half, repeat</p>
+                        <p><strong>Pathfinding:</strong> try each direction recursively</p>
+                    </div>
+                    <div class="operation-card">
+                        <h3>🎨 Fractal Patterns</h3>
+                        <p><strong>Sierpinski triangle:</strong> triangles contain triangles</p>
+                        <p><strong>Snowflakes:</strong> self-similar at every scale</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Example in Action -->
+        <section id="example" class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Quick Example in Action</h2>
+            </div>
+            
+            <div class="comparison-container">
+                <div class="comparison-box">
+                    <h3>🔁 Iterative Approach</h3>
+                    <p>Sum of numbers 1 to n using a loop</p>
+                    <pre><code class="language-cpp">int sumIterative(int n) {
+    int total = 0;
+    for(int i = 1; i <= n; i++) {
+        total += i;
+    }
+    return total;
+}
+
+// Step by step for n=5:
+// i=1: total = 0 + 1 = 1
+// i=2: total = 1 + 2 = 3  
+// i=3: total = 3 + 3 = 6
+// i=4: total = 6 + 4 = 10
+// i=5: total = 10 + 5 = 15</code></pre>
+                </div>
+
+                <div class="comparison-box good">
+                    <h3>🔄 Recursive Approach</h3>
+                    <p>Sum of numbers 1 to n using recursion</p>
+                    <pre><code class="language-cpp">int sumRecursive(int n) {
+    if(n == 1) return 1;    // Base case
+    
+    return n + sumRecursive(n-1);  // Recursive case
+}
+
+// Step by step for n=5:
+// sum(5) = 5 + sum(4)
+// sum(4) = 4 + sum(3)
+// sum(3) = 3 + sum(2)  
+// sum(2) = 2 + sum(1)
+// sum(1) = 1 (base case)
+// Working back: 1 + 2 + 3 + 4 + 5 = 15</code></pre>
+                </div>
+            </div>
+
+            <div class="visualization">
+                <h3>🎬 Interactive Flow Visualization</h3>
+                <div id="recursiveFlowDemo" class="demo-container"></div>
+            </div>
+
+            <div class="info-box">
+                <h3>🤔 Key Insight</h3>
+                <p><strong>Recursive thinking:</strong> "To find sum(5), I need sum(4). To find sum(4), I need sum(3)..." until we reach something we know (sum(1) = 1).</p>
+                <p><strong>Trust the recursion:</strong> Don't try to trace every step - just focus on one level!</p>
+            </div>
+        </section>
+
+        <!-- Two Pillars of Recursion -->
+        <section id="pillars" class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>The Two Pillars of Recursion</h2>
+            </div>
+
+            <div class="text-content">
+                <p class="lead">Every recursive function must have these two essential components:</p>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-box good">
+                    <h3>🏁 Base Case</h3>
+                    <p><strong>The "exit door"</strong> - When to stop recursing</p>
+                    <ul>
+                        <li>Simplest version of the problem</li>
+                        <li>Direct answer without recursion</li>
+                        <li>Prevents infinite loops</li>
+                        <li>Usually an if statement</li>
+                    </ul>
+                    <pre><code class="language-cpp">if(n == 0) return 1;  // factorial base
+if(n == 1) return 1;  // sum base
+if(str.empty()) return true;  // string base</code></pre>
+                </div>
+
+                <div class="comparison-box">
+                    <h3>🔄 Recursive Case</h3>
+                    <p><strong>How to shrink the problem</strong> - Getting closer to base case</p>
+                    <ul>
+                        <li>Function calls itself</li>
+                        <li>With smaller/simpler input</li>
+                        <li>Must progress toward base case</li>
+                        <li>Combines current step with recursive result</li>
+                    </ul>
+                    <pre><code class="language-cpp">return n * factorial(n-1);     // smaller n
+return n + sum(n-1);           // smaller n
+return func(str.substr(1));    // smaller string</code></pre>
+                </div>
+            </div>
+
+            <div class="methods-container">
+                <h3>📝 Recursion Template</h3>
+                
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">1</span>
+                        <h4>The Universal Pattern</h4>
+                    </div>
+                    <pre><code class="language-cpp">ReturnType recursiveFunction(Parameters) {
+    // 1. Base Case - When to stop
+    if (simplest_condition) {
+        return direct_answer;
+    }
+    
+    // 2. Recursive Case - How to shrink  
+    return combine(
+        current_work,
+        recursiveFunction(smaller_parameters)
+    );
+}</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">2</span>
+                        <h4>Critical Rule</h4>
+                    </div>
+                    <div class="warning-box">
+                        <strong>⚠️ Every recursive call MUST get closer to the base case!</strong>
+                        <ul>
+                            <li>Smaller numbers: n → n-1</li>
+                            <li>Shorter strings: str → str.substr(1)</li>
+                            <li>Smaller arrays: arr[1..n] → arr[2..n]</li>
+                            <li>Moving indices: process(arr, 0) → process(arr, 1)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>🎯 Perfect Example: Factorial</h3>
+                <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int factorial(int n) {
+    // Base case: simplest version we know directly
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    
+    // Recursive case: reduce problem size
+    return n * factorial(n - 1);
+    //     ↑        ↑
+    //  current   smaller
+    //   work     problem
+}
+
+int main() {
+    cout &lt;&lt; factorial(5) &lt;&lt; endl;  // Output: 120
+    return 0;
+}
+
+/*
+Trace: factorial(5)
+= 5 * factorial(4)
+= 5 * (4 * factorial(3))
+= 5 * (4 * (3 * factorial(2)))
+= 5 * (4 * (3 * (2 * factorial(1))))
+= 5 * (4 * (3 * (2 * 1)))
+= 5 * (4 * (3 * 2))
+= 5 * (4 * 6)
+= 5 * 24
+= 120
+*/</code></pre>
+            </div>
+        </section>
+
+        <!-- Call Stack Visualization -->
+        <section id="call-stack" class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Call Stack Visualization</h2>
+            </div>
+
+            <div class="text-content">
+                <p class="lead">Understanding how the computer manages recursive function calls is crucial for mastering recursion.</p>
+                
+                <div class="concept-box">
+                    <h3>📚 The Call Stack Concept</h3>
+                    <p>Think of the call stack like a <strong>stack of plates</strong>:</p>
+                    <ul>
+                        <li><strong>Push:</strong> Each function call adds a "plate" to the top</li>
+                        <li><strong>LIFO:</strong> Last In, First Out - newest calls resolve first</li>
+                        <li><strong>Pop:</strong> When function returns, remove top plate</li>
+                        <li><strong>Memory:</strong> Each plate holds function's local variables</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="visualization">
+                <h3>🎮 Interactive Call Stack Demo</h3>
+                <div id="callStackDemo" class="demo-container"></div>
+            </div>
+
+            <div class="example-section">
+                <h3>📊 Call Stack in Action: factorial(4)</h3>
+                <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int factorial(int n) {
+    cout &lt;&lt; "→ Called factorial(" &lt;&lt; n &lt;&lt; ")" &lt;&lt; endl;
+    
+    if (n <= 1) {
+        cout &lt;&lt; "← Base case reached! Returning 1" &lt;&lt; endl;
+        return 1;
+    }
+    
+    int result = n * factorial(n - 1);
+    cout &lt;&lt; "← factorial(" &lt;&lt; n &lt;&lt; ") returning " &lt;&lt; result &lt;&lt; endl;
+    return result;
+}
+
+int main() {
+    int result = factorial(4);
+    cout &lt;&lt; "Final result: " &lt;&lt; result &lt;&lt; endl;
+    return 0;
+}
+
+/* Output:
+→ Called factorial(4)
+→ Called factorial(3)  
+→ Called factorial(2)
+→ Called factorial(1)
+← Base case reached! Returning 1
+← factorial(2) returning 2
+← factorial(3) returning 6
+← factorial(4) returning 24
+Final result: 24
+*/</code></pre>
+            </div>
+
+            <div class="operations-grid">
+                <div class="operation-card">
+                    <h3>📥 Going Down (Calls)</h3>
+                    <ul>
+                        <li>factorial(4) → stack</li>
+                        <li>factorial(3) → stack</li>
+                        <li>factorial(2) → stack</li>
+                        <li>factorial(1) → stack</li>
+                    </ul>
+                    <p>Each call waits for the next to finish</p>
+                </div>
+                <div class="operation-card">
+                    <h3>📤 Coming Up (Returns)</h3>
+                    <ul>
+                        <li>factorial(1) returns 1 ← stack</li>
+                        <li>factorial(2) returns 2 ← stack</li>
+                        <li>factorial(3) returns 6 ← stack</li>
+                        <li>factorial(4) returns 24 ← stack</li>
+                    </ul>
+                    <p>Results flow back up the chain</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Stack Overflow Warning</strong>
+                <p>Too many recursive calls can fill up memory:</p>
+                <ul>
+                    <li><strong>Cause:</strong> Deep recursion (thousands of calls)</li>
+                    <li><strong>Result:</strong> Program crashes with "Stack Overflow"</li>
+                    <li><strong>Solutions:</strong> Iterative approach, tail recursion, or limit depth</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Demo Problems -->
+        <section id="demo-problems" class="section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Demo Problems (Progressive Difficulty)</h2>
+            </div>
+
+            <div class="methods-container">
+                
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">1</span>
+                        <h4>Countdown (Starter Problem)</h4>
+                    </div>
+                    <p>Perfect for understanding base case and recursive shrinking</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+void countdown(int n) {
+    cout &lt;&lt; n &lt;&lt; " ";
+    
+    if (n > 1) {              // Base case: stop at 1
+        countdown(n - 1);     // Recursive case: smaller problem
+    }
+}
+
+int main() {
+    countdown(5);  // Output: 5 4 3 2 1
+    return 0;
+}
+
+// Why it works:
+// countdown(5) → print 5, call countdown(4)
+// countdown(4) → print 4, call countdown(3)  
+// countdown(3) → print 3, call countdown(2)
+// countdown(2) → print 2, call countdown(1)
+// countdown(1) → print 1, STOP (n not > 1)</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">2</span>
+                        <h4>Sum of First n Numbers</h4>
+                    </div>
+                    <p>Classic reduction pattern: n + solve_smaller(n-1)</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int sum(int n) {
+    if (n == 1) {        // Base case: sum(1) = 1
+        return 1;
+    }
+    
+    return n + sum(n - 1);  // n + sum of (n-1) numbers
+}
+
+int main() {
+    cout &lt;&lt; sum(5) &lt;&lt; endl;  // Output: 15 (1+2+3+4+5)
+    return 0;
+}
+
+// Pattern: Big problem = Current step + Smaller problem
+// sum(5) = 5 + sum(4)
+// sum(4) = 4 + sum(3)
+// sum(3) = 3 + sum(2)  
+// sum(2) = 2 + sum(1)
+// sum(1) = 1 (base case)
+// Result: 1 + 2 + 3 + 4 + 5 = 15</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">3</span>
+                        <h4>Sum of Digits</h4>
+                    </div>
+                    <p>Introduces "peeling" pattern: process one piece, recurse on the rest</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int sumDigits(int n) {
+    if (n < 10) {           // Base case: single digit
+        return n;
+    }
+    
+    return (n % 10) + sumDigits(n / 10);
+    //      ↑               ↑
+    //   last digit    remaining digits
+}
+
+int main() {
+    cout &lt;&lt; sumDigits(1234) &lt;&lt; endl;  // Output: 10 (1+2+3+4)
+    return 0;
+}
+
+// Peeling the number:
+// sumDigits(1234) = 4 + sumDigits(123)
+// sumDigits(123)  = 3 + sumDigits(12)  
+// sumDigits(12)   = 2 + sumDigits(1)
+// sumDigits(1)    = 1 (base case)
+// Result: 1 + 2 + 3 + 4 = 10</code></pre>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">4</span>
+                        <h4>Fibonacci Sequence</h4>
+                    </div>
+                    <p>Shows branching (two recursive calls) - more complex pattern</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int fibonacci(int n) {
+    if (n <= 1) {           // Base cases: fib(0)=0, fib(1)=1
+        return n;
+    }
+    
+    return fibonacci(n-1) + fibonacci(n-2);  // Two recursive calls!
+}
+
+int main() {
+    for(int i = 0; i < 8; i++) {
+        cout &lt;&lt; fibonacci(i) &lt;&lt; " ";
+    }
+    // Output: 0 1 1 2 3 5 8 13
+    return 0;
+}
+
+// Tree-like recursion:
+// fib(5)
+//   ├── fib(4)
+//   │   ├── fib(3)
+//   │   │   ├── fib(2)
+//   │   │   │   ├── fib(1) → 1
+//   │   │   │   └── fib(0) → 0
+//   │   │   └── fib(1) → 1
+//   │   └── fib(2) → ...
+//   └── fib(3) → ...</code></pre>
+                    <div class="warning-box">
+                        <strong>⚠️ Performance Note:</strong> This naive Fibonacci is inefficient (exponential time) due to repeated calculations. Real implementations use memoization.
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">5</span>
+                        <h4>Power Function</h4>
+                    </div>
+                    <p>Mathematical definition maps directly to recursion</p>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+long long power(int base, int exp) {
+    if (exp == 0) {         // Base case: anything^0 = 1
+        return 1;
+    }
+    
+    return base * power(base, exp - 1);  // base * base^(exp-1)
+}
+
+int main() {
+    cout &lt;&lt; power(2, 5) &lt;&lt; endl;  // Output: 32 (2^5)
+    cout &lt;&lt; power(3, 4) &lt;&lt; endl;  // Output: 81 (3^4)
+    return 0;
+}
+
+// Mathematical definition:
+// base^exp = base × base^(exp-1)
+// power(2, 5) = 2 × power(2, 4)
+// power(2, 4) = 2 × power(2, 3)
+// power(2, 3) = 2 × power(2, 2)
+// power(2, 2) = 2 × power(2, 1)  
+// power(2, 1) = 2 × power(2, 0)
+// power(2, 0) = 1 (base case)
+// Result: 2 × 2 × 2 × 2 × 2 = 32</code></pre>
+                </div>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🎮 Interactive Demo: Watch Recursion in Action</h3>
+                <div id="recursionStepDemo" class="demo-container"></div>
+            </div>
+        </section>
+
+        <!-- Common Recursion Patterns -->
+        <section id="patterns" class="section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>Common Recursion Patterns</h2>
+            </div>
+
+            <div class="text-content">
+                <p class="lead">Recognizing these patterns will help you identify when and how to use recursion.</p>
+            </div>
+
+            <div class="operations-grid">
+                <div class="operation-card">
+                    <h3>📉 Shrinking Numbers</h3>
+                    <p><strong>Pattern:</strong> n → n-1 (or n/2)</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>Countdown: n → n-1</li>
+                        <li>Factorial: n! = n × (n-1)!</li>
+                        <li>Sum: sum(n) = n + sum(n-1)</li>
+                    </ul>
+                    <pre><code class="language-cpp">if (n <= base_value) return base_result;
+return process(n) + function(n-1);</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>📍 Moving Index</h3>
+                    <p><strong>Pattern:</strong> Process array/string element by element</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>Print array: arr[i], then arr[i+1]...</li>
+                        <li>Search array: check arr[i], then rest</li>
+                        <li>Sum array: arr[i] + sum(rest)</li>
+                    </ul>
+                    <pre><code class="language-cpp">if (index >= size) return base_result;
+return process(arr[index]) + function(arr, index+1);</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>🍌 Peeling Data</h3>
+                    <p><strong>Pattern:</strong> Process one piece, recurse on remainder</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>Sum digits: last_digit + sum(rest_digits)</li>
+                        <li>Reverse string: last_char + reverse(rest)</li>
+                        <li>Process characters one by one</li>
+                    </ul>
+                    <pre><code class="language-cpp">if (data.empty()) return base_result;
+return process(data.last()) + function(data.rest());</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>🌳 Branching (Multiple Calls)</h3>
+                    <p><strong>Pattern:</strong> Problem splits into multiple subproblems</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>Fibonacci: fib(n-1) + fib(n-2)</li>
+                        <li>Binary tree: process(left) + process(right)</li>
+                        <li>Path finding: try all directions</li>
+                    </ul>
+                    <pre><code class="language-cpp">if (base_case) return base_result;
+return combine(function(sub1), function(sub2));</code></pre>
+                </div>
+
+                <div class="operation-card">
+                    <h3>⚡ Divide and Conquer</h3>
+                    <p><strong>Pattern:</strong> Split problem in half, solve both halves</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>Binary search: search left OR right half</li>
+                        <li>Merge sort: sort left half + sort right half</li>
+                        <li>Quick mathematical operations</li>
+                    </ul>
+                    <pre><code class="language-cpp">if (size <= 1) return base_result;
+mid = size / 2;
+return combine(function(left_half), function(right_half));</code></pre>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>🎯 Pattern Recognition Exercise</h3>
+                <div class="visualization">
+                    <div id="patternMatchingDemo" class="demo-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- When to Use Recursion -->
+        <section id="when-to-use" class="section">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>When to Use Recursion</h2>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-box good">
+                    <h3>✅ Great for Recursion</h3>
+                    <ul>
+                        <li><strong>🧮 Mathematical definitions:</strong> factorial, Fibonacci, power</li>
+                        <li><strong>🌳 Tree-like structures:</strong> file systems, family trees</li>
+                        <li><strong>🔄 Self-similar problems:</strong> fractals, nested data</li>
+                        <li><strong>🔍 Divide and conquer:</strong> binary search, sorting</li>
+                        <li><strong>🎯 Natural recursion:</strong> problem breaks into smaller identical pieces</li>
+                        <li><strong>📝 Code clarity:</strong> recursive solution is much cleaner</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-box bad">
+                    <h3>❌ Avoid Recursion When</h3>
+                    <ul>
+                        <li><strong>🔢 Simple counting:</strong> basic loops work better</li>
+                        <li><strong>⚡ Performance critical:</strong> function call overhead</li>
+                        <li><strong>📊 Very deep recursion:</strong> stack overflow risk</li>
+                        <li><strong>💾 Memory constraints:</strong> each call uses stack space</li>
+                        <li><strong>🎛️ Iterative is clearer:</strong> simple sequential operations</li>
+                        <li><strong>🔁 Tail recursion only:</strong> better as loop</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="methods-container">
+                <h3>🎯 Decision Guide</h3>
+                
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">1</span>
+                        <h4>Ask These Questions</h4>
+                    </div>
+                    <div class="operations-grid">
+                        <div class="operation-card">
+                            <h4>🤔 Problem Structure</h4>
+                            <ul>
+                                <li>Can I break this into smaller identical problems?</li>
+                                <li>Is the subproblem the same type as the original?</li>
+                                <li>Do I naturally think "do this, then repeat on smaller input"?</li>
+                            </ul>
+                        </div>
+                        <div class="operation-card">
+                            <h4>📐 Base Case</h4>
+                            <ul>
+                                <li>Is there a clear stopping condition?</li>
+                                <li>Can I solve the smallest version directly?</li>
+                                <li>Will I eventually reach this base case?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">2</span>
+                        <h4>Performance Considerations</h4>
+                    </div>
+                    <div class="warning-box">
+                        <h4>⚠️ Recursion Overhead</h4>
+                        <ul>
+                            <li><strong>Function calls:</strong> Slower than simple loops</li>
+                            <li><strong>Stack space:</strong> Each call uses memory</li>
+                            <li><strong>Deep recursion:</strong> Risk of stack overflow</li>
+                            <li><strong>Repeated work:</strong> Naive Fibonacci recalculates values</li>
+                        </ul>
+                        <p><strong>Solution:</strong> Use recursion for clarity, optimize later if needed!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>📝 Examples: Good vs Bad Choices</h3>
+                <div class="operations-grid">
+                    <div class="operation-card">
+                        <h3>✅ Perfect for Recursion</h3>
+                        <pre><code class="language-cpp">// Factorial - matches mathematical definition
+int factorial(int n) {
+    if (n <= 1) return 1;
+    return n * factorial(n-1);
+}
+
+// Tree traversal - naturally recursive
+void printTree(TreeNode* node) {
+    if (!node) return;
+    cout << node->data << " ";
+    printTree(node->left);
+    printTree(node->right);
+}</code></pre>
+                    </div>
+
+                    <div class="operation-card">
+                        <h3>❌ Better as Iteration</h3>
+                        <pre><code class="language-cpp">// Simple counting - loop is clearer
+void countToN(int n) {
+    for(int i = 1; i <= n; i++) {
+        cout << i << " ";
+    }
+}
+
+// Linear search - no natural recursion
+bool contains(int arr[], int size, int target) {
+    for(int i = 0; i < size; i++) {
+        if(arr[i] == target) return true;
+    }
+    return false;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Common Mistakes -->
+        <section id="mistakes" class="section">
+            <div class="section-header">
+                <span class="section-number">09</span>
+                <h2>Common Mistakes & How to Avoid Them</h2>
+            </div>
+
+            <div class="methods-container">
+                
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">1</span>
+                        <h4>Missing Base Case</h4>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-box bad">
+                            <h3>❌ Infinite Recursion</h3>
+                            <pre><code class="language-cpp">int badFactorial(int n) {
+    return n * badFactorial(n-1);  // No base case!
+}
+
+// Result: Stack Overflow
+// badFactorial(5) → badFactorial(4) → badFactorial(3)
+// → badFactorial(2) → badFactorial(1) → badFactorial(0)  
+// → badFactorial(-1) → badFactorial(-2) → ... CRASH!</code></pre>
+                        </div>
+                        <div class="comparison-box good">
+                            <h3>✅ Proper Base Case</h3>
+                            <pre><code class="language-cpp">int goodFactorial(int n) {
+    if (n <= 1) return 1;    // Base case stops recursion
+    return n * goodFactorial(n-1);
+}
+
+// Result: Works perfectly
+// goodFactorial(5) → 5 * goodFactorial(4) → ... 
+// → 5 * 4 * 3 * 2 * goodFactorial(1) → 5*4*3*2*1 = 120</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">2</span>
+                        <h4>Not Shrinking the Problem</h4>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-box bad">
+                            <h3>❌ Same Size Problem</h3>
+                            <pre><code class="language-cpp">int badSum(int n) {
+    if (n == 1) return 1;
+    return n + badSum(n);    // Still passing n, not n-1!
+}
+
+// Result: Stack Overflow  
+// badSum(5) → 5 + badSum(5) → 5 + 5 + badSum(5) → ...</code></pre>
+                        </div>
+                        <div class="comparison-box good">
+                            <h3>✅ Always Shrink</h3>
+                            <pre><code class="language-cpp">int goodSum(int n) {
+    if (n == 1) return 1;
+    return n + goodSum(n-1);  // Smaller problem: n-1
+}
+
+// Result: Eventually reaches base case
+// goodSum(5) → 5 + goodSum(4) → ... → reaches goodSum(1)</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">3</span>
+                        <h4>Base Case Unreachable</h4>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-box bad">
+                            <h3>❌ Wrong Direction</h3>
+                            <pre><code class="language-cpp">int badCountdown(int n) {
+    if (n == 0) return 0;       // Base case at 0
+    cout << n << " ";
+    return badCountdown(n + 1); // But we're INCREASING n!
+}
+
+// badCountdown(5) → 6 → 7 → 8 → ... never reaches 0!</code></pre>
+                        </div>
+                        <div class="comparison-box good">
+                            <h3>✅ Move Toward Base Case</h3>
+                            <pre><code class="language-cpp">int goodCountdown(int n) {
+    if (n == 0) return 0;       // Base case at 0  
+    cout << n << " ";
+    return goodCountdown(n - 1); // DECREASING n toward 0
+}
+
+// goodCountdown(5) → 4 → 3 → 2 → 1 → 0 ✓</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">4</span>
+                        <h4>Wrong Return Values</h4>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-box bad">
+                            <h3>❌ Forgetting to Return</h3>
+                            <pre><code class="language-cpp">int badSum(int n) {
+    if (n == 1) return 1;
+    n + badSum(n-1);        // Missing 'return'!
+}
+
+// Compiler warning: function doesn't return a value
+// Result: Undefined behavior</code></pre>
+                        </div>
+                        <div class="comparison-box good">
+                            <h3>✅ Always Return</h3>
+                            <pre><code class="language-cpp">int goodSum(int n) {
+    if (n == 1) return 1;
+    return n + goodSum(n-1);  // Return the result!
+}
+
+// Every path returns a value</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">5</span>
+                        <h4>Overcomplicating Base Cases</h4>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-box bad">
+                            <h3>❌ Too Many Cases</h3>
+                            <pre><code class="language-cpp">int overcomplicated(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;  
+    if (n == 2) return 2;
+    if (n == 3) return 3;   // Unnecessary cases!
+    if (n == 4) return 4;
+    return n + overcomplicated(n-1);
+}</code></pre>
+                        </div>
+                        <div class="comparison-box good">
+                            <h3>✅ Minimal Base Case</h3>
+                            <pre><code class="language-cpp">int simple(int n) {
+    if (n <= 1) return n;    // One condition covers it all
+    return n + simple(n-1);
+}
+
+// Keep it simple! Only add complexity when needed</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🎮 Mistake Simulator</h3>
+                <div id="mistakeSimulatorDemo" class="demo-container"></div>
+            </div>
+
+            <div class="warning-box">
+                <h3>🛡️ Debugging Tips</h3>
+                <ul>
+                    <li><strong>Add print statements:</strong> See what values are being passed</li>
+                    <li><strong>Trace manually:</strong> Follow 3-4 levels of recursion by hand</li>
+                    <li><strong>Check your math:</strong> Is the problem actually getting smaller?</li>
+                    <li><strong>Test base case:</strong> Call your function with base case input directly</li>
+                    <li><strong>Use debugger:</strong> Step through recursive calls</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Practice Problems -->
+        <section id="practice" class="section practice-section">
+            <div class="section-header">
+                <span class="section-number">⚡</span>
+                <h2>Practice Problems</h2>
+            </div>
+
+            <div class="text-content">
+                <p class="lead">Apply your recursion knowledge with these practice problems!</p>
+            </div>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty easy">Easy</span>
+                        <h4>1. Print Array Recursively</h4>
+                    </div>
+                    <p>Print all elements of an array using recursion (moving index pattern).</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">void printArray(int arr[], int size, int index = 0) {
+    if (index >= size) return;  // Base case: past end
+    
+    cout << arr[index] << " ";
+    printArray(arr, size, index + 1);  // Move to next index
+}
+
+// Usage:
+int arr[] = {1, 2, 3, 4, 5};
+printArray(arr, 5);  // Output: 1 2 3 4 5</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty easy">Easy</span>
+                        <h4>2. Count Digits Recursively</h4>
+                    </div>
+                    <p>Count the number of digits in a number using recursion.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">int countDigits(int n) {
+    if (n < 10) return 1;  // Base case: single digit
+    
+    return 1 + countDigits(n / 10);  // 1 + count of remaining
+}
+
+// Usage:
+cout << countDigits(12345);  // Output: 5
+cout << countDigits(7);      // Output: 1</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty medium">Medium</span>
+                        <h4>3. Power Function</h4>
+                    </div>
+                    <p>Calculate base^exp using recursion.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">long long power(int base, int exp) {
+    if (exp == 0) return 1;  // Base case: anything^0 = 1
+    
+    return base * power(base, exp - 1);  // base * base^(exp-1)
+}
+
+// Usage:
+cout << power(2, 5);  // Output: 32
+cout << power(3, 4);  // Output: 81</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty medium">Medium</span>
+                        <h4>4. Reverse Number</h4>
+                    </div>
+                    <p>Reverse the digits of a number using recursion.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">int reverseHelper(int n, int result = 0) {
+    if (n == 0) return result;  // Base case: no more digits
+    
+    return reverseHelper(n / 10, result * 10 + n % 10);
+}
+
+int reverse(int n) {
+    return reverseHelper(n);
+}
+
+// Usage:
+cout << reverse(1234);  // Output: 4321
+cout << reverse(567);   // Output: 765</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty medium">Medium</span>
+                        <h4>5. Palindrome Check</h4>
+                    </div>
+                    <p>Check if a string is a palindrome using recursion.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">#include &lt;string&gt;
+bool isPalindrome(string str, int start = 0, int end = -1) {
+    if (end == -1) end = str.length() - 1;  // Initialize end
+    
+    if (start >= end) return true;  // Base case: met in middle
+    
+    if (str[start] != str[end]) return false;  // Mismatch
+    
+    return isPalindrome(str, start + 1, end - 1);  // Check inner
+}
+
+// Usage:
+cout << isPalindrome("radar");   // Output: 1 (true)
+cout << isPalindrome("hello");   // Output: 0 (false)</code></pre>
+                    </details>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-header">
+                        <span class="difficulty hard">Hard</span>
+                        <h4>6. Find Maximum in Array</h4>
+                    </div>
+                    <p>Find the maximum element in an array using recursion.</p>
+                    <details>
+                        <summary>Show Solution</summary>
+                        <pre><code class="language-cpp">int findMax(int arr[], int size) {
+    if (size == 1) return arr[0];  // Base case: single element
+    
+    int maxOfRest = findMax(arr + 1, size - 1);  // Max of remaining
+    
+    return (arr[0] > maxOfRest) ? arr[0] : maxOfRest;  // Compare
+}
+
+// Alternative using index:
+int findMaxIndex(int arr[], int n, int index = 0) {
+    if (index == n - 1) return arr[index];  // Last element
+    
+    int maxOfRest = findMaxIndex(arr, n, index + 1);
+    return (arr[index] > maxOfRest) ? arr[index] : maxOfRest;
+}
+
+// Usage:
+int arr[] = {3, 7, 1, 9, 2};
+cout << findMax(arr, 5);  // Output: 9</code></pre>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Takeaways -->
+        <section id="takeaways" class="section">
+            <div class="section-header">
+                <span class="section-number">🎓</span>
+                <h2>Key Takeaways</h2>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏗️</div>
+                    <h4>Always Have a Base Case</h4>
+                    <p>Every recursive function needs a clear stopping condition. This is your "exit door" from the recursion.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📉</div>
+                    <h4>Always Move Toward Base Case</h4>
+                    <p>Each recursive call must get closer to the base case. Make the problem smaller every time.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h4>Trust the Recursion</h4>
+                    <p>Don't try to trace every step mentally. Focus on one level: base case + recursive case.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Start Simple</h4>
+                    <p>Begin with easy problems like countdown or factorial. Build your recursive thinking gradually.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛠️</div>
+                    <h4>Recursion is a Tool</h4>
+                    <p>Use it when it makes the solution clearer, not just because you can. Sometimes loops are better.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h4>Understand the Cost</h4>
+                    <p>Recursion has overhead. It's great for clarity and correctness, optimize for performance later if needed.</p>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <h3>🧠 Recursive Thinking Process</h3>
+                <div class="method-card">
+                    <div class="method-header">
+                        <span class="method-number">✨</span>
+                        <h4>The Recursive Mindset</h4>
+                    </div>
+                    <div class="operations-grid">
+                        <div class="operation-card">
+                            <h4>1. 🤔 Identify the Pattern</h4>
+                            <p>Ask: "Can I express this problem in terms of a smaller version of itself?"</p>
+                        </div>
+                        <div class="operation-card">
+                            <h4>2. 🏁 Find the Base Case</h4>
+                            <p>Ask: "What's the simplest version I can solve directly?"</p>
+                        </div>
+                        <div class="operation-card">
+                            <h4>3. 🔗 Connect the Pieces</h4>
+                            <p>Ask: "How do I combine my work with the recursive result?"</p>
+                        </div>
+                        <div class="operation-card">
+                            <h4>4. 🎯 Trust & Test</h4>
+                            <p>Trust your recursion will work, then test with small inputs!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>🚀 What's Next?</h3>
+                <p>Now that you've mastered basic recursion, you're ready for:</p>
+                <ul>
+                    <li><strong>Tree algorithms:</strong> Binary trees, tree traversals</li>
+                    <li><strong>Advanced recursion:</strong> Backtracking, dynamic programming</li>
+                    <li><strong>Divide and conquer:</strong> Merge sort, quick sort</li>
+                    <li><strong>Graph algorithms:</strong> DFS, pathfinding</li>
+                </ul>
+                <p>The recursive thinking you've learned here is the foundation for all of these!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>C++ Recursion Masterclass</h3>
+                <p>Master recursive thinking and problem-solving with interactive examples and step-by-step guidance.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#introduction">What is Recursion?</a></li>
+                    <li><a href="#pillars">Two Pillars</a></li>
+                    <li><a href="#demo-problems">Demo Problems</a></li>
+                    <li><a href="#practice">Practice</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://cplusplus.com/doc/tutorial/" target="_blank">C++ Tutorial</a></li>
+                    <li><a href="https://en.cppreference.com/w/" target="_blank">CPP Reference</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kafr Elsheikh Club. Built with ❤️ for recursive learners.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script>
+        // Update navigation links dynamically
+        const HOME_PAGE_URL = '../index.html';
+        document.addEventListener('DOMContentLoaded', function() {
+            const homeLink = document.querySelector('header a[href*="index.html"]');
+            if (homeLink) {
+                homeLink.href = HOME_PAGE_URL;
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
