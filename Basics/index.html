@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Basics - Interactive Learning Guide</title>
+    <meta name="description"
+        content="Learn C++ fundamentals: I/O operations, variables, data types, operators, and type casting. Interactive ACPC training guide.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header
+        style="position: fixed; top: 0; left: 0; right: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #334155; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px;">
+        <a href="../index.html"
+            style="color: #818cf8; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 8px; background: rgba(129, 140, 248, 0.1);">
+            <span>←</span> Home
+        </a>
+        <div style="text-align: center; flex: 1;">
+            <h1
+                style="font-size: 1.5rem; margin: 0; background: linear-gradient(90deg, #818cf8, #a5b4fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                🚀 C++ Basics Hub</h1>
+            <p style="font-size: 0.875rem; color: #94a3b8; margin: 0;">Kafr Elsheikh Club - Your First Steps in C++</p>
+        </div>
+        <div style="width: 120px;"></div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar" style="margin-top: 70px;">
+        <div class="nav-container">
+            <div class="nav-brand" style="display: none;">
+                <span class="brand-icon">📚</span>
+                <span class="brand-text">C++ Basics</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#welcome" class="nav-link">Welcome</a></li>
+                <li><a href="#io" class="nav-link">Input & Output</a></li>
+                <li><a href="#datatypes" class="nav-link">Data Types</a></li>
+                <li><a href="#operators" class="nav-link">Operators</a></li>
+                <li><a href="#typecasting" class="nav-link">Type Casting</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="margin-top: 70px;">
+        <div class="hero-content">
+            <h1 class="hero-title">C++ Basics</h1>
+            <p class="hero-subtitle">Your First Steps into Programming & Competitive Coding</p>
+            <a href="#welcome" class="cta-button">Start Learning →</a>
+        </div>
+        <div class="hero-animation">
+            <div class="hero-code-visual" id="heroAnimation"></div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- ================================== -->
+        <!-- Section 01: Welcome to C++         -->
+        <!-- ================================== -->
+        <section id="welcome" class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Welcome to C++</h2>
+            </div>
+            <div class="content-grid">
+                <div class="text-content">
+                    <p class="lead"><strong>C++</strong> is one of the most powerful and widely used programming
+                        languages. It's the #1 choice for competitive programming because of its speed and rich standard
+                        library.</p>
+
+                    <div class="info-box">
+                        <h3>Why C++ for Competitive Programming?</h3>
+                        <ul>
+                            <li><strong>Speed:</strong> C++ is one of the fastest languages — critical for time limits
+                            </li>
+                            <li><strong>STL:</strong> Built-in data structures & algorithms (sort, search, etc.)</li>
+                            <li><strong>Control:</strong> Direct memory access and low-level operations</li>
+                            <li><strong>Widely Used:</strong> Most competitive programmers use C++</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box" style="border-left-color: var(--success);">
+                        <h3 style="color: var(--success);">Program Structure</h3>
+                        <ul>
+                            <li><code>#include &lt;iostream&gt;</code> — Import input/output library</li>
+                            <li><code>using namespace std;</code> — Use standard namespace</li>
+                            <li><code>int main() { }</code> — Entry point of every program</li>
+                            <li><code>return 0;</code> — Program finished successfully</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // This is your first C++ program!
+    cout &lt;&lt; "Hello, World!" &lt;&lt; endl;
+    
+    return 0;  // Program completed successfully
+}
+
+// Output: Hello, World!</code></pre>
+                </div>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h4>Lightning Fast</h4>
+                    <p>C++ compiles to machine code, making it extremely fast</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📚</div>
+                    <h4>Rich STL</h4>
+                    <p>Standard Template Library with ready-made algorithms</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏆</div>
+                    <h4>Contest Ready</h4>
+                    <p>The dominant language in ICPC, Codeforces, and AtCoder</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Precise Control</h4>
+                    <p>Full control over memory and performance optimization</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Setting Up:</strong> You can use <strong>CLion</strong>, <strong>VS Code</strong>, or
+                <strong>Code::Blocks</strong> as your IDE. For quick testing, try online judges like <a
+                    href="https://codeforces.com" target="_blank" style="color: var(--primary-light);">Codeforces</a> or
+                <a href="https://ideone.com" target="_blank" style="color: var(--primary-light);">Ideone</a>.
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- Section 02: Input & Output         -->
+        <!-- ================================== -->
+        <section id="io" class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Input &amp; Output (I/O)</h2>
+            </div>
+            <div class="content-grid">
+                <div class="text-content">
+                    <p class="lead">Every program needs to communicate with the user. In C++, we use <code>cout</code>
+                        to display output and <code>cin</code> to read input.</p>
+
+                    <div class="info-box">
+                        <h3>Output with <code>cout</code></h3>
+                        <ul>
+                            <li><code>cout &lt;&lt; "text";</code> — Print text to the screen</li>
+                            <li><code>cout &lt;&lt; variable;</code> — Print a variable's value</li>
+                            <li><code>cout &lt;&lt; endl;</code> — Move to a new line</li>
+                            <li><code>cout &lt;&lt; "\n";</code> — Also a new line (faster!)</li>
+                            <li>Chain with <code>&lt;&lt;</code>:
+                                <code>cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box" style="border-left-color: var(--secondary);">
+                        <h3 style="color: var(--secondary);">Input with <code>cin</code></h3>
+                        <ul>
+                            <li><code>cin &gt;&gt; variable;</code> — Read value from keyboard</li>
+                            <li><code>cin &gt;&gt; a &gt;&gt; b;</code> — Read multiple values</li>
+                            <li>Automatically skips whitespace between values</li>
+                            <li>Stops reading at whitespace (space, tab, newline)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Output examples
+    cout &lt;&lt; "Hello!" &lt;&lt; endl;       // with endl
+    cout &lt;&lt; "World!" &lt;&lt; "\n";       // with \n (faster)
+    cout &lt;&lt; "A" &lt;&lt; " " &lt;&lt; "B" &lt;&lt; endl; // chaining
+    
+    // Input examples
+    int age;
+    string name;
+    
+    cout &lt;&lt; "Enter your name: ";
+    cin &gt;&gt; name;
+    
+    cout &lt;&lt; "Enter your age: ";
+    cin &gt;&gt; age;
+    
+    cout &lt;&lt; name &lt;&lt; " is " &lt;&lt; age 
+         &lt;&lt; " years old!" &lt;&lt; endl;
+    
+    return 0;
+}
+
+/* Sample Run:
+Enter your name: Ahmed
+Enter your age: 20
+Ahmed is 20 years old!
+*/</code></pre>
+                </div>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-box"
+                    style="border-color: rgba(129, 140, 248, 0.5); background-color: rgba(129, 140, 248, 0.1);">
+                    <h3 style="color: var(--primary); border-color: rgba(129, 140, 248, 0.3);">📤 endl vs \n</h3>
+                    <pre><code class="language-cpp">// endl: flushes the output buffer (slower)
+cout &lt;&lt; "Hello" &lt;&lt; endl;
+
+// \n: just a newline character (faster)
+cout &lt;&lt; "Hello\n";
+
+// In CP, prefer \n for speed!</code></pre>
+                </div>
+                <div class="comparison-box"
+                    style="border-color: rgba(52, 211, 153, 0.5); background-color: rgba(52, 211, 153, 0.1);">
+                    <h3 style="color: var(--success); border-color: rgba(52, 211, 153, 0.3);">📥 Reading Multiple Values
+                    </h3>
+                    <pre><code class="language-cpp">int a, b, c;
+
+// Read all three at once
+cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+
+// User can type: 10 20 30
+// or press Enter between each</code></pre>
+                </div>
+            </div>
+
+            <!-- Interactive I/O Demo -->
+            <div class="interactive-demo">
+                <h3>🎮 Interactive I/O Demo</h3>
+                <div id="ioDemo" class="demo-container"></div>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- Section 03: Variables & Data Types -->
+        <!-- ================================== -->
+        <section id="datatypes" class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Variables &amp; Data Types</h2>
+            </div>
+            <div class="content-grid">
+                <div class="text-content">
+                    <p class="lead">A <strong>variable</strong> is a named container that stores data in memory. Every
+                        variable has a <strong>data type</strong> that determines what kind of data it can hold and how
+                        much memory it uses.</p>
+
+                    <div class="info-box">
+                        <h3>Variable Declaration</h3>
+                        <ul>
+                            <li><code>type name = value;</code> — Declare and initialize</li>
+                            <li><code>type name;</code> — Declare only (may have garbage value)</li>
+                            <li>Names must start with a letter or underscore</li>
+                            <li>Names are <strong>case-sensitive</strong> (<code>age</code> ≠ <code>Age</code>)</li>
+                            <li>Use meaningful names: <code>totalScore</code> not <code>ts</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="warning-box">
+                        <strong>⚠️ Common Rule:</strong> Always initialize your variables! Uninitialized variables
+                        contain <strong>garbage values</strong> — random leftover data from memory.
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Integer types
+    int age = 20;
+    long long population = 8000000000LL;
+    
+    // Decimal types
+    double pi = 3.14159265;
+    float temp = 36.6f;
+    
+    // Character & Boolean
+    char grade = 'A';
+    bool isPassed = true;
+    
+    // String
+    string name = "Ahmed";
+    
+    // Display all
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "Grade: " &lt;&lt; grade &lt;&lt; endl;
+    cout &lt;&lt; "Pi: " &lt;&lt; pi &lt;&lt; endl;
+    cout &lt;&lt; "Passed: " &lt;&lt; isPassed &lt;&lt; endl;
+    
+    return 0;
+}
+
+/* Output:
+Name: Ahmed
+Age: 20
+Grade: A
+Pi: 3.14159
+Passed: 1
+*/</code></pre>
+                </div>
+            </div>
+
+            <!-- Interactive Data Types Demo -->
+            <div class="interactive-demo">
+                <h3>🎮 Data Types at a Glance</h3>
+                <div id="typesDemo" class="demo-container"></div>
+            </div>
+
+            <div class="example-section">
+                <h3>📝 Declaration Examples</h3>
+                <div class="methods-container">
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-number">1</span>
+                            <h4>Integer Types</h4>
+                        </div>
+                        <pre><code class="language-cpp">int x = 42;                   // Most common integer
+int negative = -100;          // Negative values
+long long big = 1e18;         // Very large numbers
+// int range: about ±2 billion
+// long long range: about ±9.2 × 10^18</code></pre>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-number">2</span>
+                            <h4>Decimal Types</h4>
+                        </div>
+                        <pre><code class="language-cpp">double price = 19.99;         // Most common decimal
+float weight = 72.5f;         // Less precise decimal
+// double: ~15 digits of precision
+// float:  ~7 digits of precision
+// In CP, always prefer double over float!</code></pre>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-number">3</span>
+                            <h4>Character, Boolean & String</h4>
+                        </div>
+                        <pre><code class="language-cpp">char letter = 'A';            // Single character (single quotes)
+char digit = '9';             // Character '9' (ASCII 57)
+bool isReady = true;          // true = 1, false = 0
+string greeting = "Hello!";   // Text (double quotes, needs &lt;string&gt;)
+
+// char uses ASCII values: 'A' = 65, 'a' = 97, '0' = 48</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="challenge-box">
+                <h3>🏆 Quick Challenge</h3>
+                <p>Declare variables for: a student's name, age, GPA (with decimals), and whether they passed
+                    (true/false). Then print them all.</p>
+                <details>
+                    <summary>Click to see solution</summary>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    string name = "Sara";
+    int age = 19;
+    double gpa = 3.75;
+    bool passed = true;
+    
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "Age: " &lt;&lt; age &lt;&lt; endl;
+    cout &lt;&lt; "GPA: " &lt;&lt; gpa &lt;&lt; endl;
+    cout &lt;&lt; "Passed: " &lt;&lt; (passed ? "Yes" : "No") &lt;&lt; endl;
+    
+    return 0;
+}
+
+/* Output:
+Name: Sara
+Age: 19
+GPA: 3.75
+Passed: Yes
+*/</code></pre>
+                </details>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- Section 04: Operators              -->
+        <!-- ================================== -->
+        <section id="operators" class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Operators</h2>
+            </div>
+            <div class="text-content" style="margin-bottom: 2rem;">
+                <p class="lead">Operators are symbols that tell the compiler to perform specific operations. C++
+                    supports arithmetic, comparison, logical, and assignment operators.</p>
+            </div>
+
+            <!-- Arithmetic Operators -->
+            <h3 style="color: var(--primary); margin-bottom: 1rem;">🔢 Arithmetic Operators</h3>
+            <div class="operators-grid" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));">
+                <div class="operator-card">
+                    <div class="op-symbol">+</div>
+                    <div class="op-name">Addition</div>
+                    <div class="op-example">7 + 3 = 10</div>
+                </div>
+                <div class="operator-card">
+                    <div class="op-symbol">-</div>
+                    <div class="op-name">Subtraction</div>
+                    <div class="op-example">7 - 3 = 4</div>
+                </div>
+                <div class="operator-card">
+                    <div class="op-symbol">*</div>
+                    <div class="op-name">Multiplication</div>
+                    <div class="op-example">7 * 3 = 21</div>
+                </div>
+                <div class="operator-card">
+                    <div class="op-symbol">/</div>
+                    <div class="op-name">Division</div>
+                    <div class="op-example">7 / 3 = 2 (int!)</div>
+                </div>
+                <div class="operator-card">
+                    <div class="op-symbol">%</div>
+                    <div class="op-name">Modulus</div>
+                    <div class="op-example">7 % 3 = 1</div>
+                </div>
+            </div>
+
+            <div class="content-grid" style="margin-top: 2rem;">
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — Arithmetic</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a = 17, b = 5;
+    
+    cout &lt;&lt; "a + b = " &lt;&lt; a + b &lt;&lt; endl;  // 22
+    cout &lt;&lt; "a - b = " &lt;&lt; a - b &lt;&lt; endl;  // 12
+    cout &lt;&lt; "a * b = " &lt;&lt; a * b &lt;&lt; endl;  // 85
+    cout &lt;&lt; "a / b = " &lt;&lt; a / b &lt;&lt; endl;  // 3 (integer!)
+    cout &lt;&lt; "a % b = " &lt;&lt; a % b &lt;&lt; endl;  // 2 (remainder)
+    
+    return 0;
+}</code></pre>
+                </div>
+                <div class="text-content">
+                    <div class="warning-box">
+                        <strong>⚠️ Integer Division:</strong> When you divide two <code>int</code> values, the result is
+                        also an <code>int</code>! The decimal part is <strong>truncated</strong> (cut off), not rounded.
+                        <br><br>
+                        <code>7 / 2 = 3</code> (not 3.5!)<br>
+                        <code>1 / 3 = 0</code> (not 0.333!)<br>
+                        <br>
+                        To get decimal results, cast to <code>double</code> first.
+                    </div>
+                    <div class="tip-box">
+                        <strong>💡 Modulus Tip:</strong> The <code>%</code> operator gives the
+                        <strong>remainder</strong> of division. Very useful for:
+                        <ul style="margin-top: 0.5rem; list-style-position: inside; color: var(--text-secondary);">
+                            <li>Checking even/odd: <code>n % 2 == 0</code></li>
+                            <li>Getting last digit: <code>n % 10</code></li>
+                            <li>Wrapping around: <code>i % arraySize</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison & Logical Operators -->
+            <h3 style="color: var(--secondary); margin: 2rem 0 1rem;">⚖️ Comparison & Logical Operators</h3>
+            <div class="content-grid">
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — Comparison</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int x = 10, y = 20;
+    
+    // Comparison operators (return true/false)
+    cout &lt;&lt; (x == y) &lt;&lt; endl;  // 0 (false)
+    cout &lt;&lt; (x != y) &lt;&lt; endl;  // 1 (true)
+    cout &lt;&lt; (x &lt; y)  &lt;&lt; endl;  // 1 (true)
+    cout &lt;&lt; (x &gt; y)  &lt;&lt; endl;  // 0 (false)
+    cout &lt;&lt; (x &lt;= y) &lt;&lt; endl;  // 1 (true)
+    cout &lt;&lt; (x &gt;= y) &lt;&lt; endl;  // 0 (false)
+    
+    return 0;
+}</code></pre>
+                </div>
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — Logical</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int age = 20;
+    double gpa = 3.5;
+    
+    // AND: both conditions must be true
+    bool eligible = (age &gt;= 18) &amp;&amp; (gpa &gt;= 3.0);
+    cout &lt;&lt; "Eligible: " &lt;&lt; eligible &lt;&lt; endl; // 1
+    
+    // OR: at least one must be true
+    bool bonus = (gpa &gt;= 3.8) || (age &lt; 19);
+    cout &lt;&lt; "Bonus: " &lt;&lt; bonus &lt;&lt; endl;     // 0
+    
+    // NOT: flips true ↔ false
+    bool notEligible = !eligible;
+    cout &lt;&lt; "Not: " &lt;&lt; notEligible &lt;&lt; endl;  // 0
+    
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Assignment Operators -->
+            <h3 style="color: var(--accent); margin: 2rem 0 1rem;">✏️ Assignment Operators</h3>
+            <div class="code-content" style="max-width: 700px;">
+                <div class="code-header">
+                    <span class="code-language">C++ — Assignment Shortcuts</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code class="language-cpp">int x = 10;
+
+x += 5;   // x = x + 5  → x = 15
+x -= 3;   // x = x - 3  → x = 12
+x *= 2;   // x = x * 2  → x = 24
+x /= 4;   // x = x / 4  → x = 6
+x %= 4;   // x = x % 4  → x = 2
+
+// Increment & Decrement
+x++;      // x = x + 1  → x = 3
+x--;      // x = x - 1  → x = 2</code></pre>
+            </div>
+
+            <!-- Interactive Operator Demo -->
+            <div class="interactive-demo">
+                <h3>🎮 Operator Calculator</h3>
+                <div id="operatorDemo" class="demo-container"></div>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- Section 05: Type Casting           -->
+        <!-- ================================== -->
+        <section id="typecasting" class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Type Casting &amp; Precision</h2>
+            </div>
+            <div class="content-grid">
+                <div class="text-content">
+                    <p class="lead"><strong>Type casting</strong> is converting a value from one data type to another.
+                        This is crucial in competitive programming to avoid bugs like integer division errors and
+                        overflow.</p>
+
+                    <div class="info-box">
+                        <h3>Two Types of Casting</h3>
+                        <ul>
+                            <li><strong>Implicit (Automatic):</strong> Compiler does it for you when safe (int → double)
+                            </li>
+                            <li><strong>Explicit (Manual):</strong> You force it with <code>(type)value</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box" style="border-left-color: var(--secondary);">
+                        <h3 style="color: var(--secondary);">Precision with <code>fixed</code> &
+                            <code>setprecision</code></h3>
+                        <ul>
+                            <li><code>#include &lt;iomanip&gt;</code> — Required header</li>
+                            <li><code>fixed</code> — Use fixed-point notation</li>
+                            <li><code>setprecision(n)</code> — Show n decimal places</li>
+                            <li>Combine: <code>cout &lt;&lt; fixed &lt;&lt; setprecision(2);</code></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;  // for setprecision
+using namespace std;
+
+int main() {
+    // Integer division problem
+    int a = 7, b = 2;
+    cout &lt;&lt; "int:    " &lt;&lt; a / b &lt;&lt; endl;      // 3 ❌
+    cout &lt;&lt; "double: " &lt;&lt; (double)a / b &lt;&lt; endl; // 3.5 ✅
+    
+    // Implicit casting (automatic)
+    int x = 10;
+    double y = x;   // int → double (safe)
+    cout &lt;&lt; "y = " &lt;&lt; y &lt;&lt; endl;  // 10.0
+    
+    // Explicit casting
+    double pi = 3.14159;
+    int truncated = (int)pi;  // Cuts decimal
+    cout &lt;&lt; "truncated = " &lt;&lt; truncated &lt;&lt; endl; // 3
+    
+    // Precision control
+    double price = 19.999;
+    cout &lt;&lt; fixed &lt;&lt; setprecision(2);
+    cout &lt;&lt; "Price: $" &lt;&lt; price &lt;&lt; endl; // $20.00
+    
+    cout &lt;&lt; fixed &lt;&lt; setprecision(4);
+    cout &lt;&lt; "Pi: " &lt;&lt; 3.14159265 &lt;&lt; endl; // 3.1416
+    
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Explicit Casting Methods -->
+            <div class="example-section">
+                <h3>🔧 Explicit Casting Methods</h3>
+                <div class="methods-container">
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-number">1</span>
+                            <h4>C-Style Cast — <code>(type)value</code></h4>
+                        </div>
+                        <pre><code class="language-cpp">int a = 7, b = 2;
+double result = (double)a / b;     // 3.5 ✅
+
+double pi = 3.14159;
+int truncated = (int)pi;           // 3 (cuts decimal)
+
+char ch = (char)65;                // 'A' (ASCII)
+int ascii = (int)'A';             // 65</code></pre>
+                        <div class="tip-box" style="margin-top: 0.75rem;">
+                            <strong>💡 Most common in CP!</strong> Simple and quick. Use this in contests.
+                        </div>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-number">2</span>
+                            <h4>C++ Style Cast — <code>static_cast&lt;type&gt;(value)</code></h4>
+                        </div>
+                        <pre><code class="language-cpp">int a = 7, b = 2;
+double result = static_cast&lt;double&gt;(a) / b;  // 3.5
+
+double pi = 3.14159;
+int truncated = static_cast&lt;int&gt;(pi);         // 3
+
+// Safer and more readable than C-style
+// Compiler checks for valid conversions</code></pre>
+                        <div class="warning-box" style="margin-top: 0.75rem;">
+                            <strong>⚠️ Note:</strong> <code>static_cast</code> is the "proper" C++ way. More verbose but
+                            safer. Both work in CP.
+                        </div>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-number">3</span>
+                            <h4>String → Number — <code>stoi</code>, <code>stod</code>, <code>stoll</code></h4>
+                        </div>
+                        <pre><code class="language-cpp">#include &lt;string&gt;   // Required
+using namespace std;
+
+string s1 = "42";
+string s2 = "3.14";
+string s3 = "1000000000000";
+
+int    num1 = stoi(s1);     // "42"   → 42       (string to int)
+double num2 = stod(s2);     // "3.14" → 3.14     (string to double)
+float  num3 = stof(s2);     // "3.14" → 3.14f    (string to float)
+long long num4 = stoll(s3); // → 1000000000000LL  (string to long long)
+
+// ⚠️ Throws exception if string is not a valid number!</code></pre>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-number">4</span>
+                            <h4>Number → String — <code>to_string()</code></h4>
+                        </div>
+                        <pre><code class="language-cpp">#include &lt;string&gt;
+using namespace std;
+
+int x = 42;
+double pi = 3.14;
+long long big = 1000000000000LL;
+
+string s1 = to_string(x);     // "42"
+string s2 = to_string(pi);    // "3.140000" (default 6 decimals)
+string s3 = to_string(big);   // "1000000000000"
+
+// Useful for concatenating numbers with strings
+string msg = "Score: " + to_string(95);  // "Score: 95"</code></pre>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-header">
+                            <span class="method-number">5</span>
+                            <h4>Char ↔ Int — ASCII Tricks</h4>
+                        </div>
+                        <pre><code class="language-cpp">// char is actually a small integer (ASCII value)
+char ch = 'A';
+int ascii = ch;          // 65 (implicit)
+int ascii2 = (int)ch;    // 65 (explicit)
+
+// Convert digit char to actual number
+char digitChar = '7';
+int digit = digitChar - '0';   // '7' - '0' = 55 - 48 = 7 ✅
+
+// Convert number to digit char
+int num = 5;
+char numChar = num + '0';      // 5 + 48 = 53 = '5' ✅
+
+// Convert lowercase ↔ uppercase
+char lower = 'a';
+char upper = lower - 32;       // 'a' - 32 = 'A'
+char upper2 = lower - 'a' + 'A';  // More readable ✅</code></pre>
+                        <div class="tip-box" style="margin-top: 0.75rem;">
+                            <strong>💡 CP Essential!</strong> The <code>char - '0'</code> trick is used in almost every
+                            competitive programming problem involving digits!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overflow Section -->
+            <div class="example-section">
+                <h3>💥 Overflow — The Silent Bug</h3>
+                <div class="content-grid">
+                    <div class="code-content">
+                        <div class="code-header">
+                            <span class="code-language">C++ — Overflow Example</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // int max: ~2.1 billion
+    int a = 1000000;        // 10^6
+    int bad = a * a;        // 10^12 → OVERFLOW! 💥
+    cout &lt;&lt; "Bad: " &lt;&lt; bad &lt;&lt; endl;  // Garbage!
+    
+    // Solution: use long long
+    long long good = (long long)a * a;
+    cout &lt;&lt; "Good: " &lt;&lt; good &lt;&lt; endl; // 1000000000000 ✅
+    
+    // Or declare as long long from start
+    long long b = 1000000LL;
+    long long result = b * b;  // Safe!
+    
+    return 0;
+}</code></pre>
+                    </div>
+                    <div class="text-content">
+                        <div class="formula-box">
+                            <h4>When to Use <code>long long</code>?</h4>
+                            <p style="color: var(--text-secondary); margin-top: 0.5rem;">If the result can exceed
+                                <strong>2 × 10⁹</strong>, use <code>long long</code>!</p>
+                            <div style="margin-top: 1rem; text-align: left; padding: 0 1rem;">
+                                <div style="margin-bottom: 0.5rem;"><code>int</code> max: <strong
+                                        style="color: var(--primary-light);">~2.1 × 10⁹</strong></div>
+                                <div><code>long long</code> max: <strong style="color: var(--success);">~9.2 ×
+                                        10¹⁸</strong></div>
+                            </div>
+                        </div>
+                        <div class="tip-box">
+                            <strong>💡 CP Rule of Thumb:</strong>
+                            <ul style="margin-top: 0.5rem; list-style-position: inside; color: var(--text-secondary);">
+                                <li>Read the constraints in the problem</li>
+                                <li>If n ≤ 10⁹ → result might be 10¹⁸ → use <code>long long</code></li>
+                                <li>When in doubt, use <code>long long</code></li>
+                                <li>Add <code>LL</code> suffix: <code>1000000000LL</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Type Casting Demo -->
+            <div class="interactive-demo">
+                <h3>🎮 Type Casting — Common Mistakes vs Correct Solutions</h3>
+                <div id="castingDemo" class="demo-container"></div>
+            </div>
+
+            <div class="challenge-box">
+                <h3>🏆 Challenge: Fix the Code</h3>
+                <p>This code has bugs. Can you fix them to get the correct output?</p>
+                <pre><code class="language-cpp">// BUGGY CODE — Fix me!
+int total = 100;
+int count = 3;
+int average = total / count;   // Bug 1: Should be double
+cout &lt;&lt; "Average: " &lt;&lt; average &lt;&lt; endl;  // Prints 33 instead of 33.33
+
+int x = 100000;
+int squared = x * x;          // Bug 2: Overflow!
+cout &lt;&lt; "Squared: " &lt;&lt; squared &lt;&lt; endl;</code></pre>
+                <details>
+                    <summary>Click to see solution</summary>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+int main() {
+    // Fix 1: Use double for average
+    int total = 100;
+    int count = 3;
+    double average = (double)total / count;  // Cast to double!
+    cout &lt;&lt; fixed &lt;&lt; setprecision(2);
+    cout &lt;&lt; "Average: " &lt;&lt; average &lt;&lt; endl;  // 33.33 ✅
+    
+    // Fix 2: Use long long for large multiplication
+    long long x = 100000LL;
+    long long squared = x * x;  // No overflow!
+    cout &lt;&lt; "Squared: " &lt;&lt; squared &lt;&lt; endl;  // 10000000000 ✅
+    
+    return 0;
+}</code></pre>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>🚀 C++ Basics</h4>
+                <ul>
+                    <li><a href="#welcome">Welcome to C++</a></li>
+                    <li><a href="#io">Input & Output</a></li>
+                    <li><a href="#datatypes">Variables & Data Types</a></li>
+                    <li><a href="#operators">Operators</a></li>
+                    <li><a href="#typecasting">Type Casting & Precision</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>📚 Resources</h4>
+                <ul>
+                    <li><a href="https://cplusplus.com/doc/tutorial/" target="_blank">C++ Tutorial</a></li>
+                    <li><a href="https://codeforces.com" target="_blank">Codeforces</a></li>
+                    <li><a href="https://cppreference.com" target="_blank">C++ Reference</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>🎯 Next Steps</h4>
+                <ul>
+                    <li><a href="../Array/index.html">Arrays</a></li>
+                    <li><a href="../Strings/index.html">Strings</a></li>
+                    <li><a href="../Functions/index.html">Functions</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ACPC Training Community | Kafr Elsheikh University</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
