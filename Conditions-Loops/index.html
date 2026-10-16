@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions & Loops Masterclass - ACPC Training Community</title>
+    <meta name="description"
+        content="Learn C++ conditional statements, loops, problem-solving patterns, digit manipulation, nested loops, and complexity for competitive programming. ACPC Level 0.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Fixed Site Header -->
+    <header class="site-header">
+        <a href="../index.html" class="home-link">
+            <span>←</span> Home
+        </a>
+        <div class="header-center">
+            <h1>🔀 Conditions & Loops Masterclass</h1>
+            <p>ACPC Training Community — Kafr Elsheikh University | Level 0</p>
+        </div>
+        <div class="header-right">
+            <span class="badge-level">Track: Level 0</span>
+        </div>
+    </header>
+
+    <!-- Sticky Navigation Menu -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link active">Overview</a></li>
+                <li><a href="#part1-conditions" class="nav-link">Part 1: Conditions</a></li>
+                <li><a href="#conditional-statements" class="nav-link">1. If-Else</a></li>
+                <li><a href="#ternary-operator" class="nav-link">2. Ternary</a></li>
+                <li><a href="#switch-statement" class="nav-link">3. Switch</a></li>
+                <li><a href="#condition-problems" class="nav-link">4. Condition Solving</a></li>
+                <li><a href="#part2-loops" class="nav-link">Part 2: Loops</a></li>
+                <li><a href="#for-loop" class="nav-link">6. For Loop</a></li>
+                <li><a href="#while-loop" class="nav-link">7. While Loop</a></li>
+                <li><a href="#loop-control" class="nav-link">8. Break & Continue</a></li>
+                <li><a href="#part3-patterns" class="nav-link">Part 3: CP Patterns</a></li>
+                <li><a href="#digit-manipulation" class="nav-link">12. Digits</a></li>
+                <li><a href="#nested-loops" class="nav-link">13. Nested Loops</a></li>
+                <li><a href="#part4-complexity" class="nav-link">Part 4: Complexity</a></li>
+                <li><a href="#part5-demos" class="nav-link">Part 5: Demos</a></li>
+                <li><a href="#practice" class="nav-link">Practice (Assiut & CF)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-pill">
+                    <span>⚡</span> ACPC Level 0 Core Curriculum
+                </div>
+                <h1 class="hero-title">
+                    Master <span class="gradient-text">Conditions & Loops</span> in C++
+                </h1>
+                <p class="hero-subtitle">
+                    Control execution flow, automate repetitive computations, solve digit & frequency problems, and build algorithmic thinking for competitive programming contests.
+                </p>
+                <div class="hero-actions">
+                    <a href="#conditional-statements" class="cta-button">
+                        <span>🚀</span> Start Learning Part 1
+                    </a>
+                    <a href="#part5-demos" class="secondary-button">
+                        <span>🎮</span> Interactive Demos
+                    </a>
+                    <a href="#practice" class="secondary-button">
+                        <span>🏆</span> Practice Problems
+                    </a>
+                </div>
+            </div>
+
+            <!-- Animated Execution Flow Card -->
+            <div class="hero-visual-card">
+                <div class="visual-header">
+                    <div class="window-dots">
+                        <span class="dot-red"></span>
+                        <span class="dot-yellow"></span>
+                        <span class="dot-green"></span>
+                    </div>
+                    <span class="visual-title">Flow Control Visualizer</span>
+                </div>
+                <div class="hero-loop-display">
+                    <div class="flow-step-item active">
+                        <span class="flow-icon">🏁</span>
+                        <span><strong>1. Initialize:</strong> <code>int i = 1;</code></span>
+                    </div>
+                    <div class="flow-step-item">
+                        <span class="flow-icon">⚖️</span>
+                        <span><strong>2. Condition Check:</strong> <code>if (i &lt;= N)</code></span>
+                    </div>
+                    <div class="flow-step-item">
+                        <span class="flow-icon">⚙️</span>
+                        <span><strong>3. Execute Code Body:</strong> <code>sum += i;</code></span>
+                    </div>
+                    <div class="flow-step-item">
+                        <span class="flow-icon">🔄</span>
+                        <span><strong>4. Update Step:</strong> <code>i++</code> &amp; Repeat</span>
+                    </div>
+                    <div class="flow-step-item">
+                        <span class="flow-icon">🛑</span>
+                        <span><strong>5. Terminate Loop:</strong> When condition is False</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="container">
+
+        <!-- ================================================================== -->
+        <!-- PART 1: CONDITIONS                                                 -->
+        <!-- ================================================================== -->
+        <div class="part-divider" id="part1-conditions">
+            <div class="part-divider-left">
+                <span class="part-badge">Part 1</span>
+                <div>
+                    <h2 class="part-title">Conditions &amp; Decision Making</h2>
+                    <p class="part-subtitle">Evaluate expressions, branch execution flow, and solve logic puzzles</p>
+                </div>
+            </div>
+            <span style="font-size: 2.2rem;">⚖️</span>
+        </div>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 1: Conditional Statements                                    -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="conditional-statements" class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Conditional Statements</h2>
+            </div>
+
+            <p class="lead">
+                In programming, computers make decisions using <strong>conditional statements</strong>. They evaluate Boolean expressions (<code class="language-cpp">true</code> or <code class="language-cpp">false</code>) to decide which block of code to run.
+            </p>
+
+            <div class="cards-grid-3">
+                <div class="feature-card">
+                    <div class="card-icon">1️⃣</div>
+                    <h3><code>if</code> Statement</h3>
+                    <p>Executes a block of code <em>only</em> when its condition evaluates to true.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">2️⃣</div>
+                    <h3><code>if-else</code> Statement</h3>
+                    <p>Provides two alternate pathways: one for true, and an alternate fallback for false.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">3️⃣</div>
+                    <h3><code>else if</code> Ladder</h3>
+                    <p>Tests multiple conditions sequentially until the first true condition is met.</p>
+                </div>
+            </div>
+
+            <!-- Code Example: If, Else If Ladder, Nested If -->
+            <div class="content-grid">
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — If-Else Ladder &amp; Curly Braces</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int score;
+    cin &gt;&gt; score;
+
+    // Else-If Ladder
+    if (score &gt;= 90) {
+        cout &lt;&lt; "Grade: A\n";
+    } else if (score &gt;= 80) {
+        cout &lt;&lt; "Grade: B\n";
+    } else if (score &gt;= 70) {
+        cout &lt;&lt; "Grade: C\n";
+    } else if (score &gt;= 60) {
+        cout &lt;&lt; "Grade: D\n";
+    } else {
+        cout &lt;&lt; "Grade: F (Failed)\n";
+    }
+
+    // Nested If statements
+    if (score &gt;= 60) {
+        if (score == 100) {
+            cout &lt;&lt; "Perfect score bonus! 🌟\n";
+        }
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="text-content">
+                    <div class="info-box">
+                        <h4>🔑 Curly Braces <code>{ }</code> &amp; Execution Flow</h4>
+                        <p>If you omit curly braces, only the <strong>single immediately following statement</strong> belongs to the <code class="language-cpp">if</code>. In competitive programming, <em>always use curly braces</em> or be extremely vigilant about indentation traps!</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ The "Dangling Else" Trap</h4>
+                        <p>An <code class="language-cpp">else</code> always pairs with the <strong>closest preceding unpaired <code>if</code></strong> within the same scope:</p>
+                        <pre><code class="language-cpp">// BAD: Visual indentation does NOT control grouping!
+if (x &gt; 0)
+    if (y &gt; 0) cout &lt;&lt; "Both positive\n";
+else 
+    cout &lt;&lt; "x is negative?"; // BUG! This else pairs with (y > 0)!</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Common Mistakes Box -->
+            <div class="comparison-container">
+                <div class="comparison-box bad">
+                    <h4>❌ Common Mistake: <code>=</code> instead of <code>==</code></h4>
+                    <p><code class="language-cpp">if (x = 5)</code> performs an <strong>assignment</strong>! The expression evaluates to 5 (truthy), so the branch will ALWAYS run!</p>
+                    <pre><code class="language-cpp">// WRONG:
+if (x = 5) {
+    cout &lt;&lt; "Always executes!";
+}</code></pre>
+                </div>
+                <div class="comparison-box good">
+                    <h4>✅ Correct Solution: Equality Comparison</h4>
+                    <p>Always use double equals <code class="language-cpp">==</code> for testing equality.</p>
+                    <pre><code class="language-cpp">// CORRECT:
+if (x == 5) {
+    cout &lt;&lt; "Executes only if x is 5";
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-box bad">
+                    <h4>❌ Semicolon Immediately After <code>if(...)</code></h4>
+                    <pre><code class="language-cpp">if (x &gt; 10); // &lt;-- Accidental empty statement!
+{
+    cout &lt;&lt; "This runs regardless of x!";
+}</code></pre>
+                </div>
+                <div class="comparison-box bad">
+                    <h4>❌ Chained Comparisons (Math Style)</h4>
+                    <pre><code class="language-cpp">// WRONG in C++:
+if (10 &lt; x &lt; 20) // Evaluates (10 &lt; x) to 0 or 1, then checks 0/1 &lt; 20!
+
+// CORRECT in C++:
+if (x &gt; 10 &amp;&amp; x &lt; 20) // Logical AND ✅</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 2: Ternary Operator                                          -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="ternary-operator" class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>The Ternary Operator</h2>
+            </div>
+
+            <p class="lead">
+                The ternary operator <code class="language-cpp">? :</code> is the only three-operand operator in C++. It provides a concise, inline way to choose between two values.
+            </p>
+
+            <div class="content-grid">
+                <div class="text-content">
+                    <div class="info-box">
+                        <h4>Syntax: <code>condition ? value_if_true : value_if_false</code></h4>
+                        <p>It acts like a value expression, allowing you to embed decisions directly into variable declarations, return statements, or <code class="language-cpp">cout</code> streams.</p>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>💡 Pro CP Usage: Outputting YES / NO</h4>
+                        <p>Instead of writing 5 lines of if-else, competitive programmers frequently write:</p>
+                        <pre><code class="language-cpp">cout &lt;&lt; (n % 2 == 0 ? "YES\n" : "NO\n");</code></pre>
+                        <p><strong>Note:</strong> Always wrap the ternary expression in parentheses when feeding it into <code class="language-cpp">cout &lt;&lt;</code> because <code class="language-cpp">&lt;&lt;</code> has higher operator precedence than <code class="language-cpp">?:</code>.</p>
+                    </div>
+                </div>
+
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — Ternary Operator Examples</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a = 15, b = 27;
+
+    // Finding maximum of two numbers
+    int maxVal = (a &gt; b) ? a : b;
+    cout &lt;&lt; "Max: " &lt;&lt; maxVal &lt;&lt; "\n";
+
+    // Direct output formatting
+    int n;
+    cin &gt;&gt; n;
+    cout &lt;&lt; (n % 2 == 0 ? "EVEN" : "ODD") &lt;&lt; "\n";
+
+    // Nested ternary (use sparingly for readability)
+    string status = (n &gt; 0) ? "Positive" : (n &lt; 0) ? "Negative" : "Zero";
+    cout &lt;&lt; status &lt;&lt; "\n";
+
+    return 0;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 3: Switch Statement                                          -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="switch-statement" class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>The <code>switch</code> Statement</h2>
+            </div>
+
+            <p class="lead">
+                The <code class="language-cpp">switch</code> statement is a multi-way branch statement that compares a single variable or integral expression against constant values called <code class="language-cpp">case</code> labels.
+            </p>
+
+            <div class="content-grid">
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — Simple Calculator with Switch</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+// Solves Assiut Sheet 1 - Problem C / Mathematical Expression
+int main() {
+    long long a, b;
+    char op;
+    cin &gt;&gt; a &gt;&gt; op &gt;&gt; b;
+
+    switch (op) {
+        case '+':
+            cout &lt;&lt; (a + b) &lt;&lt; "\n";
+            break; // Essential! Exits the switch
+        case '-':
+            cout &lt;&lt; (a - b) &lt;&lt; "\n";
+            break;
+        case '*':
+            cout &lt;&lt; (a * b) &lt;&lt; "\n";
+            break;
+        case '/':
+            if (b != 0) cout &lt;&lt; (a / b) &lt;&lt; "\n";
+            else cout &lt;&lt; "Error: Division by zero\n";
+            break;
+        default:
+            cout &lt;&lt; "Invalid Operator\n";
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="text-content">
+                    <div class="info-box">
+                        <h4>When to use <code>switch</code> vs <code>if-else</code>?</h4>
+                        <ul>
+                            <li>Use <strong><code>switch</code></strong> when testing a single integral variable (<code class="language-cpp">int</code>, <code class="language-cpp">char</code>, <code class="language-cpp">enum</code>) against discrete, constant values.</li>
+                            <li>Use <strong><code>if-else</code></strong> for range checks (<code class="language-cpp">x &gt;= 10 &amp;&amp; x &lt;= 50</code>), floating point values (<code class="language-cpp">float</code>, <code class="language-cpp">double</code>), strings, or complex compound conditions.</li>
+                        </ul>
+                    </div>
+
+                    <div class="danger-box">
+                        <h4>⚠️ The Fall-Through Bug (Missing <code>break</code>)</h4>
+                        <p>If you forget <code class="language-cpp">break;</code> at the end of a case, execution <em>falls through</em> and executes the subsequent cases even though their condition did not match!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 4: Condition-Based Problem Solving                           -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="condition-problems" class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Condition-Based Problem Solving</h2>
+            </div>
+
+            <p class="lead">
+                Every competitive programmer must master these foundational problem-solving building blocks:
+            </p>
+
+            <div class="cards-grid-3">
+                <div class="feature-card">
+                    <h4>1. Positive, Negative, or Zero</h4>
+                    <pre><code class="language-cpp">if (x &gt; 0) cout &lt;&lt; "POSITIVE";
+else if (x &lt; 0) cout &lt;&lt; "NEGATIVE";
+else cout &lt;&lt; "ZERO";</code></pre>
+                </div>
+
+                <div class="feature-card">
+                    <h4>2. Even or Odd</h4>
+                    <pre><code class="language-cpp">if (n % 2 == 0) 
+    cout &lt;&lt; "EVEN";
+else 
+    cout &lt;&lt; "ODD";</code></pre>
+                </div>
+
+                <div class="feature-card">
+                    <h4>3. Checking Divisibility</h4>
+                    <pre><code class="language-cpp">// Is A a multiple of B?
+if (a % b == 0 || b % a == 0)
+    cout &lt;&lt; "Multiples";
+else
+    cout &lt;&lt; "No Multiples";</code></pre>
+                </div>
+
+                <div class="feature-card">
+                    <h4>4. Max of 3 Numbers</h4>
+                    <pre><code class="language-cpp">int a, b, c;
+cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+int mx = max(a, max(b, c));
+int mn = min(a, min(b, c));</code></pre>
+                </div>
+
+                <div class="feature-card">
+                    <h4>5. In-Range Verification</h4>
+                    <pre><code class="language-cpp">// Belongs to [L, R] inclusive
+if (x &gt;= L &amp;&amp; x &lt;= R) {
+    cout &lt;&lt; "Inside Range";
+}</code></pre>
+                </div>
+
+                <div class="feature-card">
+                    <h4>6. Character Classification</h4>
+                    <pre><code class="language-cpp">if (ch &gt;= '0' &amp;&amp; ch &lt;= '9') cout &lt;&lt; "DIGIT";
+else if (ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z') cout &lt;&lt; "CAPITAL";
+else if (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z') cout &lt;&lt; "SMALL";</code></pre>
+                </div>
+            </div>
+
+            <!-- Challenge Box -->
+            <div class="challenge-box">
+                <h3>🏆 Challenge 1: Codeforces 4A — Watermelon</h3>
+                <p>One hot summer day Pete and his friend Billy decided to buy a watermelon of weight $w$ kilos. They want to divide it so that each of the two parts weighs an <strong>even number of kilos</strong>. Can they divide it?</p>
+                <details>
+                    <summary>View Solution &amp; Mathematical Analysis</summary>
+                    <div style="margin-top: 1rem;">
+                        <p><strong>Analysis:</strong> For both parts to be even, the total sum must be even (<code class="language-cpp">w % 2 == 0</code>). However, if $w = 2$, the only division is $1 + 1$ (which are odd!). Therefore, $w$ must be even <strong>AND greater than 2</strong>.</p>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int w;
+    cin &gt;&gt; w;
+    if (w &gt; 2 &amp;&amp; w % 2 == 0) {
+        cout &lt;&lt; "YES\n";
+    } else {
+        cout &lt;&lt; "NO\n";
+    }
+    return 0;
+}</code></pre>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- PART 2: LOOPS                                                      -->
+        <!-- ================================================================== -->
+        <div class="part-divider" id="part2-loops">
+            <div class="part-divider-left">
+                <span class="part-badge">Part 2</span>
+                <div>
+                    <h2 class="part-title">Loops &amp; Iteration Control</h2>
+                    <p class="part-subtitle">Automate repetition, process sequences, and master loop mechanics</p>
+                </div>
+            </div>
+            <span style="font-size: 2.2rem;">🔄</span>
+        </div>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 5: Introduction to Loops                                     -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="intro-to-loops" class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Introduction to Loops</h2>
+            </div>
+
+            <p class="lead">
+                Why do we need loops? Imagine printing numbers from 1 to 100,000 or summing all inputs from a contest problem. Writing lines manually is impossible. <strong>Loops allow instructions to repeat automatically</strong> while conditions are satisfied.
+            </p>
+
+            <div class="cards-grid-3">
+                <div class="feature-card" style="border-top: 4px solid var(--info);">
+                    <div class="card-icon">1️⃣</div>
+                    <h3>1. Initialization</h3>
+                    <p>Sets up the loop counter variable before execution begins (e.g., <code>int i = 1;</code>).</p>
+                </div>
+                <div class="feature-card" style="border-top: 4px solid var(--warning);">
+                    <div class="card-icon">2️⃣</div>
+                    <h3>2. Condition</h3>
+                    <p>Evaluated before <em>every</em> iteration. If true, the body executes; if false, loop stops.</p>
+                </div>
+                <div class="feature-card" style="border-top: 4px solid var(--success);">
+                    <div class="card-icon">3️⃣</div>
+                    <h3>3. Update (Step)</h3>
+                    <p>Modifies the counter variable at the end of each pass (e.g., <code>i++</code>, <code>i += 2</code>).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 6: The For Loop                                              -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="for-loop" class="section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>The <code>for</code> Loop</h2>
+            </div>
+
+            <p class="lead">
+                The <code class="language-cpp">for</code> loop packs initialization, condition, and update in one single, clean header line. It is the most common loop used in competitive programming when the number of iterations is known in advance.
+            </p>
+
+            <div class="content-grid">
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — For Loop Variations</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n = 5;
+
+    // 1. Counting from 1 to N
+    cout &lt;&lt; "1 to N: ";
+    for (int i = 1; i &lt;= n; i++) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; "\n";
+
+    // 2. Counting Backward (N down to 1)
+    cout &lt;&lt; "Backward: ";
+    for (int i = n; i &gt;= 1; i--) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; "\n";
+
+    // 3. Different step sizes (Even numbers up to 10)
+    cout &lt;&lt; "Step by 2: ";
+    for (int i = 2; i &lt;= 10; i += 2) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; "\n";
+
+    // 4. Powers of two (Multiplying step)
+    cout &lt;&lt; "Powers of 2: ";
+    for (int i = 1; i &lt;= 64; i *= 2) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    cout &lt;&lt; "\n";
+
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="text-content">
+                    <div class="info-box">
+                        <h4>Formula for Number of Iterations</h4>
+                        <p>For a loop counting with step size $S$ from $Start$ to $End$ inclusive:</p>
+                        <p style="text-align: center; font-size: 1.15rem; color: var(--cyan); font-family: monospace;">
+                            Iterations = ⌊(End - Start) / Step⌋ + 1
+                        </p>
+                        <p>Example: For <code>for (int i = 3; i &lt;= 15; i += 3)</code>:<br>
+                        ⌊(15 - 3) / 3⌋ + 1 = (12 / 3) + 1 = <strong>5 iterations</strong> (values: 3, 6, 9, 12, 15).</p>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>💡 0-Indexed vs 1-Indexed</h4>
+                        <p>In arrays and strings, 0-indexing is standard:</p>
+                        <pre><code class="language-cpp">for (int i = 0; i &lt; n; i++) // Runs exactly n times: 0 to n-1</code></pre>
+                        <p>For mathematical sequences from 1 to N:</p>
+                        <pre><code class="language-cpp">for (int i = 1; i &lt;= n; i++) // Runs exactly n times: 1 to n</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 7: The While Loop                                            -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="while-loop" class="section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>The <code>while</code> Loop</h2>
+            </div>
+
+            <p class="lead">
+                A <code class="language-cpp">while</code> loop continues executing as long as its condition remains <code class="language-cpp">true</code>. It is ideal when the <strong>number of iterations is unknown in advance</strong> (such as processing input until end-of-file, or breaking down a number digit-by-digit).
+            </p>
+
+            <div class="content-grid">
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — While Loop &amp; EOF Reading</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Example 1: Halving a number until 0
+    int n = 40;
+    while (n &gt; 0) {
+        cout &lt;&lt; n &lt;&lt; " ";
+        n /= 2;
+    }
+    cout &lt;&lt; "\n";
+
+    // Example 2: Reading until End-Of-File (EOF)
+    // Critical CP Pattern when input size is not specified!
+    int x, sum = 0;
+    while (cin &gt;&gt; x) {
+        sum += x;
+    }
+    cout &lt;&lt; "Total sum of all inputs: " &lt;&lt; sum &lt;&lt; "\n";
+
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="text-content">
+                    <div class="info-box">
+                        <h4>🔑 The <code>while (cin &gt;&gt; x)</code> Idiom</h4>
+                        <p>In competitive programming, many problems say: <em>"Input contains several numbers until EOF"</em>. The expression <code class="language-cpp">cin &gt;&gt; x</code> returns the stream object, which evaluates to <code class="language-cpp">false</code> when input runs out. This elegantly reads all data and stops without crashes.</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Forgetting the Update Step = Infinite Loop!</h4>
+                        <p>If the variable involved in the condition is never updated inside the loop body, the condition remains true forever, freezing your program and causing <strong>Time Limit Exceeded (TLE)</strong>!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 8: Loop Control (Break & Continue)                           -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="loop-control" class="section">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>Loop Control: <code>break</code> &amp; <code>continue</code></h2>
+            </div>
+
+            <p class="lead">
+                C++ provides two jump statements to alter the natural flow of loops:
+            </p>
+
+            <div class="comparison-container">
+                <div class="comparison-box good">
+                    <h4>🛑 <code>break</code>: Immediate Loop Termination</h4>
+                    <p>Immediately breaks out of the innermost surrounding loop. No further iterations will run.</p>
+                    <pre><code class="language-cpp">// Stop at first multiple of 7
+for (int i = 1; i &lt;= 50; i++) {
+    if (i % 7 == 0) {
+        cout &lt;&lt; "Found: " &lt;&lt; i &lt;&lt; "\n";
+        break; // Exits loop immediately!
+    }
+}</code></pre>
+                </div>
+
+                <div class="comparison-box good" style="border-color: rgba(56, 189, 248, 0.35); background: rgba(56, 189, 248, 0.08);">
+                    <h4 style="color: var(--info);">⏭️ <code>continue</code>: Skip Current Iteration</h4>
+                    <p>Skips the remainder of the current iteration body and jumps directly to the update step / next condition check.</p>
+                    <pre><code class="language-cpp">// Print odd numbers only by skipping evens
+for (int i = 1; i &lt;= 10; i++) {
+    if (i % 2 == 0) {
+        continue; // Skips printing for evens!
+    }
+    cout &lt;&lt; i &lt;&lt; " "; // Prints: 1 3 5 7 9
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 9: Understanding Loop Execution & Off-by-One                -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="understanding-execution" class="section">
+            <div class="section-header">
+                <span class="section-number">09</span>
+                <h2>Understanding Loop Execution &amp; Tracing</h2>
+            </div>
+
+            <p class="lead">
+                Writing correct loops requires dry-running variables step-by-step. The <strong>Trace Table</strong> is every programmer's best debugging tool on paper.
+            </p>
+
+            <div class="table-responsive">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Iteration #</th>
+                            <th>Variable <code>i</code></th>
+                            <th>Condition Check</th>
+                            <th>Operation (<code>sum += i</code>)</th>
+                            <th>Variable <code>sum</code></th>
+                            <th>Next Step (<code>i++</code>)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><code>1</code></td>
+                            <td><code>1 &lt;= 3</code> → <span style="color: var(--success);">TRUE</span></td>
+                            <td><code>sum = 0 + 1</code></td>
+                            <td><code>1</code></td>
+                            <td><code>i</code> becomes 2</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><code>2</code></td>
+                            <td><code>2 &lt;= 3</code> → <span style="color: var(--success);">TRUE</span></td>
+                            <td><code>sum = 1 + 2</code></td>
+                            <td><code>3</code></td>
+                            <td><code>i</code> becomes 3</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><code>3</code></td>
+                            <td><code>3 &lt;= 3</code> → <span style="color: var(--success);">TRUE</span></td>
+                            <td><code>sum = 3 + 3</code></td>
+                            <td><code>6</code></td>
+                            <td><code>i</code> becomes 4</td>
+                        </tr>
+                        <tr>
+                            <td>Exit Check</td>
+                            <td><code>4</code></td>
+                            <td><code>4 &lt;= 3</code> → <span style="color: var(--danger);">FALSE</span></td>
+                            <td>Loop Terminates</td>
+                            <td><code>6</code> (Final Result)</td>
+                            <td>Continues past loop</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Beware of the Off-by-One Error (OBOE)</h4>
+                <p>The most common bug in competitive programming is running a loop one time too many or one time too few:</p>
+                <ul>
+                    <li>Checking <code class="language-cpp">&lt;</code> instead of <code class="language-cpp">&lt;=</code> when bounds are inclusive.</li>
+                    <li>Iterating past array boundary: accessing <code class="language-cpp">arr[n]</code> when valid indices are <code class="language-cpp">0</code> to <code class="language-cpp">n - 1</code>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- PART 3: COMMON PROBLEM-SOLVING PATTERNS                            -->
+        <!-- ================================================================== -->
+        <div class="part-divider" id="part3-patterns">
+            <div class="part-divider-left">
+                <span class="part-badge">Part 3</span>
+                <div>
+                    <h2 class="part-title">Common Problem-Solving Patterns</h2>
+                    <p class="part-subtitle">Counters, accumulators, multiple test cases, digit extraction, and nested loops</p>
+                </div>
+            </div>
+            <span style="font-size: 2.2rem;">🧩</span>
+        </div>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 10: Counters and Accumulators                                -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="counters-accumulators" class="section">
+            <div class="section-header">
+                <span class="section-number">10</span>
+                <h2>Counters &amp; Accumulators</h2>
+            </div>
+
+            <p class="lead">
+                Patterns you will write in virtually every single competition:
+            </p>
+
+            <div class="content-grid">
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — Counters, Sums, &amp; On-The-Fly Min/Max</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    int evenCount = 0;
+    long long sum = 0;
+    long long product = 1;
+    int maxVal = -2e9; // Start at extreme low
+    int minVal = 2e9;  // Start at extreme high
+
+    for (int i = 0; i &lt; n; i++) {
+        int x;
+        cin &gt;&gt; x;
+
+        // Counter Pattern
+        if (x % 2 == 0) evenCount++;
+
+        // Accumulator Patterns
+        sum += x;
+        product = (product * x) % 1000000007; // Often with modulo
+
+        // Min/Max on-the-fly without needing an array!
+        if (x &gt; maxVal) maxVal = x;
+        if (x &lt; minVal) minVal = x;
+    }
+
+    cout &lt;&lt; "Evens: " &lt;&lt; evenCount &lt;&lt; "\n";
+    cout &lt;&lt; "Sum: " &lt;&lt; sum &lt;&lt; "\n";
+    cout &lt;&lt; "Min: " &lt;&lt; minVal &lt;&lt; ", Max: " &lt;&lt; maxVal &lt;&lt; "\n";
+
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="text-content">
+                    <div class="tip-box">
+                        <h4>💡 Memory Optimization: No Arrays Needed!</h4>
+                        <p>Notice that we found the min, max, count, and sum of $N$ values <strong>without storing them in an array</strong>! This achieves $O(1)$ auxiliary memory space, protecting you from memory limit exceeded errors when $N = 10^6$.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Initial Values for Min &amp; Max</h4>
+                        <ul>
+                            <li>For finding <strong>Maximum</strong>: Initialize to the smallest possible value (<code class="language-cpp">-1e9</code> or <code class="language-cpp">INT_MIN</code>).</li>
+                            <li>For finding <strong>Minimum</strong>: Initialize to the largest possible value (<code class="language-cpp">1e9</code> or <code class="language-cpp">INT_MAX</code>).</li>
+                            <li>Or initialize both with the first element of input.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 11: Multiple Test Cases (while t--)                          -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="test-cases" class="section">
+            <div class="section-header">
+                <span class="section-number">11</span>
+                <h2>Multiple Test Cases: <code>while (t--)</code></h2>
+            </div>
+
+            <p class="lead">
+                In modern Codeforces contests, problems usually begin with: <em>"The first line contains an integer $T$ — the number of test cases."</em>
+            </p>
+
+            <div class="content-grid">
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — The Canonical Multi-Test Loop</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+void solve() {
+    int n;
+    cin &gt;&gt; n;
+    // CRITICAL: All state must be initialized inside solve()!
+    long long sum = 0;
+    for (int i = 0; i &lt; n; i++) {
+        int x;
+        cin &gt;&gt; x;
+        sum += x;
+    }
+    cout &lt;&lt; sum &lt;&lt; "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t;
+    cin &gt;&gt; t;
+    while (t--) {
+        solve(); // Executes once per test case
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="text-content">
+                    <div class="danger-box">
+                        <h4>💥 The #1 Test-Case Bug: Variable Bleeding</h4>
+                        <p>If you declare your accumulators, counters, or arrays globally without resetting them to zero on each test case, the results from test case #1 will contaminate test case #2, causing <strong>Wrong Answer (WA) on test 2</strong>!</p>
+                        <p><strong>Rule:</strong> Re-initialize variables inside the <code class="language-cpp">while (t--)</code> loop or dedicated <code class="language-cpp">solve()</code> function.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>How does <code>while (t--)</code> work?</h4>
+                        <p>In C++, the postfix decrement <code class="language-cpp">t--</code> evaluates the condition with the <em>current</em> value of $t$, and then decrements it. When $t$ reaches $0$, $0$ evaluates to <code class="language-cpp">false</code>, terminating the loop after running exactly $T$ times.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 12: Digit Manipulation                                       -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="digit-manipulation" class="section">
+            <div class="section-header">
+                <span class="section-number">12</span>
+                <h2>Digit Manipulation (The <code>% 10</code> and <code>/ 10</code> Duo)</h2>
+            </div>
+
+            <p class="lead">
+                Extracting and peeling digits is tested in dozens of newcomer problems (e.g. Assiut Sheet 2 Problem Q - Digits, Problem I - Palindrome, and Codeforces 977A).
+            </p>
+
+            <div class="cards-grid-2">
+                <div class="feature-card">
+                    <div class="card-icon">🎯</div>
+                    <h3><code>n % 10</code> — Extract Last Digit</h3>
+                    <p>Returns the remainder when divided by 10, which is always the rightmost digit.<br>
+                    <code>358 % 10 = 8</code></p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="card-icon">✂️</div>
+                    <h3><code>n / 10</code> — Discard Last Digit</h3>
+                    <p>Integer division drops the fractional part, slicing off the rightmost digit.<br>
+                    <code>358 / 10 = 35</code></p>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — Complete Digit Extraction Suite</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    long long n;
+    cin &gt;&gt; n;
+
+    if (n == 0) {
+        cout &lt;&lt; "Digits count: 1, Sum: 0\n";
+        return 0;
+    }
+
+    long long temp = abs(n);
+    int count = 0;
+    int sum = 0;
+    long long reversedNum = 0;
+
+    while (temp &gt; 0) {
+        int lastDigit = temp % 10;   // 1. Extract last digit
+        sum += lastDigit;             // Accumulate sum
+        reversedNum = reversedNum * 10 + lastDigit; // Shift &amp; add
+        count++;                     // Count digit
+        temp /= 10;                  // 2. Remove last digit
+    }
+
+    cout &lt;&lt; "Digits Count: " &lt;&lt; count &lt;&lt; "\n";
+    cout &lt;&lt; "Digits Sum: " &lt;&lt; sum &lt;&lt; "\n";
+    cout &lt;&lt; "Reversed Number: " &lt;&lt; reversedNum &lt;&lt; "\n";
+
+    // Palindrome check: Does original equal reversed?
+    if (abs(n) == reversedNum) {
+        cout &lt;&lt; "It is a Palindrome! ✅\n";
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="text-content">
+                    <div class="tip-box">
+                        <h4>💡 Special Corner Case: $N = 0$</h4>
+                        <p>If $N = 0$, the condition <code class="language-cpp">while (temp &gt; 0)</code> will immediately fail without running, incorrectly reporting 0 digits! Always handle $0$ separately if the problem allows $N \ge 0$.</p>
+                    </div>
+
+                    <div class="info-box">
+                        <h4>Extracting Digits in Natural Left-to-Right Order</h4>
+                        <p>Because <code class="language-cpp">% 10</code> peels from right-to-left, if a problem requires printing digits from left-to-right separated by spaces, you can either:</p>
+                        <ol>
+                            <li>Reverse the number first or use recursion.</li>
+                            <li>Read the number as a <code>string</code>: each digit is <code class="language-cpp">str[i] - '0'</code>!</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 13: Nested Loops & Star Patterns                             -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="nested-loops" class="section">
+            <div class="section-header">
+                <span class="section-number">13</span>
+                <h2>Nested Loops &amp; Pattern Printing</h2>
+            </div>
+
+            <p class="lead">
+                A <strong>nested loop</strong> is a loop inside another loop. For every single iteration of the outer loop, the inner loop runs completely from start to finish.
+            </p>
+
+            <div class="content-grid">
+                <div class="code-content">
+                    <div class="code-header">
+                        <span class="code-language">C++ — Understanding Rows &amp; Columns</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int rows = 4, cols = 5;
+
+    // Outer loop controls ROWS
+    for (int r = 1; r &lt;= rows; r++) {
+        // Inner loop controls COLUMNS in current row
+        for (int c = 1; c &lt;= cols; c++) {
+            cout &lt;&lt; "(" &lt;&lt; r &lt;&lt; "," &lt;&lt; c &lt;&lt; ") ";
+        }
+        cout &lt;&lt; "\n"; // End of row newline
+    }
+
+    return 0;
+}</code></pre>
+                </div>
+
+                <div class="text-content">
+                    <div class="info-box">
+                        <h4>Total Iterations in Nested Loops</h4>
+                        <p>If the outer loop runs $N$ times and the inner loop runs $M$ times, the inner body executes:</p>
+                        <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-family: monospace;">
+                            Total Operations = N × M
+                        </p>
+                        <p>If $N = 1000$ and $M = 1000$, total operations $= 1,000,000$.</p>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4>💡 Pattern Printing Strategy: The 3 Golden Questions</h4>
+                        <ol>
+                            <li><strong>How many rows?</strong> → Controls the outer loop range ($i = 1$ to $N$).</li>
+                            <li><strong>What happens in row $i$?</strong> → How many spaces? How many stars/numbers?</li>
+                            <li><strong>Newline:</strong> Always print <code class="language-cpp">cout &lt;&lt; "\n";</code> immediately after the inner loop finishes each row!</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- PART 4: COMPLEXITY & COMMON MISTAKES                               -->
+        <!-- ================================================================== -->
+        <div class="part-divider" id="part4-complexity">
+            <div class="part-divider-left">
+                <span class="part-badge">Part 4</span>
+                <div>
+                    <h2 class="part-title">Complexity Analysis &amp; Common Bugs</h2>
+                    <p class="part-subtitle">Avoid TLE, understand Big-O, and squash subtle implementation bugs</p>
+                </div>
+            </div>
+            <span style="font-size: 2.2rem;">⏱️</span>
+        </div>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 14: Time Complexity Basics                                   -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="time-complexity" class="section">
+            <div class="section-header">
+                <span class="section-number">14</span>
+                <h2>Time Complexity Basics &amp; Avoiding TLE</h2>
+            </div>
+
+            <p class="lead">
+                In competitive programming, your solution must run within the problem's time limit (typically <strong>1.0 second</strong>). If your program takes too long, the judge rejects it with <strong>Time Limit Exceeded (TLE)</strong>.
+            </p>
+
+            <div class="info-box" style="border-left-color: var(--accent);">
+                <h3 style="color: var(--accent);">⚡ The CP Golden Rule: ~10⁸ Operations per Second</h3>
+                <p>A standard C++ submission on modern online judges (Codeforces, AtCoder) performs roughly <strong>$10^8$ basic operations per second</strong> ($100,000,000$).</p>
+            </div>
+
+            <div class="table-responsive">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Notation</th>
+                            <th>Name</th>
+                            <th>Typical Code Structure</th>
+                            <th>Max Safe $N$ for 1.0s</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>O(1)</code></td>
+                            <td>Constant Time</td>
+                            <td>Direct math formulas, simple conditions</td>
+                            <td>Any size</td>
+                            <td><span style="color: var(--success); font-weight: bold;">⚡ Blazing</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>O(log N)</code></td>
+                            <td>Logarithmic</td>
+                            <td>Halving / digit peeling (<code>n /= 10</code>)</td>
+                            <td>$10^{18}$</td>
+                            <td><span style="color: var(--success); font-weight: bold;">⚡ Blazing</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>O(N)</code></td>
+                            <td>Linear Time</td>
+                            <td>Single loop from 1 to $N$</td>
+                            <td>$N \le 10^8$</td>
+                            <td><span style="color: var(--success); font-weight: bold;">✅ Excellent</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>O(N²)</code></td>
+                            <td>Quadratic Time</td>
+                            <td>Nested loops (rows and cols up to $N$)</td>
+                            <td>$N \le 5,000$</td>
+                            <td><span style="color: var(--warning); font-weight: bold;">⚠️ Caution</span></td>
+                        </tr>
+                        <tr>
+                            <td><code>O(N³)</code></td>
+                            <td>Cubic Time</td>
+                            <td>Triple nested loops</td>
+                            <td>$N \le 400$</td>
+                            <td><span style="color: var(--danger); font-weight: bold;">❌ Slow</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="warning-box">
+                <h4>Why did you get TLE on $N = 10^5$ with Nested Loops?</h4>
+                <p>If $N = 100,000$ and you write nested loops <code class="language-cpp">for (int i=0; i&lt;n; i++) for (int j=0; j&lt;n; j++)</code>, the total operations are:</p>
+                <p style="font-family: monospace; font-size: 1.1rem; color: var(--danger); text-align: center;">
+                    100,000 × 100,000 = 10,000,000,000 (10¹⁰ operations!)
+                </p>
+                <p>At $10^8$ ops/sec, this will take approximately <strong>100 seconds</strong> to run! The judge kills it after 1.0 second with TLE. You must optimize to $O(N)$ or $O(N \log N)$.</p>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 15: Common Mistakes Hall of Fame                             -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="common-mistakes" class="section">
+            <div class="section-header">
+                <span class="section-number">15</span>
+                <h2>Common Mistakes &amp; How to Prevent Them</h2>
+            </div>
+
+            <p class="lead">
+                Every competitive programmer makes these mistakes at least once. Study them to save hours of contest time!
+            </p>
+
+            <div class="comparison-container">
+                <div class="comparison-box bad">
+                    <h4>❌ Bug 1: Semicolon after loop header</h4>
+                    <pre><code class="language-cpp">// The loop runs 10 times doing NOTHING!
+for (int i = 1; i &lt;= 10; i++); 
+{
+    cout &lt;&lt; "Prints only ONCE with i = 11!\n";
+}</code></pre>
+                </div>
+                <div class="comparison-box good">
+                    <h4>✅ Fix: Remove the semicolon</h4>
+                    <pre><code class="language-cpp">for (int i = 1; i &lt;= 10; i++) {
+    cout &lt;&lt; "Prints 10 times as intended!\n";
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-box bad">
+                    <h4>❌ Bug 2: Integer Overflow in Accumulator</h4>
+                    <pre><code class="language-cpp">int n = 100000;
+int sum = 0; // BUG: 10^5 * 10^5 / 2 = 5 * 10^9
+for (int i = 1; i &lt;= n; i++) {
+    sum += i; // OVERFLOW! int max is ~2 * 10^9
+}</code></pre>
+                </div>
+                <div class="comparison-box good">
+                    <h4>✅ Fix: Use <code>long long</code></h4>
+                    <pre><code class="language-cpp">int n = 100000;
+long long sum = 0; // Safe up to 9 * 10^18!
+for (int i = 1; i &lt;= n; i++) {
+    sum += i; // No overflow!
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-box bad">
+                    <h4>❌ Bug 3: Backward loop with <code>unsigned</code></h4>
+                    <pre><code class="language-cpp">// size_t is unsigned (never negative!)
+for (size_t i = 5; i &gt;= 0; i--) {
+    // When i is 0, i-- wraps around to 18446744073709551615!
+    // INFINITE LOOP! 💥
+}</code></pre>
+                </div>
+                <div class="comparison-box good">
+                    <h4>✅ Fix: Use signed <code>int</code></h4>
+                    <pre><code class="language-cpp">for (int i = 5; i &gt;= 0; i--) {
+    // Cleanly stops when i becomes -1
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================== -->
+        <!-- PART 5: INTERACTIVE DEMOS & PRACTICE                               -->
+        <!-- ================================================================== -->
+        <div class="part-divider" id="part5-demos">
+            <div class="part-divider-left">
+                <span class="part-badge">Part 5</span>
+                <div>
+                    <h2 class="part-title">Interactive Learning &amp; Practice</h2>
+                    <p class="part-subtitle">Experiment with live demos and practice curated Assiut Sheet &amp; Codeforces problems</p>
+                </div>
+            </div>
+            <span style="font-size: 2.2rem;">🎮</span>
+        </div>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 16: Interactive Demos                                        -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="interactive-demos" class="section">
+            <div class="section-header">
+                <span class="section-number">16</span>
+                <h2>Interactive Demos</h2>
+            </div>
+
+            <!-- Demo 1: Condition Checker -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-title-group">
+                        <h3>Demo 1: Live Condition Checker &amp; Branch Visualizer</h3>
+                        <p>Change inputs and operators to inspect Boolean evaluation and execution branch path</p>
+                    </div>
+                    <span class="demo-badge">Interactive Simulation</span>
+                </div>
+
+                <div class="checker-layout">
+                    <div class="controls-panel">
+                        <div class="control-group">
+                            <label for="checkerA">Variable <code>a</code> (Integer):</label>
+                            <input type="number" id="checkerA" class="control-input" value="12">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Relational Operator:</label>
+                            <div class="operator-select-grid">
+                                <button type="button" class="op-btn active" data-op="&gt;">&gt;</button>
+                                <button type="button" class="op-btn" data-op="&lt;">&lt;</button>
+                                <button type="button" class="op-btn" data-op="&gt;=">&gt;=</button>
+                                <button type="button" class="op-btn" data-op="&lt;=">&lt;=</button>
+                                <button type="button" class="op-btn" data-op="==">==</button>
+                                <button type="button" class="op-btn" data-op="!=">!=</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="checkerB">Variable <code>b</code> (Integer):</label>
+                            <input type="number" id="checkerB" class="control-input" value="7">
+                        </div>
+                    </div>
+
+                    <div class="checker-result-panel">
+                        <div class="expression-box" id="checkerExpression">
+                            <span style="color: #f472b6;">if</span> (12 &gt; 7)
+                        </div>
+
+                        <div class="branch-display">
+                            <div class="branch-node selected" id="branchTrue">
+                                <strong>Branch 1 (TRUE):</strong><br>
+                                <code>cout &lt;&lt; "Condition passed!" &lt;&lt; endl;</code>
+                            </div>
+                            <div class="branch-node" id="branchFalse">
+                                <strong>Branch 2 (ELSE / FALSE):</strong><br>
+                                <code>cout &lt;&lt; "Condition failed!" &lt;&lt; endl;</code>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span style="font-size: 0.8rem; color: var(--text-tertiary); font-family: monospace;">Virtual Console Output:</span>
+                            <div class="console-output-box" id="checkerConsole">
+                                &gt; Condition Evaluated: TRUE (1)<br>&gt; cout &lt;&lt; "Condition passed!" &lt;&lt; endl;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 2: Loop Stepper -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-title-group">
+                        <h3>Demo 2: Loop Execution Stepper &amp; Variable Tracer</h3>
+                        <p>Step through execution line-by-line to watch memory variables update at each iteration</p>
+                    </div>
+                    <span class="demo-badge">Step-by-Step Tracer</span>
+                </div>
+
+                <div class="stepper-controls">
+                    <button type="button" id="stepPrevBtn" class="step-btn"><span>⏮</span> Prev Step</button>
+                    <button type="button" id="stepNextBtn" class="step-btn primary"><span>⏭</span> Next Step</button>
+                    <button type="button" id="stepPlayBtn" class="step-btn"><span>▶</span> Auto Play</button>
+                    <button type="button" id="stepResetBtn" class="step-btn"><span>🔄</span> Reset</button>
+                    
+                    <div style="margin-left: auto; display: flex; align-items: center; gap: 0.75rem;">
+                        <label for="stepperPreset" style="font-size: 0.88rem; color: var(--text-secondary);">Algorithm:</label>
+                        <select id="stepperPreset" class="control-input" style="padding: 0.4rem 0.75rem;">
+                            <option value="sum">Sum 1 to N</option>
+                            <option value="digits">Digit Reversal</option>
+                        </select>
+                        <label for="stepperN" style="font-size: 0.88rem; color: var(--text-secondary);">N:</label>
+                        <input type="number" id="stepperN" class="control-input" value="4" min="1" max="6" style="width: 60px; padding: 0.4rem 0.5rem;">
+                    </div>
+                </div>
+
+                <div class="stepper-layout">
+                    <!-- Code Tracer Column -->
+                    <div class="code-tracer">
+                        <div class="trace-line highlight" data-line="1">
+                            <span class="line-no">1</span>
+                            <code>int sum = 0;</code>
+                        </div>
+                        <div class="trace-line" data-line="2">
+                            <span class="line-no">2</span>
+                            <code>for (int i = 1; i &lt;= N; i++) {</code>
+                        </div>
+                        <div class="trace-line" data-line="3">
+                            <span class="line-no">3</span>
+                            <code>    sum += i;</code>
+                        </div>
+                        <div class="trace-line" data-line="4">
+                            <span class="line-no">4</span>
+                            <code>cout &lt;&lt; "Total: " &lt;&lt; sum;</code>
+                        </div>
+                    </div>
+
+                    <!-- State Table Column -->
+                    <div class="stepper-state">
+                        <div class="state-card">
+                            <h4>Current Memory State</h4>
+                            <table class="var-table">
+                                <thead>
+                                    <tr>
+                                        <th>Metric / Var</th>
+                                        <th>Current Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Iteration #</td>
+                                        <td><span class="var-val" id="traceIter">0</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Loop Variable <code>i</code></td>
+                                        <td><span class="var-val" id="traceVar1">-</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Accumulator <code>sum</code></td>
+                                        <td><span class="var-val" id="traceVar2">0</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Condition Status</td>
+                                        <td><span class="var-val" id="traceCond" style="color: var(--cyan);">Initial setup</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="state-card">
+                            <h4>Console Output</h4>
+                            <div class="console-output-box" id="traceConsole" style="min-height: 80px;">
+                                &gt; Program started...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 3: Pattern Generator -->
+            <div class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-title-group">
+                        <h3>Demo 3: Nested Loops Pattern Generator</h3>
+                        <p>Generate star and number patterns interactively and view the corresponding C++ code</p>
+                    </div>
+                    <span class="demo-badge">Visual Pattern Builder</span>
+                </div>
+
+                <div class="pattern-layout">
+                    <div class="controls-panel">
+                        <div class="control-group">
+                            <label for="patternType">Pattern Architecture:</label>
+                            <select id="patternType" class="control-input">
+                                <option value="triangle">Right-Angled Triangle</option>
+                                <option value="inverted">Inverted Triangle</option>
+                                <option value="pyramid">Centered Pyramid (Assiut Shape3)</option>
+                                <option value="floyd">Floyd's Number Triangle</option>
+                                <option value="hollow_square">Hollow Square</option>
+                                <option value="checker">Checkerboard Grid</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Rows (N): <span id="patternRowsValue" class="slider-val">5</span></label>
+                            <div class="slider-container">
+                                <span>1</span>
+                                <input type="range" id="patternRows" class="range-slider" min="1" max="8" value="5">
+                                <span>8</span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="patternChar">Fill Symbol:</label>
+                            <select id="patternChar" class="control-input">
+                                <option value="*">* (Asterisk)</option>
+                                <option value="#"># (Hash)</option>
+                                <option value="@">@ (At)</option>
+                                <option value="$">$ (Dollar)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <div class="pattern-preview-box">
+                            <div class="pattern-output" id="patternOutput"></div>
+                        </div>
+
+                        <div class="code-content">
+                            <div class="code-header">
+                                <span class="code-language">C++ Nested Loop Code</span>
+                                <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+                            </div>
+                            <pre><code class="language-cpp" id="patternCppCode"></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Topic 17: Practice Problems                                        -->
+        <!-- ------------------------------------------------------------------ -->
+        <section id="practice" class="section practice-section">
+            <div class="section-header">
+                <span class="section-number">17</span>
+                <h2>Practice Problems (Codeforces &amp; Assiut Sheets)</h2>
+            </div>
+
+            <p class="lead">
+                Solve these carefully curated competitive programming problems from <strong>Assiut University Training Sheet 1 &amp; Sheet 2</strong> and <strong>Codeforces</strong> to master conditions and loops.
+            </p>
+
+            <div class="practice-tabs">
+                <button type="button" class="tab-btn active" data-filter="all">All Problems (20)</button>
+                <button type="button" class="tab-btn" data-filter="level1">Level 1: Basics (6)</button>
+                <button type="button" class="tab-btn" data-filter="level2">Level 2: Application (8)</button>
+                <button type="button" class="tab-btn" data-filter="level3">Level 3: Challenge (6)</button>
+            </div>
+
+            <div class="problems-grid" id="problemsContainer">
+
+                <!-- LEVEL 1 PROBLEMS -->
+                <div class="problem-card" data-level="level1">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Watermelon</h3>
+                            <span class="difficulty-badge easy">CF 800</span>
+                        </div>
+                        <p class="problem-desc">Determine if watermelon weight $W$ can be split into two parts where each part is an even number.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Conditions</span>
+                            <span class="problem-tag">#Math</span>
+                            <span class="problem-tag">CF 4A</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Codeforces</span>
+                        <a href="https://codeforces.com/problemset/problem/4/A" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level1">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Welcome for you with Conditions</h3>
+                            <span class="difficulty-badge easy">Assiut 1-I</span>
+                        </div>
+                        <p class="problem-desc">Given two numbers $A$ and $B$, print "Yes" if $A$ is greater than or equal to $B$, otherwise print "No".</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Basic If</span>
+                            <span class="problem-tag">Sheet 1</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #1</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/I" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level1">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Multiples</h3>
+                            <span class="difficulty-badge easy">Assiut 1-J</span>
+                        </div>
+                        <p class="problem-desc">Given $A$ and $B$, determine whether one is a multiple of the other using the modulo operator.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Modulo</span>
+                            <span class="problem-tag">#Divisibility</span>
+                            <span class="problem-tag">Sheet 1</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #1</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/J" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level1">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">1 to N</h3>
+                            <span class="difficulty-badge easy">Assiut 2-A</span>
+                        </div>
+                        <p class="problem-desc">Given a number $N$, print all integers from 1 to $N$ on separate lines using a basic for loop.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#For Loop</span>
+                            <span class="problem-tag">#Counting</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/A" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level1">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Even Numbers</h3>
+                            <span class="difficulty-badge easy">Assiut 2-B</span>
+                        </div>
+                        <p class="problem-desc">Given $N$, print all even numbers between 1 and $N$ inclusive. If no even numbers exist, print -1.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Step Loop</span>
+                            <span class="problem-tag">#Boundary</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/B" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level1">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Multiplication Table</h3>
+                            <span class="difficulty-badge easy">Assiut 2-F</span>
+                        </div>
+                        <p class="problem-desc">Given a number $N$, print the multiplication table of $N$ from $1$ to $12$ in formatted lines.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Fixed Loop</span>
+                            <span class="problem-tag">#Formatting</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/F" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <!-- LEVEL 2 PROBLEMS -->
+                <div class="problem-card" data-level="level2">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Max and Min</h3>
+                            <span class="difficulty-badge medium">Assiut 1-K</span>
+                        </div>
+                        <p class="problem-desc">Given 3 numbers $A, B, C$, find and print the minimum and maximum among them.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#MinMax</span>
+                            <span class="problem-tag">#Conditions</span>
+                            <span class="problem-tag">Sheet 1</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #1</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/K" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level2">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Capital or Small or Digit</h3>
+                            <span class="difficulty-badge medium">Assiut 1-M</span>
+                        </div>
+                        <p class="problem-desc">Given a character $X$, determine whether it is a digit, uppercase letter, or lowercase letter.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#ASCII</span>
+                            <span class="problem-tag">#Char</span>
+                            <span class="problem-tag">Sheet 1</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #1</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/M" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level2">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Digits</h3>
+                            <span class="difficulty-badge medium">Assiut 2-Q</span>
+                        </div>
+                        <p class="problem-desc">Given $T$ test cases, print each number's digits separated by space in reverse order using modulo 10.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Digits</span>
+                            <span class="problem-tag">#TestCases</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/Q" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level2">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Even, Odd, Positive &amp; Negative</h3>
+                            <span class="difficulty-badge medium">Assiut 2-C</span>
+                        </div>
+                        <p class="problem-desc">Given $N$ numbers, count how many numbers are even, odd, positive, and negative using accumulators.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Counters</span>
+                            <span class="problem-tag">#Loops</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/C" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level2">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Factorial</h3>
+                            <span class="difficulty-badge medium">Assiut 2-G</span>
+                        </div>
+                        <p class="problem-desc">Calculate the factorial $N!$ for $T$ test cases. Pay attention to data types and <code>long long</code>!</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Product</span>
+                            <span class="problem-tag">#Overflow</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/G" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level2">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Palindrome</h3>
+                            <span class="difficulty-badge medium">Assiut 2-I</span>
+                        </div>
+                        <p class="problem-desc">Reverse integer $N$, print the reversed value without leading zeros, and check if it is a palindrome.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Reverse</span>
+                            <span class="problem-tag">#Digits</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/I" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level2">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Team</h3>
+                            <span class="difficulty-badge easy">CF 800</span>
+                        </div>
+                        <p class="problem-desc">Count how many problems 3 friends will solve if at least 2 are sure about the solution.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#TestCases</span>
+                            <span class="problem-tag">#Counter</span>
+                            <span class="problem-tag">CF 231A</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Codeforces</span>
+                        <a href="https://codeforces.com/problemset/problem/231/A" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level2">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Elephant</h3>
+                            <span class="difficulty-badge easy">CF 800</span>
+                        </div>
+                        <p class="problem-desc">An elephant can move 1, 2, 3, 4, or 5 steps at a time. Find the minimum steps to reach coordinate $x$.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Greedy</span>
+                            <span class="problem-tag">#Math</span>
+                            <span class="problem-tag">CF 617A</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Codeforces</span>
+                        <a href="https://codeforces.com/problemset/problem/617/A" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <!-- LEVEL 3 PROBLEMS -->
+                <div class="problem-card" data-level="level3">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Shape 3 (Pyramid)</h3>
+                            <span class="difficulty-badge hard">Assiut 2-W</span>
+                        </div>
+                        <p class="problem-desc">Print a diamond / pyramid shape of stars using nested loops with precise row, space, and star formulas.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#NestedLoops</span>
+                            <span class="problem-tag">#Patterns</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/W" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level3">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Numbers Histogram</h3>
+                            <span class="difficulty-badge hard">Assiut 2-N</span>
+                        </div>
+                        <p class="problem-desc">Given a symbol $S$ and $N$ numbers, print a histogram where each line contains symbol $S$ repeated $x$ times.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#NestedLoops</span>
+                            <span class="problem-tag">#Histogram</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/N" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level3">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Hard Compare</h3>
+                            <span class="difficulty-badge hard">Assiut 1-Z</span>
+                        </div>
+                        <p class="problem-desc">Compare $A^B$ with $C^D$ where numbers can reach $10^{12}$. Directly computing power will overflow — use logarithms!</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Math</span>
+                            <span class="problem-tag">#Logarithm</span>
+                            <span class="problem-tag">Sheet 1</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #1</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/Z" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level3">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">One Prime</h3>
+                            <span class="difficulty-badge medium">Assiut 2-H</span>
+                        </div>
+                        <p class="problem-desc">Determine whether number $X$ is prime. Loop up to $\sqrt{X}$ to achieve $O(\sqrt{X})$ time complexity!</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Primes</span>
+                            <span class="problem-tag">#O(sqrtN)</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/H" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level3">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Sum of Consecutive Odd Numbers</h3>
+                            <span class="difficulty-badge hard">Assiut 2-S</span>
+                        </div>
+                        <p class="problem-desc">Given pairs of numbers $X$ and $Y$, sum all odd numbers strictly between them across multiple test cases.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Range</span>
+                            <span class="problem-tag">#TestCases</span>
+                            <span class="problem-tag">Sheet 2</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Assiut Sheet #2</span>
+                        <a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432/problem/S" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+                <div class="problem-card" data-level="level3">
+                    <div>
+                        <div class="problem-header">
+                            <h3 class="problem-title">Wrong Subtraction</h3>
+                            <span class="difficulty-badge easy">CF 800</span>
+                        </div>
+                        <p class="problem-desc">If the last digit is non-zero, subtract 1; if it is 0, divide by 10. Repeat $k$ times.</p>
+                        <div class="problem-tags">
+                            <span class="problem-tag">#Simulation</span>
+                            <span class="problem-tag">#Loop</span>
+                            <span class="problem-tag">CF 977A</span>
+                        </div>
+                    </div>
+                    <div class="problem-action">
+                        <span style="font-size: 0.8rem; color: var(--text-tertiary);">Codeforces</span>
+                        <a href="https://codeforces.com/problemset/problem/977/A" target="_blank" rel="noopener noreferrer" class="solve-link">Solve Problem →</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>ACPC Training Community</h3>
+                <p>Kafr Elsheikh University Collegiate Programming Contest community. Empowering students with algorithmic thinking, problem-solving mastery, and contest excellence.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../index.html">Course Hub</a></li>
+                    <li><a href="../Basics/index.html">C++ Basics</a></li>
+                    <li><a href="#hero">Conditions &amp; Loops</a></li>
+                    <li><a href="../Array/index.html">Arrays Masterclass</a></li>
+                    <li><a href="../Strings/index.html">Strings</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Topics</h4>
+                <ul>
+                    <li><a href="#conditional-statements">If / Else &amp; Ternary</a></li>
+                    <li><a href="#for-loop">For &amp; While Loops</a></li>
+                    <li><a href="#digit-manipulation">Digit Extraction</a></li>
+                    <li><a href="#nested-loops">Nested Patterns</a></li>
+                    <li><a href="#time-complexity">Time Complexity</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contest Platforms</h4>
+                <ul>
+                    <li><a href="https://codeforces.com" target="_blank" rel="noopener noreferrer">Codeforces</a></li>
+                    <li><a href="https://codeforces.com/group/MWSDmqGsZm/contest/219158" target="_blank" rel="noopener noreferrer">Assiut Sheet #1</a></li>
+                    <li><a href="https://codeforces.com/group/MWSDmqGsZm/contest/219432" target="_blank" rel="noopener noreferrer">Assiut Sheet #2</a></li>
+                    <li><a href="https://atcoder.jp" target="_blank" rel="noopener noreferrer">AtCoder</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2025 ACPC Training Community | Kafr Elsheikh University. Free &amp; Open Source for all students.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
